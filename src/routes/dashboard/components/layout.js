@@ -18,11 +18,11 @@ export default function Layout(props) {
   const percent = Math.ceil((numberClimbed / totalPeaks) * 100);
 
   return (
-    <main role="main" className="container">
-      <Col xs={12} className="dashboard-container">
-        <h1 className="page-heading">Summary of Colorado 14ers Climbed</h1>
+    <main role="main">
+      <div className="container">
+        <h1 className="page-header">Summary of Colorado 14ers Climbed</h1>
 
-        <div className="circle-chart">
+        <div className="circle-chart" xs={12} >
           <div id="progress-circle" className={`c100 big black p${percent}`}>
             <span id="percent">{percent}%</span>
             <div className="slice">
@@ -48,7 +48,7 @@ export default function Layout(props) {
           </a>
           , which has safety tips, route info, photos, weather forcasts and maps.
         </p>
-      </Col>
+      </div>
     </main>
   );
 }

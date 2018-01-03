@@ -5,7 +5,12 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
+.page-header {
+  border: none;
+  margin: 15px 0;
+}
+
+.form-header {
   padding: 15px;
 }
 
