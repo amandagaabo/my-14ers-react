@@ -4,6 +4,7 @@ import Header from '../containers/header';
 import Home from '../../home/';
 import AddPeak from '../../add-peak/';
 import SignUp from '../../sign-up';
+import SignIn from '../../sign-in';
 
 export default function Layout() {
   const props = {
@@ -18,8 +19,8 @@ export default function Layout() {
           <Route exact path="/" component={Home} />
           <Route exact path="/add-peak" component={AddPeak} />
           <Route exact path="/sign-up" component={SignUp} />
-          {/*
           <Route exact path="/sign-in" component={SignIn} />
+          {/*
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/peak-list" component={PeakList} />
           <Route exact path="/peak-map" component={PeakMap} />
