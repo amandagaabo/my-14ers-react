@@ -1,19 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Col, Button } from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
+import './layout.css';
 
 export default function Layout() {
   return (
     <main role="main">
-      <Col xs={12} className="home-container">
-        <h1 className="page-heading">Welcome!</h1>
+      <Jumbotron />
 
-        <img
-          src="https://res.cloudinary.com/amhprojects/image/upload/v1514516746/14ers/mt_belford.jpg"
-          alt="mt belford"
-          id="welcome-image"
-        />
-
+      <div className="container">
         <p className="new-user-message">
           Looking for a rewarding hike?  Colorado has 58 fourteeners with trails of varying
           lengths and difficulties. Fourteeners (also known as 14ers) are mountains that have
@@ -31,7 +26,7 @@ export default function Layout() {
         <Link to="/add-peak">
           <Button id="start-tracking-btn">Add a peak now!</Button>
         </Link>
-      </Col>
+      </div>
     </main>
   );
 }

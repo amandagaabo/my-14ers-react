@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import './header.css';
 
 export default function Header(props) {
   const { loggedIn } = props;

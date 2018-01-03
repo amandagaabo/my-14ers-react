@@ -1,0 +1,8 @@
+.jumbotron {
+  margin-bottom: 20px;
+  height: 500px;
+  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1515009705/14ers/longs-peak-cover.jpg);
+  background-position: 0% 15%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
