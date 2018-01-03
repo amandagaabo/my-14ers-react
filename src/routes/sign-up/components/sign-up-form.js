@@ -3,9 +3,9 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { required, nonEmpty, validDate } from '../../../utils/validators';
+import { required, nonEmpty, isTrimmed, length, matches } from '../../../utils/validators';
 
-export class AddPeakForm extends React.Component {
+export class SignUpForm extends React.Component {
   onSubmit(values) {
     console.log('Submitted with values', values);
   }
@@ -22,38 +22,39 @@ export class AddPeakForm extends React.Component {
       <form
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
+
+        <Field
+          component={Input}
+          name="email"
+          type="email"
+          label="Email"
+          validate={[required, nonEmpty, isTrimmed]}
+        />
+
+        <Field
+          component={Input}
+          name="password"
+          type="password"
+          label="Password"
+          validate={[required, length({ min: 10, max: 72 }), isTrimmed]}
+        />
+
+        <Field
+          component={Input}
+          name="confirm-password"
+          type="password"
+          label="Confirm Password"
+          validate={[required, nonEmpty, matches('password')]}
+        />
+
         {errorMessage}
-
-        <Field
-          name="peakName"
-          type="select"
-          component={Input}
-          label="Peak"
-          options={this.props.peakNames}
-          validate={[required, nonEmpty]}
-        />
-
-        <Field
-          name="dateClimbed"
-          type="date"
-          component={Input}
-          label="Date"
-          validate={[required, nonEmpty, validDate]}
-        />
-
-        <Field
-          name="notes"
-          type="textarea"
-          component={Input}
-          label="Notes"
-        />
 
         <Col xs={12} >
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}
           >
-            Add
+            Sign Up
           </button>
         </Col>
       </form>
@@ -61,24 +62,22 @@ export class AddPeakForm extends React.Component {
   }
 }
 
-AddPeakForm.propTypes = {
+SignUpForm.propTypes = {
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
-  peakNames: PropTypes.array,
 };
 
-AddPeakForm.defaultProps = {
+SignUpForm.defaultProps = {
   pristine: true,
   submitting: false,
   error: '',
   handleSubmit: () => console.log('form submitted'),
-  peakNames: [],
 };
 
 export default reduxForm({
-  form: 'add-peak',
+  form: 'sign-up',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('add-peak', Object.keys(errors)[0])),
-})(AddPeakForm);
+    dispatch(focus('sign-up', Object.keys(errors)[0])),
+})(SignUpForm);
