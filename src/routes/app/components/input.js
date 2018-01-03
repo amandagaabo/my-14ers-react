@@ -33,11 +33,36 @@ export default class Input extends React.Component {
       );
     }
 
+    // sort function for peak options
+    function sortPeakNames(peakNames) {
+      peakNames.sort((a, b) => {
+        const nameA = a.peakName;
+        const nameB = b.peakName;
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+
     // setup select options for drop down select field
     let selectOptions;
     if (this.props.options) {
       const { options } = this.props;
-      selectOptions = options.map((peak) => {
+
+      const peakNames = options.map((peak) => {
+        const peakObj = {};
+        peakObj.peakName = peak.attributes.peak_name;
+        peakObj.peakId = peak.id;
+        return peakObj;
+      });
+
+      sortPeakNames(peakNames);
+
+      selectOptions = peakNames.map((peak) => {
         return (
           <option key={peak.peakId} value={peak.peakName}>{peak.peakName}</option>
         );

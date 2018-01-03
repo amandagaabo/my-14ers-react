@@ -5,12 +5,9 @@ import Home from '../../home/';
 import AddPeak from '../../add-peak/';
 import SignUp from '../../sign-up';
 import SignIn from '../../sign-in';
+import Dashboard from '../../dashboard';
 
-export default function Layout() {
-  const props = {
-    loggedIn: true,
-  };
-
+export default function Layout(props) {
   return (
     <Router>
       <div className="app">
@@ -20,8 +17,8 @@ export default function Layout() {
           <Route exact path="/add-peak" component={AddPeak} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/sign-in" component={SignIn} />
-          {/*
           <Route exact path="/dashboard" component={Dashboard} />
+          {/*
           <Route exact path="/peak-list" component={PeakList} />
           <Route exact path="/peak-map" component={PeakMap} />
           <Route component={NotFoundPage} /> */}

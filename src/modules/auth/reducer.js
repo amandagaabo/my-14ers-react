@@ -2,8 +2,7 @@
 
 const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
-  currentUser: null,
-  loggedIn: false,
+  currentUser: 'amanda',
 };
 
 export default function (state = initialState, action) {

@@ -29,7 +29,7 @@ export class AddPeakForm extends React.Component {
           type="select"
           component={Input}
           label="Peak"
-          options={this.props.peakNames}
+          options={this.props.allPeaks}
           validate={[required, nonEmpty]}
         />
 
@@ -66,7 +66,7 @@ AddPeakForm.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
-  peakNames: PropTypes.array,
+  allPeaks: PropTypes.array,
 };
 
 AddPeakForm.defaultProps = {
@@ -74,7 +74,7 @@ AddPeakForm.defaultProps = {
   submitting: false,
   error: '',
   handleSubmit: () => console.log('form submitted'),
-  peakNames: [],
+  allPeaks: [],
 };
 
 export default reduxForm({
