@@ -23,8 +23,12 @@ export default function Layout() {
 
         <p className="new-user-message">Ready to start logging the 14ers you have completed?</p>
 
-        <Link to="/add-peak">
-          <Button id="start-tracking-btn">Add a peak now!</Button>
+        <Link to="/sign-in" className="home-page-button">
+          <Button id="sign-in-button">Sign In</Button>
+        </Link>
+
+        <Link to="/sign-up" className="home-page-button">
+          <Button id="sign-up-button">Create Account</Button>
         </Link>
       </div>
     </main>
