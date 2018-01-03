@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Col } from 'react-bootstrap';
+import './input.css';
 
 export default class Input extends React.Component {
   componentDidUpdate(prevProps) {
@@ -7,7 +9,18 @@ export default class Input extends React.Component {
       this.input.focus();
     }
   }
+
   render() {
+    // set element type
+    let Element = 'input';
+    if (this.props.type === 'select') {
+      Element = 'select';
+    }
+    if (this.props.type === 'textarea') {
+      Element = 'textarea';
+    }
+
+    // get error and warning messages
     let error;
     if (this.props.meta.touched && this.props.meta.error) {
       error = <div className="form-error">{this.props.meta.error}</div>;
@@ -20,20 +33,63 @@ export default class Input extends React.Component {
       );
     }
 
+    // setup select options for drop down select field
+    let selectOptions;
+    if (this.props.options) {
+      const { options } = this.props;
+      selectOptions = options.map((peak) => {
+        return (
+          <option key={peak.peakId} value={peak.peakName}>{peak.peakName}</option>
+        );
+      });
+    }
+
+    // add options if element is select type
+    if (Element === 'select') {
+      return (
+        <Col className="form-input" xs={12}>
+          <Col xs={12} >
+            <label htmlFor={this.props.input.name}>
+              {this.props.label}
+              {error}
+              {warning}
+            </label>
+          </Col>
+
+          <Col xs={12} >
+            <Element
+              {...this.props.input}
+              id={this.props.input.name}
+              type={this.props.type}
+              ref={input => (this.input = input)}
+            >
+              <option />
+              {selectOptions}
+            </Element>
+          </Col>
+        </Col>
+      );
+    }
+
     return (
-      <div className="form-input">
-        <label htmlFor={this.props.input.name}>
-          {this.props.label}
-          {error}
-          {warning}
-        </label>
-        <input
-          {...this.props.input}
-          id={this.props.input.name}
-          type={this.props.type}
-          ref={input => (this.input = input)}
-        />
-      </div>
+      <Col className="form-input" xs={12}>
+        <Col xs={12} >
+          <label htmlFor={this.props.input.name}>
+            {this.props.label}
+            {error}
+            {warning}
+          </label>
+        </Col>
+
+        <Col xs={12} >
+          <Element
+            {...this.props.input}
+            id={this.props.input.name}
+            type={this.props.type}
+            ref={input => (this.input = input)}
+          />
+        </Col>
+      </Col>
     );
   }
 }
@@ -51,6 +107,7 @@ Input.propTypes = {
     name: PropTypes.string,
   }),
   element: PropTypes.string,
+  options: PropTypes.array,
 };
 
 Input.defaultProps = {
@@ -66,4 +123,5 @@ Input.defaultProps = {
     name: '',
   },
   element: 'input',
+  options: [],
 };

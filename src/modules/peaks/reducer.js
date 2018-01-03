@@ -1,12 +1,31 @@
 // import actions
+import peakData from './all-peak-data';
+
+const peakNames = peakData.map((peak) => {
+  const peakObj = {};
+  peakObj.peakName = peak.attributes.peak_name;
+  peakObj.peakId = peak.id;
+  return peakObj;
+});
+
+function sortPeakNames() {
+  peakNames.sort((a, b) => {
+    const nameA = a.peakName;
+    const nameB = b.peakName;
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+}
+sortPeakNames();
 
 const initialState = {
   userPeaks: [],
-  peakNames: [
-    {name: 'Mt. Princeton', id: 1},
-    {name: 'Mt. Yale', id: 2},
-    {name: 'Mt. Massive', id: 3},
-  ]
+  peakNames,
 };
 
 export default function (state = initialState, action) {
