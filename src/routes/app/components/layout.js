@@ -7,6 +7,7 @@ import SignUp from '../../sign-up';
 import SignIn from '../../sign-in';
 import Dashboard from '../../dashboard';
 import PeakList from '../../peak-list';
+import PeakMap from '../../peak-map';
 
 export default function Layout(props) {
   return (
@@ -20,8 +21,8 @@ export default function Layout(props) {
           <Route exact path="/sign-in" component={SignIn} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/peak-list" component={PeakList} />
-          {/*
           <Route exact path="/peak-map" component={PeakMap} />
+          {/*
           <Route component={NotFoundPage} /> */}
         </Switch>
       </div>

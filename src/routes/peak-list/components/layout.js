@@ -106,10 +106,8 @@ export default function Layout(props) {
 
 Layout.propTypes = {
   userPeaks: PropTypes.array,
-  allPeaks: PropTypes.array,
 };
 
 Layout.defaultProps = {
   userPeaks: [],
-  allPeaks: [],
 };
