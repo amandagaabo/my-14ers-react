@@ -1,0 +1,35 @@
+.list-row {
+  padding: 0;
+}
+
+.list-sort {
+  float: right;
+  padding-right: 15px;
+  margin-bottom: 15px;
+}
+
+.mountain-photo {
+  width: 100%;
+}
+
+.caption-header {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.caption-details {
+  margin: 0;
+}
+
+.mountain-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.remove-peak {
+  background-color: transparent;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+}

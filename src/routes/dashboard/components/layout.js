@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'react-bootstrap';
 import _ from 'lodash';
 import './circle.css';
 import './layout.css';
