@@ -3,7 +3,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { required, nonEmpty, isTrimmed, length, matches } from '../../../utils/validators';
+import { required, nonEmpty, email, isTrimmed, minLength10, maxLength72, matches } from '../../../utils/validators';
 
 export class SignUpForm extends React.Component {
   onSubmit(values) {
@@ -28,7 +28,7 @@ export class SignUpForm extends React.Component {
           name="email"
           type="email"
           label="Email"
-          validate={[required, nonEmpty, isTrimmed]}
+          validate={[required, nonEmpty, email, isTrimmed]}
         />
 
         <Field
@@ -36,7 +36,7 @@ export class SignUpForm extends React.Component {
           name="password"
           type="password"
           label="Password"
-          validate={[required, length({ min: 10, max: 72 }), isTrimmed]}
+          validate={[required, isTrimmed, minLength10, maxLength72]}
         />
 
         <Field
@@ -49,7 +49,7 @@ export class SignUpForm extends React.Component {
 
         {errorMessage}
 
-        <Col xs={12} >
+        <Col xs={12} className="form-button" >
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}

@@ -3,7 +3,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { required, nonEmpty } from '../../../utils/validators';
+import { required, nonEmpty, email } from '../../../utils/validators';
 
 export class SignInForm extends React.Component {
   onSubmit(values) {
@@ -29,7 +29,7 @@ export class SignInForm extends React.Component {
           type="email"
           label="Email"
           autofocus
-          validate={[required, nonEmpty]}
+          validate={[required, nonEmpty, email]}
         />
 
         <Field
@@ -43,7 +43,7 @@ export class SignInForm extends React.Component {
 
         {errorMessage}
 
-        <Col xs={12} >
+        <Col xs={12} className="form-button" >
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}

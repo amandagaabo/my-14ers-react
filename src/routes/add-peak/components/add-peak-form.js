@@ -48,7 +48,7 @@ export class AddPeakForm extends React.Component {
           label="Notes"
         />
 
-        <Col xs={12} >
+        <Col xs={12} className="form-button" >
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}
