@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import dateFormat from 'dateformat';
 import numeral from 'numeral';
 import { Col } from 'react-bootstrap';
 import './layout.css';
@@ -32,7 +32,7 @@ export default function Layout(props) {
       temparray = userPeaks.slice(i, i + n);
 
       temparray.forEach((peak) => {
-        const formatedDate = moment(peak.dateClimbed).format('MMM D, YYYY');
+        const formatedDate = dateFormat(peak.dateClimbed, 'mmm d, yyyy');
         const formattedElevation = numeral(peak.elevation).format('0,0');
         const rowNum = Math.ceil((i + 1) / n);
         const index = dataForList.findIndex(i => i.row === rowNum);

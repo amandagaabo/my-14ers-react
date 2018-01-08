@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
-import moment from 'moment';
+import dateFormat from 'dateformat';
 import { Marker } from 'react-google-maps';
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 import './map-marker.css';
@@ -30,7 +30,7 @@ export default class MapMarker extends React.Component {
     // format the dates and push to new array
     const formatedDateArray = [];
     dateArray.forEach((date) => {
-      const formatedDate = moment(date).format('MMM D, YYYY');
+      const formatedDate = dateFormat(date, 'mmm d, yyyy');
       formatedDateArray.push(formatedDate);
     });
 
@@ -38,8 +38,7 @@ export default class MapMarker extends React.Component {
       const date = formatedDateArray[0];
       dateContentString = (
         <p className="info-window-text">
-          <span className="info-window-key">Date climbed:</span>
-          {date}
+          <span className="info-window-key">Date climbed:</span> {date}
         </p>
       );
     } else {
@@ -76,7 +75,6 @@ export default class MapMarker extends React.Component {
       >
         {this.state.isOpen &&
         <InfoBox
-          onCloseClick={() => this.onToggleOpen()}
           options={{ closeBoxURL: '', enableEventPropagation: true }}
         >
           {infoBoxContent}
