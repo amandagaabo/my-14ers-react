@@ -1,37 +1,74 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 
-export default function Map(props) {
-  // get user peaks from props
-  const { userPeaks } = props;
+export default class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    };
+  }
 
-  // set map base to show all of colorado
-  const colorado = { lat: 39.0051, lng: -105.5197 };
-  const markers = userPeaks.map((peak) => {
+  onToggleOpen() {
+    console.log('onToggleOpen called')
+    this.setState( {
+      isOpen: !this.state.isOpen
+    })
+  }
+
+  render() {
+    // get user peaks from props
+    const { userPeaks } = this.props;
+
+    // set map base to show all of colorado
+    const colorado = { lat: 39.0051, lng: -105.5197 };
+
+    // create marker for each peak in userPeaks
+    const markers = userPeaks.map((peak) => {
+      if (peak) {
+        return (
+          <Marker
+            key={peak.id}
+            position={{ lat: peak.latitude, lng: peak.longitude }}
+            onClick={() => this.onToggleOpen()}
+          >
+            {this.state.isOpen && <InfoBox
+              onCloseClick={() => this.onToggleOpen()}
+              options={{ closeBoxURL: '', enableEventPropagation: true }}
+            >
+              <div style={{ backgroundColor: 'white', padding: '12px' }}>
+                <div style={{ fontSize: '16px', fontColor: 'black' }}>
+                  Testing
+                </div>
+              </div>
+            </InfoBox>}
+          </Marker>
+        );
+      }
+        return '';
+    });
+
+    const MapComponent = withScriptjs(withGoogleMap(() => (
+      <GoogleMap
+        defaultZoom={7}
+        defaultCenter={colorado}
+      >
+        {markers}
+      </GoogleMap>
+    ),
+    ));
+
     return (
-      <Marker key={peak.id} position={{ lat: peak.latitude, lng: peak.longitude }} />
+      <MapComponent
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAiwermI7LxJMOueDDK_gkTQvT8W3Z_VXI"
+        loadingElement={<div style={{ height: '100%' }} />}
+        containerElement={<div style={{ height: '600px' }} />}
+        mapElement={<div style={{ height: '100%' }} />}
+      />
     );
-  });
-
-  const MapComponent = withScriptjs(withGoogleMap(() => (
-    <GoogleMap
-      defaultZoom={7}
-      defaultCenter={colorado}
-    >
-      {markers}
-    </GoogleMap>
-  ),
-  ));
-
-  return (
-    <MapComponent
-      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAiwermI7LxJMOueDDK_gkTQvT8W3Z_VXI"
-      loadingElement={<div style={{ height: '100%' }} />}
-      containerElement={<div style={{ height: '600px' }} />}
-      mapElement={<div style={{ height: '100%' }} />}
-    />
-  );
+  }
 }
 
 Map.propTypes = {
