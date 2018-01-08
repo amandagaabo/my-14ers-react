@@ -20,3 +20,7 @@
 .info-window-key {
   font-weight: bold;
 }
+
+.close-x {
+  float: right;
+}

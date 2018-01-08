@@ -20,6 +20,12 @@ export default class MapMarker extends React.Component {
     });
   }
 
+  onCloseWindow() {
+    this.setState({
+      isOpen: false,
+    });
+  }
+
   render() {
     const { peak } = this.props;
     const formatedElevation = numeral(peak.elevation).format('0,0');
@@ -53,6 +59,7 @@ export default class MapMarker extends React.Component {
     // define conntent for info windows
     const infoBoxContent = (
       <div className="info-window-container">
+        <button className="close-x" onClick={() => this.onCloseWindow()}>x</button>
         <h1 className="info-window-header">{peak.peak_name}</h1>
         <p className="info-window-text">
           <span className="info-window-key">Elevation:</span> {formatedElevation}
