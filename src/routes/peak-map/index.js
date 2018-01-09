@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Layout from './components/layout';
+import { getPeaksForMap } from '../../selectors';
 
 export function PeakMap(props) {
   return (
@@ -9,7 +10,7 @@ export function PeakMap(props) {
 }
 
 export const mapStateToProps = state => ({
-  userPeaks: state.app.peaks.userPeaks,
+  userPeaks: getPeaksForMap(state),
 });
 
 export default connect(mapStateToProps)(PeakMap);

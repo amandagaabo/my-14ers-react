@@ -1,49 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
-import MapMarker from '../containers/map-marker';
+import MapMarker from './map-marker';
 
 export default function Map(props) {
-  // get user peaks from props
-  const { userPeaks } = props;
+  function onToggleOpen(peakID) {
+    console.log('toggle open called with id', peakID);
+    // dispatch action to toggle peak showInfoWindow
+  }
 
-  // make new array of peak data for markers so there is only one marker per peak
-  const peakMarkers = [];
-  const peakNames = [];
-
-  userPeaks.forEach((peak) => {
-    const peakName = peak.peak_name;
-    // if peak name is not in the list, add name to peakNames and all data to peakMarkers
-    if (!peakNames.includes(peakName)) {
-      peakNames.push(peakName);
-
-      const peakDataToAdd = {
-        peak_name: peak.peak_name,
-        elevation: peak.elevation,
-        rank: peak.rank,
-        dateClimbed: [peak.dateClimbed],
-        imgSrc: peak.imgSrc,
-        latitude: peak.latitude,
-        longitude: peak.longitude,
-        id: peak.id,
-      };
-
-      peakMarkers.push(peakDataToAdd);
-    } else {
-      // if peak name is in the list, add date to existing peak
-      const index = peakMarkers.findIndex(peak => peak.peak_name === peakName);
-      peakMarkers[index].dateClimbed.push(peak.dateClimbed);
-    }
-  });
+  function onCloseWindow(peakID) {
+    console.log('close window called with id', peakID);
+    // dispatch action to update peak showInfoWindow to false
+  }
 
   // create marker for each peak in userPeaks
-  const markers = peakMarkers.map((peak) => {
+  const markers = props.userPeaks.map((peak) => {
     if (peak) {
       return (
-        <MapMarker key={peak.id} peak={peak} />
+        <MapMarker
+          key={peak.id}
+          peak={peak}
+          onToggleOpen={onToggleOpen}
+          onCloseWindow={onCloseWindow}
+        />
       );
     }
-    return '';
+    // if no peaks return null
+    return null;
   });
 
   // set map base to show all of colorado

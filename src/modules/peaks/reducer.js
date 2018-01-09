@@ -4,6 +4,7 @@ import peakData from './all-peak-data';
 const allPeaks = [...peakData];
 
 const initialState = {
+  showInfoWindowID: null,
   allPeaks,
   userPeaks: [
     {
@@ -18,6 +19,7 @@ const initialState = {
       dateClimbed: '07-07-2017',
       notes: 'it was fun',
       id: 1,
+      showInfoWindow: false,
     },
     {
       imgSrc: 'https://res.cloudinary.com/amhprojects/image/upload/v1514516746/14ers/blanca.jpg',
@@ -31,6 +33,7 @@ const initialState = {
       dateClimbed: '10-15-2016',
       notes: 'very cold',
       id: 2,
+      showInfoWindow: false,
     },
     {
       imgSrc: 'https://res.cloudinary.com/amhprojects/image/upload/v1514516757/14ers/torreys.jpg',
@@ -44,6 +47,7 @@ const initialState = {
       dateClimbed: '09-20-2016',
       notes: 'yay hiking',
       id: 3,
+      showInfoWindow: false,
     },
     {
       imgSrc: 'https://res.cloudinary.com/amhprojects/image/upload/v1514516747/14ers/castle.jpg',
@@ -57,6 +61,7 @@ const initialState = {
       dateClimbed: '08-20-2016',
       notes: 'first attempt',
       id: 4,
+      showInfoWindow: false,
     },
     {
       imgSrc: 'https://res.cloudinary.com/amhprojects/image/upload/v1514516747/14ers/castle.jpg',
@@ -70,6 +75,7 @@ const initialState = {
       dateClimbed: '08-20-2017',
       notes: 'fun hike, made it this time',
       id: 5,
+      showInfoWindow: false,
     },
   ],
 };
