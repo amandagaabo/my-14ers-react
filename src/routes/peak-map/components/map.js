@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import MapMarker from './map-marker';
 
-export default function Map(props) {
-  console.log('map props', props);
-  // create marker for each peak in userPeaks
+const MapComponent = withScriptjs(withGoogleMap((props) => {
   const markers = props.userPeaks.map((peak) => {
     if (peak) {
       return (
@@ -20,22 +18,23 @@ export default function Map(props) {
     return null;
   });
 
-  // set map base to show all of colorado
-  const colorado = { lat: 39.0051, lng: -105.5197 };
-
-  const MapComponent = withScriptjs(withGoogleMap(() => (
+  return (
     <GoogleMap
       defaultZoom={7}
-      defaultCenter={colorado}
+      defaultCenter={props.mapCenter}
       onClick={props.onCloseInfoWindow}
     >
       {markers}
     </GoogleMap>
-  ),
-  ));
+  );
+},
+));
 
+
+export default function Map(props) {
   return (
     <MapComponent
+      {...props}
       googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAiwermI7LxJMOueDDK_gkTQvT8W3Z_VXI"
       loadingElement={<div style={{ height: '100%' }} />}
       containerElement={<div style={{ height: '600px' }} />}
@@ -46,10 +45,15 @@ export default function Map(props) {
 
 Map.propTypes = {
   userPeaks: PropTypes.array,
+  mapCenter: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+  }),
   onCloseInfoWindow: PropTypes.func,
 };
 
 Map.defaultProps = {
   userPeaks: [],
+  mapCenter: { lat: 39.0051, lng: -105.5197 },
   onCloseInfoWindow: () => {},
 };

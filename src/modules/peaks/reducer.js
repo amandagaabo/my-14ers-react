@@ -6,6 +6,7 @@ const allPeaks = [...peakData];
 const initialState = {
   showInfoWindowID: null,
   allPeaks,
+  mapCenter: { lat: 39.0051, lng: -105.5197 },
   userPeaks: [
     {
       imgSrc: 'https://res.cloudinary.com/amhprojects/image/upload/v1514516749/14ers/mt_elbert.jpg',

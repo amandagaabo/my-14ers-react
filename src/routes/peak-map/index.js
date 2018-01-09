@@ -13,6 +13,7 @@ export function PeakMap(props) {
 export const mapStateToProps = state => ({
   userPeaks: getPeaksForMap(state),
   showInfoWindowID: state.app.peaks.showInfoWindowID,
+  mapCenter: state.app.peaks.mapCenter,
 });
 
 export const mapDispatchToProps = (dispatch) => {

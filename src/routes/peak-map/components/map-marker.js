@@ -86,7 +86,7 @@ MapMarker.propTypes = {
     imgSrc: PropTypes.string,
     peakName: PropTypes.string,
   }),
-  showInfoWindowID: PropTypes.bool,
+  showInfoWindowID: PropTypes.number,
   onToggleInfoWindow: PropTypes.func,
   onCloseInfoWindow: PropTypes.func,
 };
