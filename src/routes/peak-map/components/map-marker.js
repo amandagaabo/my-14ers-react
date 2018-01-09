@@ -7,6 +7,14 @@ import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 import './map-marker.css';
 
 export default function MapMarker(props) {
+  function onMarkerClick(peakID) {
+    props.onToggleInfoWindow(peakID);
+  }
+
+  function onCloseClick() {
+    props.onCloseInfoWindow();
+  }
+
   const { peak } = props;
   const formatedElevation = numeral(peak.elevation).format('0,0');
   let dateContentString = '';
@@ -39,7 +47,7 @@ export default function MapMarker(props) {
   // define conntent for info windows
   const infoBoxContent = (
     <div className="info-window-container">
-      <button className="close-x" onClick={() => props.onCloseWindow(peak.id)}>x</button>
+      <button className="close-x" onClick={onCloseClick}>x</button>
       <h1 className="info-window-header">{peak.peak_name}</h1>
       <p className="info-window-text">
         <span className="info-window-key">Elevation:</span> {formatedElevation}
@@ -58,9 +66,9 @@ export default function MapMarker(props) {
         lat: parseFloat(props.peak.latitude),
         lng: parseFloat(props.peak.longitude),
       }}
-      onClick={() => props.onToggleOpen(props.peak.id)}
+      onClick={() => onMarkerClick(props.peak.id)}
     >
-      {props.peak.showInfoWindow &&
+      {props.peak.id === props.showInfoWindowID &&
       <InfoBox
         options={{ closeBoxURL: '', enableEventPropagation: true }}
       >
@@ -77,14 +85,15 @@ MapMarker.propTypes = {
     longitude: PropTypes.number,
     imgSrc: PropTypes.string,
     peakName: PropTypes.string,
-    showInfoWindow: PropTypes.bool,
   }),
-  onCloseWindow: PropTypes.func,
-  onToggleOpen: PropTypes.func,
+  showInfoWindowID: PropTypes.bool,
+  onToggleInfoWindow: PropTypes.func,
+  onCloseInfoWindow: PropTypes.func,
 };
 
 MapMarker.defaultProps = {
   peak: {},
-  onCloseWindow: () => console.log('close window attempt'),
-  onToggleOpen: () => console.log('toggle window attempt'),
+  showInfoWindowID: null,
+  onToggleInfoWindow: 'not connected',
+  onCloseInfoWindow: 'not connected',
 };

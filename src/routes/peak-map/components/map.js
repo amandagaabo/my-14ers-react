@@ -4,16 +4,7 @@ import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
 import MapMarker from './map-marker';
 
 export default function Map(props) {
-  function onToggleOpen(peakID) {
-    console.log('toggle open called with id', peakID);
-    // dispatch action to toggle peak showInfoWindow
-  }
-
-  function onCloseWindow(peakID) {
-    console.log('close window called with id', peakID);
-    // dispatch action to update peak showInfoWindow to false
-  }
-
+  console.log('map props', props);
   // create marker for each peak in userPeaks
   const markers = props.userPeaks.map((peak) => {
     if (peak) {
@@ -21,8 +12,7 @@ export default function Map(props) {
         <MapMarker
           key={peak.id}
           peak={peak}
-          onToggleOpen={onToggleOpen}
-          onCloseWindow={onCloseWindow}
+          {...props}
         />
       );
     }
@@ -37,6 +27,7 @@ export default function Map(props) {
     <GoogleMap
       defaultZoom={7}
       defaultCenter={colorado}
+      onClick={props.onCloseInfoWindow}
     >
       {markers}
     </GoogleMap>
@@ -55,8 +46,10 @@ export default function Map(props) {
 
 Map.propTypes = {
   userPeaks: PropTypes.array,
+  onCloseInfoWindow: PropTypes.func,
 };
 
 Map.defaultProps = {
   userPeaks: [],
+  onCloseInfoWindow: () => {},
 };

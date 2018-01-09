@@ -24,7 +24,6 @@ export const getPeaksForMap = createSelector(
           latitude: peak.latitude,
           longitude: peak.longitude,
           id: peak.id,
-          showInfoWindow: peak.showInfoWindow,
         };
 
         peakMarkers.push(peakDataToAdd);
