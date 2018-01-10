@@ -32,9 +32,11 @@ export const getUserPeaks = (token, getPeaks = getUserPeaksFromDB) => (dispatch)
 };
 
 export const TOGGLE_INFO_WINDOW = 'TOGGLE_INFO_WINDOW';
-export const toggleInfoWindow = peakID => ({
+export const toggleInfoWindow = (peakID, lat, lng) => ({
   type: TOGGLE_INFO_WINDOW,
   peakID,
+  lat,
+  lng,
 });
 
 export const CLOSE_INFO_WINDOW = 'CLOSE_INFO_WINDOW';

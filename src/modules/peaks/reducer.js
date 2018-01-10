@@ -82,6 +82,7 @@ export default function (state = initialState, action) {
     return {
       ...state,
       showInfoWindowID: action.peakID === state.showInfoWindowID ? null : action.peakID,
+      mapCenter: { lat: action.lat, lng: action.lng },
     };
 
   case CLOSE_INFO_WINDOW:

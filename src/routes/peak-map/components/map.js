@@ -21,7 +21,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) => {
   return (
     <GoogleMap
       defaultZoom={7}
-      defaultCenter={props.mapCenter}
+      center={props.mapCenter}
       onClick={props.onCloseInfoWindow}
     >
       {markers}

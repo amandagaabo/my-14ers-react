@@ -18,8 +18,8 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onToggleInfoWindow: (peakID) => {
-      dispatch(toggleInfoWindow(peakID));
+    onToggleInfoWindow: (peakID, lat, lng) => {
+      dispatch(toggleInfoWindow(peakID, lat, lng));
     },
     onCloseInfoWindow: () => {
       dispatch(closeInfoWindow());

@@ -7,8 +7,9 @@ import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 import './map-marker.css';
 
 export default function MapMarker(props) {
-  function onMarkerClick(peakID) {
-    props.onToggleInfoWindow(peakID);
+  function onMarkerClick(peakID, lat, lng) {
+    const adjustedLat = lat - 0.35;
+    props.onToggleInfoWindow(peakID, adjustedLat, lng);
   }
 
   function onCloseClick() {
@@ -66,7 +67,7 @@ export default function MapMarker(props) {
         lat: parseFloat(props.peak.latitude),
         lng: parseFloat(props.peak.longitude),
       }}
-      onClick={() => onMarkerClick(props.peak.id)}
+      onClick={() => onMarkerClick(props.peak.id, props.peak.latitude, props.peak.longitude)}
     >
       {props.peak.id === props.showInfoWindowID &&
       <InfoBox
