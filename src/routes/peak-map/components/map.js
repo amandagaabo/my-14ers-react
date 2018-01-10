@@ -8,7 +8,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) => {
     if (peak) {
       return (
         <MapMarker
-          key={peak.id}
+          key={peak.peakID}
           peak={peak}
           {...props}
         />

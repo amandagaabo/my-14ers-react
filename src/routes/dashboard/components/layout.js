@@ -11,7 +11,7 @@ export default function Layout(props) {
   // use all peaks and user unique peaks to calculate percent climbed
   const totalPeaks = allPeaks.length;
   const peaksClimbed = [];
-  userPeaks.forEach(peak => peaksClimbed.push(peak.peak_name));
+  userPeaks.forEach(peak => peaksClimbed.push(peak.peakName));
   const uniquePeaksClimbed = _.uniq(peaksClimbed);
   const numberClimbed = uniquePeaksClimbed.length;
   const percent = Math.ceil((numberClimbed / totalPeaks) * 100);

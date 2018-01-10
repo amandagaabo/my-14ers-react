@@ -49,7 +49,7 @@ export default function MapMarker(props) {
   const infoBoxContent = (
     <div className="info-window-container">
       <button className="close-x" onClick={onCloseClick}>x</button>
-      <h1 className="info-window-header">{peak.peak_name}</h1>
+      <h1 className="info-window-header">{peak.peakName}</h1>
       <p className="info-window-text">
         <span className="info-window-key">Elevation:</span> {formatedElevation}
       </p>
@@ -57,7 +57,7 @@ export default function MapMarker(props) {
         <span className="info-window-key">Rank:</span> {peak.rank}
       </p>
       {dateContentString}
-      <img className="info-window-image" src={peak.imgSrc} alt={peak.peak_name} />
+      <img className="info-window-image" src={peak.imgSrc} alt={peak.peakName} />
     </div>
   );
 
@@ -67,9 +67,9 @@ export default function MapMarker(props) {
         lat: parseFloat(props.peak.latitude),
         lng: parseFloat(props.peak.longitude),
       }}
-      onClick={() => onMarkerClick(props.peak.id, props.peak.latitude, props.peak.longitude)}
+      onClick={() => onMarkerClick(props.peak.peakID, props.peak.latitude, props.peak.longitude)}
     >
-      {props.peak.id === props.showInfoWindowID &&
+      {props.peak.peakID === props.showInfoWindowID &&
       <InfoBox
         options={{ closeBoxURL: '', enableEventPropagation: true }}
       >
@@ -81,7 +81,7 @@ export default function MapMarker(props) {
 
 MapMarker.propTypes = {
   peak: PropTypes.shape({
-    id: PropTypes.number,
+    peakID: PropTypes.number,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     imgSrc: PropTypes.string,

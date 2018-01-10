@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -7,10 +8,17 @@ import { required, nonEmpty, validDate } from '../../../utils/validators';
 
 export class AddPeakForm extends React.Component {
   onSubmit(values) {
-    console.log('Submitted with values', values);
+    const token = this.props.authToken;
+    const { peakName, dateClimbed, notes } = values || '';
+    this.props.onAddPeak(token, peakName, dateClimbed, notes);
   }
 
   render() {
+    if (this.props.submitSucceeded) {
+      return (
+        <Redirect to="/peak-list" />
+      );
+    }
     let errorMessage;
     if (this.props.error) {
       errorMessage = (
@@ -67,18 +75,27 @@ AddPeakForm.propTypes = {
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
   allPeaks: PropTypes.array,
+  onAddPeak: PropTypes.func,
+  authToken: PropTypes.number,
+  submitSucceeded: PropTypes.bool,
 };
 
 AddPeakForm.defaultProps = {
   pristine: true,
   submitting: false,
   error: '',
-  handleSubmit: () => console.log('form submitted'),
+  handleSubmit: () => console.log('redux form submit attempt'),
   allPeaks: [],
+  onAddPeak: () => console.log('on add peak attempt'),
+  authToken: null,
+  submitSucceeded: false,
 };
 
 export default reduxForm({
   form: 'add-peak',
-  onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('add-peak', Object.keys(errors)[0])),
+  onSubmitFail: (errors, dispatch) => {
+    if (errors) {
+      dispatch(focus('add-peak', Object.keys(errors)[0]));
+    }
+  },
 })(AddPeakForm);

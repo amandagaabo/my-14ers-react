@@ -38,11 +38,11 @@ export default function Layout(props) {
         const index = dataForList.findIndex(i => i.row === rowNum);
 
         dataForList[index].peaks.push({
-          peakName: peak.peak_name,
+          peakName: peak.peakName,
           rank: peak.rank,
           imgSrc: peak.imgSrc,
           notes: peak.notes,
-          id: peak.id,
+          peakID: peak.peakID,
           date: formatedDate,
           elevation: formattedElevation,
         });
@@ -53,7 +53,7 @@ export default function Layout(props) {
     peakPhotoList = dataForList.map((row) => {
       const peaks = row.peaks.map((peak) => {
         return (
-          <Col className="mountain-box" xs={12} md={4} key={peak.id}>
+          <Col className="mountain-box" xs={12} md={4} key={peak.peakID}>
             <img src={peak.imgSrc} alt={peak.peakName} className="mountain-photo" />
             <div className="caption">
               <h2 className="caption-header">{peak.peakName} - {peak.elevation}</h2>
@@ -63,7 +63,7 @@ export default function Layout(props) {
               <p className="caption-details">{peak.notes}</p>
               <button
                 className="button remove-peak"
-                data-peak={peak.peak_name}
+                data-peak={peak.peakName}
                 data-date={peak.date}
               > x
               </button>

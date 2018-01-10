@@ -10,26 +10,26 @@ export const getPeaksForMap = createSelector(
     const peakNames = [];
 
     userPeaks.forEach((peak) => {
-      const peakName = peak.peak_name;
+      const { peakName } = peak;
       // if peak name is not in the list, add name to peakNames and all data to peakMarkers
       if (!peakNames.includes(peakName)) {
         peakNames.push(peakName);
 
         const peakDataToAdd = {
-          peak_name: peak.peak_name,
+          peakName: peak.peakName,
           elevation: peak.elevation,
           rank: peak.rank,
           dateClimbed: [peak.dateClimbed],
           imgSrc: peak.imgSrc,
           latitude: peak.latitude,
           longitude: peak.longitude,
-          id: peak.id,
+          peakID: peak.peakID,
         };
 
         peakMarkers.push(peakDataToAdd);
       } else {
         // if peak name is in the list, add date to existing peak
-        const index = peakMarkers.findIndex(peak => peak.peak_name === peakName);
+        const index = peakMarkers.findIndex(peak => peak.peakName === peakName);
         peakMarkers[index].dateClimbed.push(peak.dateClimbed);
       }
     });

@@ -1,5 +1,5 @@
 const peakData = [{
-	"type": "peak",
+  "type": "peak",
 	"id": 1,
 	"attributes": {
     "imgSrc": "https://res.cloudinary.com/amhprojects/image/upload/v1514516749/14ers/mt_elbert.jpg",

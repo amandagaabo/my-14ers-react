@@ -1,7 +1,7 @@
 // import actions
 
 const initialState = {
-  authToken: null, // authToken !== null does not mean it has been validated
+  authToken: 123, // authToken !== null does not mean it has been validated
   currentUser: 'amanda',
 };
 

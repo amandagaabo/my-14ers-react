@@ -9,7 +9,6 @@ export function PeakList(props) {
 }
 
 export const mapStateToProps = state => ({
-  allPeaks: state.app.peaks.allPeaks,
   userPeaks: state.app.peaks.userPeaks,
 });
 
