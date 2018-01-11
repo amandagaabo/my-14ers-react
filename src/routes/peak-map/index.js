@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Layout from './components/layout';
-import { getPeaksForMap } from '../../selectors';
+import { getPeaksForMap } from './../../modules/peaks/selectors';
 import { toggleInfoWindow, closeInfoWindow } from './../../modules/peaks/actions';
 
 export function PeakMap(props) {

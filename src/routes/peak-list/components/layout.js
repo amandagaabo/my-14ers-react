@@ -28,7 +28,6 @@ export default function Layout(props) {
     // add rows and peak placeholders to dataForList
     for (let i = 1; i <= rowsNeeded; i += 1) {
       dataForList.push({ row: i, peaks: [] });
-      // (`<div class="list-row col-12" id="row${i}"></div>`)
     }
 
     // add peak data to peaks in dataForList
@@ -47,7 +46,7 @@ export default function Layout(props) {
           rank: peak.rank,
           imgSrc: peak.imgSrc,
           notes: peak.notes,
-          peakID: peak.peakID,
+          id: peak.id,
           date: formatedDate,
           elevation: formattedElevation,
         });
@@ -58,7 +57,7 @@ export default function Layout(props) {
     peakPhotoList = dataForList.map((row) => {
       const peaks = row.peaks.map((peak) => {
         return (
-          <Col className="mountain-box" xs={12} md={4} key={peak.peakID}>
+          <Col className="mountain-box" xs={12} md={4} key={peak.id}>
             <img src={peak.imgSrc} alt={peak.peakName} className="mountain-photo" />
             <div className="caption">
               <h2 className="caption-header">{peak.peakName} - {peak.elevation}</h2>
@@ -70,7 +69,7 @@ export default function Layout(props) {
                 className="button remove-peak"
                 data-peak={peak.peakName}
                 data-date={peak.date}
-                onClick={() => onDeleteClick(peak.peakID)}
+                onClick={() => onDeleteClick(peak.id)}
               > x
               </button>
             </div>

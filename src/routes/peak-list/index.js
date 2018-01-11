@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Layout from './components/layout';
 import { removePeak } from './../../modules/peaks/actions';
+import { getSortedPeaks } from './../../modules/peaks/selectors';
 
 export function PeakList(props) {
   return (
@@ -10,7 +11,7 @@ export function PeakList(props) {
 }
 
 export const mapStateToProps = state => ({
-  userPeaks: state.app.peaks.userPeaks,
+  userPeaks: getSortedPeaks(state),
 });
 
 export const mapDispatchToProps = (dispatch) => {

@@ -67,9 +67,9 @@ export default function MapMarker(props) {
         lat: parseFloat(props.peak.latitude),
         lng: parseFloat(props.peak.longitude),
       }}
-      onClick={() => onMarkerClick(props.peak.peakID, props.peak.latitude, props.peak.longitude)}
+      onClick={() => onMarkerClick(props.peak.id, props.peak.latitude, props.peak.longitude)}
     >
-      {props.peak.peakID === props.showInfoWindowID &&
+      {props.peak.id === props.showInfoWindowID &&
       <InfoBox
         options={{ closeBoxURL: '', enableEventPropagation: true }}
       >
@@ -81,7 +81,7 @@ export default function MapMarker(props) {
 
 MapMarker.propTypes = {
   peak: PropTypes.shape({
-    peakID: PropTypes.number,
+    id: PropTypes.number,
     latitude: PropTypes.number,
     longitude: PropTypes.number,
     imgSrc: PropTypes.string,

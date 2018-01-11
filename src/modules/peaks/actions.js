@@ -69,11 +69,11 @@ export const addPeakError = error => ({
 export const addPeak = (token, peakName, dateClimbed, notes, addPeak = addPeakToDB) => (dispatch) => {
   // create newPeak to add using peak data from allPeaks
   const peakFromAllPeaks = allPeaks.filter(peak => peak.attributes.peak_name === peakName);
-
+  //// NOTE: ID will be removed from here and added by the database
   const newPeak = {
     peakName: peakFromAllPeaks[0].attributes.peak_name,
     imgSrc: peakFromAllPeaks[0].attributes.imgSrc,
-    peakID: peakFromAllPeaks[0].id,
+    id: peakFromAllPeaks[0].id,
     range: peakFromAllPeaks[0].attributes.range,
     rank: peakFromAllPeaks[0].attributes.rank,
     elevation: peakFromAllPeaks[0].attributes.elevation,
