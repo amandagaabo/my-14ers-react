@@ -1,0 +1,17 @@
+.circle-chart, .number-climbed-summary {
+  display: inline-block;
+}
+
+.circle-chart {
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.number-climbed-summary {
+  font-size: 30px;
+  padding: 0 10px;
+}
+
+.divider-header {
+  padding-top: 10px;
+}

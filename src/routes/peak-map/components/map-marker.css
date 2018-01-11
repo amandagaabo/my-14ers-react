@@ -1,0 +1,26 @@
+.info-window-container {
+  background-color: white;
+  padding: 12px;
+}
+
+.info-window-header, .info-window-text {
+  margin: 0 auto;
+}
+
+.info-window-header {
+  font-size: 140%;
+  margin-bottom: 5px;
+}
+
+.info-window-image {
+  width: 250px;
+  margin-top: 5px;
+}
+
+.info-window-key {
+  font-weight: bold;
+}
+
+.close-x {
+  float: right;
+}
