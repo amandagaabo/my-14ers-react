@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
-import moment from 'moment';
 
 // define constants from state
 const getUserPeaks = state => state.app.peaks.userPeaks;
-const getPeakSort = state => state.app.peaks.sort;
+const getPeakSort = state => state.app.peaks.sortBy;
 
 // get peaks with sort
 export const getSortedPeaks = createSelector(
@@ -22,14 +21,14 @@ export const getSortedPeaks = createSelector(
 
     case 'DATE_CLIMBED':
       return userPeaks.sort((a, b) => {
-        const dateA = moment(a.dateClimbed).unix();
-        const dateB = moment(b.dateClimbed).unix();
+        const dateA = new Date(a.dateClimbed);
+        const dateB = new Date(b.dateClimbed);
         return dateB - dateA;
       });
 
     case 'RANK':
       // elevation is used because a few peaks have rank N/A but have elevation
-      return userPeaks.sort((a, b) => a.elebation - b.elevation);
+      return userPeaks.sort((a, b) => b.elevation - a.elevation);
 
     default:
       return userPeaks;

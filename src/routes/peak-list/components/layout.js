@@ -6,6 +6,11 @@ import { Col } from 'react-bootstrap';
 import './layout.css';
 
 export default function Layout(props) {
+  function onSortChange(e) {
+    const sortBy = e.target.value;
+    props.onSortSelect(sortBy);
+  }
+
   function onDeleteClick(itemID) {
     const token = props.authToken;
     props.onDeletePeak(token, itemID);
@@ -93,10 +98,10 @@ export default function Layout(props) {
         <div className="peak-list-container" >
           <div className="list-sort">
             <label htmlFor="sort-by">Sort by: </label>
-            <select id="sort-by">
-              <option value="date-climbed">Date climbed</option>
-              <option value="peak-name">Peak name</option>
-              <option value="peak-rank">Peak rank</option>
+            <select id="sort-by" onChange={e => onSortChange(e)} value={props.sortBy}>
+              <option value="DATE_CLIMBED">Date climbed</option>
+              <option value="PEAK_NAME">Peak name</option>
+              <option value="RANK">Peak rank</option>
             </select>
           </div>
 
@@ -113,10 +118,14 @@ Layout.propTypes = {
   userPeaks: PropTypes.array,
   authToken: PropTypes.string,
   onDeletePeak: PropTypes.func,
+  onSortSelect: PropTypes.func,
+  sortBy: PropTypes.string,
 };
 
 Layout.defaultProps = {
   userPeaks: [],
   authToken: null,
   onDeletePeak: () => {},
+  onSortSelect: () => {},
+  sortBy: 'DATE_CLIMBED',
 };

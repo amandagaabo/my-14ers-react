@@ -2,6 +2,12 @@ import { getUserPeaksFromDB, addPeakToDB, removePeakFromDB } from './api';
 import peakData from './all-peak-data';
 
 const allPeaks = [...peakData];
+// LIST SORT ACTION
+export const UPDATE_SORT = 'UPDATE_SORT';
+export const updateSort = sortBy => ({
+  type: UPDATE_SORT,
+  sortBy,
+});
 
 // MAP ACTIONS
 export const TOGGLE_INFO_WINDOW = 'TOGGLE_INFO_WINDOW';

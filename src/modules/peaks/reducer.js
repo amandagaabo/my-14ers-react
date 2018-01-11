@@ -1,4 +1,5 @@
 import {
+  UPDATE_SORT,
   TOGGLE_INFO_WINDOW,
   CLOSE_INFO_WINDOW,
   GET_USER_PEAKS_REQUEST,
@@ -22,7 +23,7 @@ const initialState = {
   loading: false,
   error: null,
   // userPeaks: [],
-  sort: 'RANK',
+  sortBy: 'DATE_CLIMBED',
   userPeaks: [
     {
       imgSrc: 'https://res.cloudinary.com/amhprojects/image/upload/v1514516749/14ers/mt_elbert.jpg',
@@ -94,6 +95,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+  case UPDATE_SORT:
+    return {
+      ...state,
+      sortBy: action.sortBy,
+    };
+
   case TOGGLE_INFO_WINDOW:
     return {
       ...state,
