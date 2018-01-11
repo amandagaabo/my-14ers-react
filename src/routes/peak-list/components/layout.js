@@ -69,9 +69,7 @@ export default function Layout(props) {
 
           {peakPhotoList}
         </div>
-
       </div>
-
     </main>
   );
 }
