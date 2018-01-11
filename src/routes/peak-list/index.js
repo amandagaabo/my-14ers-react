@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Layout from './components/layout';
 import { removePeak, updateSort } from './../../modules/peaks/actions';
-import { getSortedPeaks } from './../../modules/peaks/selectors';
+import { getSortedPeaksForList } from './../../modules/peaks/selectors';
 
 export function PeakList(props) {
   return (
@@ -11,7 +11,7 @@ export function PeakList(props) {
 }
 
 export const mapStateToProps = state => ({
-  userPeaks: getSortedPeaks(state),
+  userPeaks: getSortedPeaksForList(state),
   sortBy: state.app.peaks.sortBy,
 });
 

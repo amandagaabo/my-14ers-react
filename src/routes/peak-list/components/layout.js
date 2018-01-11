@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dateFormat from 'dateformat';
-import numeral from 'numeral';
 import { Col } from 'react-bootstrap';
 import './layout.css';
 
@@ -18,48 +16,12 @@ export default function Layout(props) {
 
   const { userPeaks } = props;
   let peakPhotoList;
-  const dataForList = [];
 
   if (userPeaks.length === 0) {
     peakPhotoList = '';
   } else {
-    // total peaks in userPeaks
-    const peakNumber = userPeaks.length;
-
-    // number of items per row
-    const n = 3;
-    const rowsNeeded = Math.ceil(peakNumber / n);
-
-    // add rows and peak placeholders to dataForList
-    for (let i = 1; i <= rowsNeeded; i += 1) {
-      dataForList.push({ row: i, peaks: [] });
-    }
-
-    // add peak data to peaks in dataForList
-    let temparray;
-    for (let i = 0; i < userPeaks.length; i += n) {
-      temparray = userPeaks.slice(i, i + n);
-
-      temparray.forEach((peak) => {
-        const formatedDate = dateFormat(peak.dateClimbed, 'mmm d, yyyy');
-        const formattedElevation = numeral(peak.elevation).format('0,0');
-        const rowNum = Math.ceil((i + 1) / n);
-        const index = dataForList.findIndex(i => i.row === rowNum);
-
-        dataForList[index].peaks.push({
-          peakName: peak.peakName,
-          rank: peak.rank,
-          imgSrc: peak.imgSrc,
-          notes: peak.notes,
-          id: peak.id,
-          date: formatedDate,
-          elevation: formattedElevation,
-        });
-      });
-    }
-
-    // use dataForList to generate jsx
-    peakPhotoList = dataForList.map((row) => {
+    // generage JSX for each row
+    peakPhotoList = userPeaks.map((row) => {
       const peaks = row.peaks.map((peak) => {
         return (
           <Col className="mountain-box" xs={12} md={4} key={peak.id}>
@@ -117,15 +79,15 @@ export default function Layout(props) {
 Layout.propTypes = {
   userPeaks: PropTypes.array,
   authToken: PropTypes.string,
+  sortBy: PropTypes.string,
   onDeletePeak: PropTypes.func,
   onSortSelect: PropTypes.func,
-  sortBy: PropTypes.string,
 };
 
 Layout.defaultProps = {
   userPeaks: [],
   authToken: null,
+  sortBy: 'DATE_CLIMBED',
   onDeletePeak: () => {},
   onSortSelect: () => {},
-  sortBy: 'DATE_CLIMBED',
 };
