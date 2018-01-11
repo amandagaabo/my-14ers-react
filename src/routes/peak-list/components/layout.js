@@ -6,12 +6,17 @@ import { Col } from 'react-bootstrap';
 import './layout.css';
 
 export default function Layout(props) {
+  function onDeleteClick(itemID) {
+    const token = props.authToken;
+    props.onDeletePeak(token, itemID);
+  }
+
   const { userPeaks } = props;
   let peakPhotoList;
   const dataForList = [];
 
   if (userPeaks.length === 0) {
-    peakPhotoList = 'No peaks logged';
+    peakPhotoList = '';
   } else {
     // total peaks in userPeaks
     const peakNumber = userPeaks.length;
@@ -65,6 +70,7 @@ export default function Layout(props) {
                 className="button remove-peak"
                 data-peak={peak.peakName}
                 data-date={peak.date}
+                onClick={() => onDeleteClick(peak.peakID)}
               > x
               </button>
             </div>
@@ -106,8 +112,12 @@ export default function Layout(props) {
 
 Layout.propTypes = {
   userPeaks: PropTypes.array,
+  authToken: PropTypes.string,
+  onDeletePeak: PropTypes.func,
 };
 
 Layout.defaultProps = {
   userPeaks: [],
+  authToken: null,
+  onDeletePeak: () => {},
 };

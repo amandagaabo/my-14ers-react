@@ -42,7 +42,7 @@ export function addPeakToDB(token, newPeak) {
 }
 
 export function removePeakFromDB(token, peakID) {
-  return Promise.resolve();
+  return Promise.resolve(peakID);
   // return fetch(`${API_BASE_URL}/groceries/delete/${peakID}`, {
   //   method: 'POST',
   //   headers: {
