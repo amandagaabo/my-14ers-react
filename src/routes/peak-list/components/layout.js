@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import './layout.css';
 
 export default function Layout(props) {
+  if (!props.loggedIn) {
+    return (
+      <Redirect to="/login" />
+    );
+  }
+
   function onSortChange(e) {
     const sortBy = e.target.value;
     props.onSortSelect(sortBy);
@@ -77,6 +84,7 @@ export default function Layout(props) {
 Layout.propTypes = {
   userPeaks: PropTypes.array,
   authToken: PropTypes.string,
+  loggedIn: PropTypes.bool,
   sortBy: PropTypes.string,
   onDeletePeak: PropTypes.func,
   onSortSelect: PropTypes.func,
@@ -85,6 +93,7 @@ Layout.propTypes = {
 Layout.defaultProps = {
   userPeaks: [],
   authToken: null,
+  loggedIn: false,
   sortBy: 'DATE_CLIMBED',
   onDeletePeak: () => {},
   onSortSelect: () => {},

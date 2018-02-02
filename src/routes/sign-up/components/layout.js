@@ -1,11 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SignUpForm from './sign-up-form';
 
-export function Layout(props) {
+export default function Layout(props) {
   if (props.loggedIn) {
     return (
       <Redirect to="/dashboard" />
@@ -28,9 +27,3 @@ Layout.propTypes = {
 Layout.defaultProps = {
   loggedIn: false
 };
-
-export const mapStateToProps = state => ({
-  loggedIn: state.app.auth.currentUser !== null
-});
-
-export default connect(mapStateToProps)(Layout);

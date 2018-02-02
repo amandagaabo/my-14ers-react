@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import _ from 'lodash';
 import './circle.css';
 import './layout.css';
 
 export default function Layout(props) {
+  if (!props.loggedIn) {
+    return (
+      <Redirect to="/login" />
+    );
+  }
+
   // get user and all peaks
   const { userPeaks, allPeaks } = props;
 
@@ -55,9 +62,11 @@ export default function Layout(props) {
 Layout.propTypes = {
   userPeaks: PropTypes.array,
   allPeaks: PropTypes.array,
+  loggedIn: PropTypes.bool
 };
 
 Layout.defaultProps = {
   userPeaks: [],
   allPeaks: [],
+  loggedIn: false
 };

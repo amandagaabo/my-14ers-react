@@ -13,6 +13,7 @@ export function PeakList(props) {
 export const mapStateToProps = state => ({
   userPeaks: getSortedPeaksForList(state),
   sortBy: state.app.peaks.sortBy,
+  loggedIn: state.app.auth.authToken !== null
 });
 
 export const mapDispatchToProps = (dispatch) => {

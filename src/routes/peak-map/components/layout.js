@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import Map from './map';
 
 export default function Layout(props) {
+  if (!props.loggedIn) {
+    return (
+      <Redirect to="/login" />
+    );
+  }
+
   return (
     <main role="main">
       <div className="container">
@@ -21,8 +28,10 @@ export default function Layout(props) {
 
 Layout.propTypes = {
   userPeaks: PropTypes.array,
+  loggedIn: PropTypes.bool
 };
 
 Layout.defaultProps = {
   userPeaks: [],
+  loggedIn: false
 };
