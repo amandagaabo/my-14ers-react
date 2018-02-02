@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, NavDropdown, MenuItem, NavItem } from 'react-bootstrap';
+import { setCurrentUser, setAuthToken } from './../../../modules/auth/actions';
+import { clearAuthToken } from './../../../utils/local-storage';
 import './header.css';
 
 export default function Header(props) {
+  function logOut() {
+    props.dispatch(setCurrentUser(null));
+    props.dispatch(setAuthToken(null));
+    clearAuthToken();
+  }
   const { loggedIn } = props;
 
   if (loggedIn) {
@@ -36,8 +43,8 @@ export default function Header(props) {
 
             <MenuItem divider />
 
-            <LinkContainer to="/sign-out">
-              <MenuItem eventKey={1.5}>Sign Out</MenuItem>
+            <LinkContainer to="/">
+              <MenuItem eventKey={1.5} onClick={logOut}>Logout</MenuItem>
             </LinkContainer>
           </NavDropdown>
         </Nav>
@@ -66,4 +73,5 @@ export default function Header(props) {
 
 Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func
 };
