@@ -52,8 +52,8 @@ export default function Header(props) {
         </Navbar.Brand>
       </Navbar.Header>
       <Nav pullRight>
-        <LinkContainer to="/sign-in">
-          <NavItem eventKey={2}>Sign In</NavItem>
+        <LinkContainer to="/login">
+          <NavItem eventKey={2}>Login</NavItem>
         </LinkContainer>
 
         <LinkContainer to="/sign-up">

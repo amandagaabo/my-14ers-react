@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
 import { required, nonEmpty, email } from '../../../utils/validators';
 
-export class SignInForm extends React.Component {
+export class LoginForm extends React.Component {
   onSubmit(values) {
     console.log('Submitted with values', values);
   }
@@ -48,7 +48,7 @@ export class SignInForm extends React.Component {
             type="submit"
             disabled={this.props.pristine || this.props.submitting}
           >
-            Sign In
+            Login
           </button>
         </Col>
       </form>
@@ -56,14 +56,14 @@ export class SignInForm extends React.Component {
   }
 }
 
-SignInForm.propTypes = {
+LoginForm.propTypes = {
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   error: PropTypes.string,
   handleSubmit: PropTypes.func,
 };
 
-SignInForm.defaultProps = {
+LoginForm.defaultProps = {
   pristine: true,
   submitting: false,
   error: '',
@@ -71,7 +71,7 @@ SignInForm.defaultProps = {
 };
 
 export default reduxForm({
-  form: 'sign-in',
+  form: 'login',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('sign-in', Object.keys(errors)[0])),
-})(SignInForm);
+    dispatch(focus('login', Object.keys(errors)[0])),
+})(LoginForm);

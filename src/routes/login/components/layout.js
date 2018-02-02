@@ -1,13 +1,13 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import SignInForm from './sign-in-form';
+import LoginForm from './login-form';
 
 export default function Layout(props) {
   return (
     <main role="main" className="container">
       <Col xs={12} className="sign-up-container">
-        <h1 className="form-header">Sign In</h1>
-        <SignInForm {...props} />
+        <h1 className="form-header">Login</h1>
+        <LoginForm {...props} />
       </Col>
     </main>
   );

@@ -13,8 +13,8 @@ export default function Layout() {
           Track the Colorado 14ers you have hiked now!
         </p>
 
-        <Link to="/sign-in" className="home-page-button">
-          <Button id="sign-in-button">Sign In</Button>
+        <Link to="/login" className="home-page-button">
+          <Button id="login-button">Login</Button>
         </Link>
 
         <Link to="/sign-up" className="home-page-button">

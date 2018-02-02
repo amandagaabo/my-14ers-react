@@ -4,7 +4,7 @@ import Header from '../containers/header';
 import Home from '../../home/';
 import AddPeak from '../../add-peak/';
 import SignUp from '../../sign-up';
-import SignIn from '../../sign-in';
+import Login from '../../login';
 import Dashboard from '../../dashboard';
 import PeakList from '../../peak-list';
 import PeakMap from '../../peak-map';
@@ -18,7 +18,7 @@ export default function Layout(props) {
           <Route exact path="/" component={Home} />
           <Route exact path="/add-peak" component={AddPeak} />
           <Route exact path="/sign-up" component={SignUp} />
-          <Route exact path="/sign-in" component={SignIn} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/peak-list" component={PeakList} />
           <Route exact path="/peak-map" component={PeakMap} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './components/layout';
 
-export default function SignIn() {
+export default function Login() {
   return (
     <Layout />
   );
