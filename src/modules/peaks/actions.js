@@ -72,27 +72,27 @@ export const addPeakError = error => ({
   error,
 });
 
-export const addPeak = (token, peakName, dateClimbed, notes, addPeak = addPeakToDB) => (dispatch) => {
+export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = addPeakToDB) => (dispatch) => {
   // create newPeak to add using peak data from allPeaks
   const peakFromAllPeaks = allPeaks.filter(peak => peak.attributes.peak_name === peakName);
-  //// NOTE: ID will be removed from here and added by the database
+
   const newPeak = {
     peakName: peakFromAllPeaks[0].attributes.peak_name,
-    imgSrc: peakFromAllPeaks[0].attributes.imgSrc,
-    id: peakFromAllPeaks[0].id,
-    range: peakFromAllPeaks[0].attributes.range,
-    rank: peakFromAllPeaks[0].attributes.rank,
-    elevation: peakFromAllPeaks[0].attributes.elevation,
-    latitude: parseFloat(peakFromAllPeaks[0].attributes.latitude, 10),
-    longitude: parseFloat(peakFromAllPeaks[0].attributes.longitude, 10),
     dateClimbed,
     notes,
+    userId,
+    imgSrc: peakFromAllPeaks[0].attributes.imgSrc,
+    range: peakFromAllPeaks[0].attributes.range,
+    rank: parseInt(peakFromAllPeaks[0].attributes.rank, 10),
+    elevation: peakFromAllPeaks[0].attributes.elevation,
+    latitude: parseFloat(peakFromAllPeaks[0].attributes.latitude, 10),
+    longitude: parseFloat(peakFromAllPeaks[0].attributes.longitude, 10)
   };
 
   // dispatch the request action to start the request
   dispatch(addPeakRequest());
   // add new peak to user's peaks in DB
-  return addPeak(token, newPeak).then((peak) => {
+  return addPeak(token, userId, newPeak).then((peak) => {
     // dispatch the success action and pass in the result from the db search on success
     dispatch(addPeakSuccess(peak));
   }).catch((err) => {

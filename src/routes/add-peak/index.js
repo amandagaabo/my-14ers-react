@@ -15,12 +15,13 @@ export const mapStateToProps = state => ({
   allPeaks: state.app.peaks.allPeaks,
   loggedIn: state.app.auth.authToken !== null,
   authToken: state.app.auth.authToken,
+  currentUser: state.app.auth.currentUser
 });
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onAddPeak: (token, peakName, dateClimbed, notes) => {
-      dispatch(addPeak(token, peakName, dateClimbed, notes));
+    onAddPeak: (token, userId, peakName, dateClimbed, notes) => {
+      dispatch(addPeak(token, userId, peakName, dateClimbed, notes));
       dispatch(reset('add-peak'));
     },
   };

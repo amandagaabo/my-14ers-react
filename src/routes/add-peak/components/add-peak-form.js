@@ -8,9 +8,11 @@ import { required, nonEmpty, validDate } from '../../../utils/validators';
 
 export class AddPeakForm extends React.Component {
   onSubmit(values) {
+    console.log('form submitted with values', values);
     const token = this.props.authToken;
+    const userId = this.props.currentUser.uuid;
     const { peakName, dateClimbed, notes } = values || '';
-    this.props.onAddPeak(token, peakName, dateClimbed, notes);
+    this.props.onAddPeak(token, userId, peakName, dateClimbed, notes);
   }
 
   render() {
@@ -77,6 +79,10 @@ AddPeakForm.propTypes = {
   allPeaks: PropTypes.array,
   onAddPeak: PropTypes.func,
   authToken: PropTypes.string,
+  currentUser: PropTypes.shape({
+    email: PropTypes.string,
+    uuid: PropTypes.string
+  }),
   submitSucceeded: PropTypes.bool,
 };
 
@@ -88,6 +94,10 @@ AddPeakForm.defaultProps = {
   allPeaks: [],
   onAddPeak: () => console.log('on add peak attempt'),
   authToken: null,
+  currentUser: {
+    email: null,
+    uuid: null
+  },
   submitSucceeded: false,
 };
 

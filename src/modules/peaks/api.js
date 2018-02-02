@@ -1,4 +1,4 @@
-// import { API_BASE_URL } from '../../config';
+import { API_BASE_URL } from '../../config';
 
 export function getUserPeaksFromDB(token) {
   const userPeaks = [
@@ -87,26 +87,36 @@ export function getUserPeaksFromDB(token) {
   // });
 }
 
-export function addPeakToDB(token, newPeak) {
-  return Promise.resolve(newPeak);
-  // return fetch(`${API_BASE_URL}/peaks/add`, {
-  //   method: 'POST',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     Authorization: `Bearer ${token}`,
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     newPeak: `${newPeak}`,
-  //   }),
-  // }).then((res) => {
-  //   if (!res.ok) {
-  //     return Promise.reject(res.statusText);
-  //   }
-  //   return res.json();
-  // }).then((peak) => {
-  //   return peak;
-  // });
+export function addPeakToDB(token, uuid, newPeak) {
+  console.log('uuid and newPeak to add to db', uuid, newPeak);
+
+  return fetch(`${API_BASE_URL}/users/${uuid}/peaks`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      peakName: newPeak.peakName,
+      dateClimbed: newPeak.dateClimbed,
+      notes: newPeak.notes,
+      imgSrc: newPeak.imgSrc,
+      range: newPeak.range,
+      rank: newPeak.rank,
+      elevation: newPeak.elevation,
+      latitude: newPeak.latitude,
+      longitude: newPeak.longitude
+    })
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  }).then((peak) => {
+    console.log('returned peak from api request', peak);
+    return peak;
+  });
 }
 
 export function removePeakFromDB(token, peakID) {
