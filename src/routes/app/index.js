@@ -72,9 +72,7 @@ App.defaultProps = {
 export const mapStateToProps = state => ({
   loggedIn: state.app.auth.currentUser !== null,
   hasAuthToken: state.app.auth.authToken !== null,
-  ready: state.app.auth.ready,
-  authToken: state.app.auth.authToken,
-  currentUser: state.app.auth.currentUser
+  ready: state.app.auth.ready
 });
 
 export default connect(mapStateToProps)(App);
