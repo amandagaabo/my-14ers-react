@@ -41,11 +41,11 @@ export const getUserPeaksError = error => ({
   error,
 });
 
-export const getUserPeaks = (token, getPeaks = getUserPeaksFromDB) => (dispatch) => {
+export const getUserPeaks = (token, userId, getPeaks = getUserPeaksFromDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(getUserPeaksRequest());
   // search for the users peaks in the database
-  return getPeaks(token).then((userPeaks) => {
+  return getPeaks(token, userId).then((userPeaks) => {
     // dispatch the success action and pass in the result from the db search on success
     dispatch(getUserPeaksSuccess(userPeaks));
   }).catch((err) => {

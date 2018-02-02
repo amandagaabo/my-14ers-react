@@ -7,9 +7,7 @@ import './layout.css';
 
 export default function Layout(props) {
   if (!props.loggedIn) {
-    return (
-      <Redirect to="/login" />
-    );
+    return <Redirect to="/login" />;
   }
 
   // get user and all peaks
