@@ -5,6 +5,7 @@
   "dependencies": {
     "dateformat": "^3.0.2",
     "dotenv": "^4.0.0",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
