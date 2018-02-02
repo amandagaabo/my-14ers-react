@@ -76,7 +76,7 @@ AddPeakForm.propTypes = {
   handleSubmit: PropTypes.func,
   allPeaks: PropTypes.array,
   onAddPeak: PropTypes.func,
-  authToken: PropTypes.number,
+  authToken: PropTypes.string,
   submitSucceeded: PropTypes.bool,
 };
 
