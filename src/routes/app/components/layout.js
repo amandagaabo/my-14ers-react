@@ -22,6 +22,7 @@ export default function Layout(props) {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/peak-list" component={PeakList} />
           <Route exact path="/peak-map" component={PeakMap} />
+          <Route exact path="/logout" component={Home} />
           {/*
           <Route component={NotFoundPage} /> */}
         </Switch>

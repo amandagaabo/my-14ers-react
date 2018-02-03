@@ -43,7 +43,7 @@ export default function Header(props) {
 
             <MenuItem divider />
 
-            <LinkContainer to="/">
+            <LinkContainer to="/logout">
               <MenuItem eventKey={1.5} onClick={logOut}>Logout</MenuItem>
             </LinkContainer>
           </NavDropdown>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Layout from './components/layout';
 import { refreshAuthToken, setReady } from './../../modules/auth/actions';
+import { getUserPeaks } from './../../modules/peaks/actions';
 
 export class App extends React.Component {
   componentDidMount() {
@@ -21,6 +22,12 @@ export class App extends React.Component {
     } else if (!nextProps.loggedIn && this.props.loggedIn) {
       // Stop refreshing when we log out
       this.stopPeriodicRefresh();
+    }
+
+    if (nextProps.loggedIn && this.props.loggedIn) {
+      const token = this.props.authToken;
+      const userId = this.props.currentUser.uuid;
+      this.props.dispatch(getUserPeaks(token, userId));
     }
   }
 
@@ -60,19 +67,28 @@ App.propTypes = {
   loggedIn: PropTypes.bool,
   hasAuthToken: PropTypes.bool,
   ready: PropTypes.bool,
+  authToken: PropTypes.string,
+  currentUser: PropTypes.shape({
+    email: PropTypes.string,
+    uuid: PropTypes.string
+  }),
   dispatch: PropTypes.func
 };
 
 App.defaultProps = {
   loggedIn: false,
   hasAuthToken: false,
-  ready: false
+  ready: false,
+  authToken: null,
+  currentUser: null
 };
 
 export const mapStateToProps = state => ({
   loggedIn: state.app.auth.currentUser !== null,
   hasAuthToken: state.app.auth.authToken !== null,
-  ready: state.app.auth.ready
+  ready: state.app.auth.ready,
+  authToken: state.app.auth.authToken,
+  currentUser: state.app.auth.currentUser
 });
 
 export default connect(mapStateToProps)(App);
