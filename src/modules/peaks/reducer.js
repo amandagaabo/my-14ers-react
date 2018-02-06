@@ -8,6 +8,9 @@ import {
   ADD_PEAK_REQUEST,
   ADD_PEAK_SUCCESS,
   ADD_PEAK_ERROR,
+  UPDATE_PEAK_REQUEST,
+  UPDATE_PEAK_SUCCESS,
+  UPDATE_PEAK_ERROR,
   REMOVE_PEAK_REQUEST,
   REMOVE_PEAK_SUCCESS,
   REMOVE_PEAK_ERROR,
@@ -77,6 +80,27 @@ export default function (state = initialState, action) {
       userPeaks: [...state.userPeaks, action.peak],
     };
   case ADD_PEAK_ERROR:
+    return {
+      ...state,
+      loading: false,
+      error: action.error,
+    };
+
+  case UPDATE_PEAK_REQUEST:
+    return {
+      ...state,
+      loading: true,
+    };
+  case UPDATE_PEAK_SUCCESS:
+    return {
+      ...state,
+      loading: false,
+      userPeaks: state.userPeaks.map(peak => peak.uuid === action.peak.uuid
+        ? { ...peak, dateClimbed: action.peak.dateClimbed, notes: action.peak.notes }
+        : peak
+      )
+    };
+  case UPDATE_PEAK_ERROR:
     return {
       ...state,
       loading: false,
