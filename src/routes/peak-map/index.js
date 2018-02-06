@@ -14,6 +14,7 @@ export const mapStateToProps = state => ({
   userPeaks: getPeaksForMap(state),
   showInfoWindowID: state.app.peaks.showInfoWindowID,
   mapCenter: state.app.peaks.mapCenter,
+  loggedIn: state.app.auth.authToken !== null
 });
 
 export const mapDispatchToProps = (dispatch) => {

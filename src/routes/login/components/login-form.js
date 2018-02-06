@@ -3,21 +3,13 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { registerUser, login } from './../../../modules/auth/actions';
-import { required, nonEmpty, email, isTrimmed, minLength10, maxLength72, matches } from '../../../utils/validators';
+import { login } from './../../../modules/auth/actions';
+import { required, nonEmpty, email } from '../../../utils/validators';
 
-export function SignUpForm(props) {
+export function LoginForm(props) {
   function onSubmit(values) {
     const { email, password } = values;
-    const user = {
-      email,
-      password
-    };
-
-    return props.dispatch(registerUser(user))
-      .then(() => {
-        props.dispatch(login(email, password));
-      });
+    return props.dispatch(login(email, password));
   }
 
   let errorMessage;
@@ -37,23 +29,17 @@ export function SignUpForm(props) {
         name="email"
         type="email"
         label="Email"
-        validate={[required, nonEmpty, email, isTrimmed]}
+        autofocus
+        validate={[required, nonEmpty, email]}
       />
 
       <Field
         component={Input}
         name="password"
+        id="password"
         type="password"
         label="Password"
-        validate={[required, isTrimmed, minLength10, maxLength72]}
-      />
-
-      <Field
-        component={Input}
-        name="confirm-password"
-        type="password"
-        label="Confirm Password"
-        validate={[required, nonEmpty, matches('password')]}
+        validate={[required, nonEmpty]}
       />
 
       {errorMessage}
@@ -63,14 +49,14 @@ export function SignUpForm(props) {
           type="submit"
           disabled={props.pristine || props.submitting}
         >
-          Sign Up
+          Login
         </button>
       </Col>
     </form>
   );
 }
 
-SignUpForm.propTypes = {
+LoginForm.propTypes = {
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   error: PropTypes.string,
@@ -78,14 +64,14 @@ SignUpForm.propTypes = {
   handleSubmit: PropTypes.func
 };
 
-SignUpForm.defaultProps = {
+LoginForm.defaultProps = {
   pristine: true,
   submitting: false,
   error: ''
 };
 
 export default reduxForm({
-  form: 'sign-up',
+  form: 'login',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('sign-up', Object.keys(errors)[0]))
-})(SignUpForm);
+    dispatch(focus('login', Object.keys(errors)[0])),
+})(LoginForm);
