@@ -79,17 +79,20 @@ export default class Layout extends React.Component {
                 <p className="caption-details">Date climbed: {peak.date}</p>
                 <br />
                 <p className="caption-details">{peak.notes}</p>
-                <Link
-                  to="/edit"
-                  className={`button edit-peak ${visibility}`}
-                  onClick={() => this.onEditClick(peak.uuid, peak.peakName, peak.date, peak.notes)}
-                > <Icon name="edit" />
-                </Link>
-                <button
-                  className={`button remove-peak ${visibility}`}
-                  onClick={() => this.onDeleteClick(peak.uuid)}
-                > x
-                </button>
+
+                <div className="hover-options">
+                  <Link
+                    to="/edit"
+                    className={`button edit-peak ${visibility}`}
+                    onClick={() => this.onEditClick(peak.uuid, peak.peakName, peak.date, peak.notes)}
+                  > <Icon name="pencil" />
+                  </Link>
+                  <button
+                    className={`button remove-peak ${visibility}`}
+                    onClick={() => this.onDeleteClick(peak.uuid)}
+                  > x
+                  </button>
+                </div>
               </div>
             </Col>
           );

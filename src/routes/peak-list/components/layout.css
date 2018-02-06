@@ -27,9 +27,34 @@
   margin-bottom: 20px;
 }
 
-.remove-peak {
-  background-color: transparent;
+.hover-options {
   position: absolute;
   right: 20px;
   top: 5px;
+}
+
+.remove-peak, .edit-peak {
+  display: inline-block;
+  margin: 0;
+  padding: 1px;
+  height: 25px;
+  width: 25px;
+  border: 1px solid white;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+.remove-peak:hover, .edit-peak:hover {
+  background-color: white;
+  color: black;
+}
+
+.remove-peak {
+  margin-left: 5px;
+  padding-bottom: 2px;
+}
+
+.edit-peak {
+  background-color: transparent;
+  color: black;
 }
