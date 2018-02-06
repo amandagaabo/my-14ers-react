@@ -26,25 +26,25 @@ export default function Header(props) {
         <Nav pullRight>
           <NavDropdown eventKey={1} title="Menu" id="basic-nav-dropdown">
             <LinkContainer to="/dashboard">
-              <MenuItem eventKey={1.1}>Dashboard</MenuItem>
+              <NavItem eventKey={1.1}>Dashboard</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/add-peak">
-              <MenuItem eventKey={1.2}>Add Peak</MenuItem>
+              <NavItem eventKey={1.2}>Add Peak</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/peak-list">
-              <MenuItem eventKey={1.3}>Peak List</MenuItem>
+              <NavItem eventKey={1.3}>Peak List</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/peak-map">
-              <MenuItem eventKey={1.4}>Peak Map</MenuItem>
+              <NavItem eventKey={1.4}>Peak Map</NavItem>
             </LinkContainer>
 
             <MenuItem divider />
 
             <LinkContainer to="/logout">
-              <MenuItem eventKey={1.5} onClick={logOut}>Logout</MenuItem>
+              <NavItem eventKey={1.5} onSelect={logOut}>Logout</NavItem>
             </LinkContainer>
           </NavDropdown>
         </Nav>
