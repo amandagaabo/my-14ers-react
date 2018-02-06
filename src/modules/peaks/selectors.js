@@ -69,7 +69,7 @@ export const getSortedPeaksForList = createSelector(
           rank: peak.rank,
           imgSrc: peak.imgSrc,
           notes: peak.notes,
-          id: peak.id,
+          id: peak.uuid,
           date: formatedDate,
           elevation: formattedElevation,
         });

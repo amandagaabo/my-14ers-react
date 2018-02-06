@@ -47,19 +47,18 @@ export function addPeakToDB(token, uuid, newPeak) {
   });
 }
 
-export function removePeakFromDB(token, peakID) {
-  return Promise.resolve(peakID);
-  // return fetch(`${API_BASE_URL}/groceries/delete/${peakID}`, {
-  //   method: 'POST',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     Authorization: `Bearer ${token}`,
-  //     'Content-Type': 'application/json',
-  //   },
-  // }).then((res) => {
-  //   if (!res.ok) {
-  //     return Promise.reject(res.statusText);
-  //   }
-  //   return peakID;
-  // });
+export function removePeakFromDB(token, uuid, peakId) {
+  return fetch(`${API_BASE_URL}/users/${uuid}/${peakId}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return peakId;
+  });
 }

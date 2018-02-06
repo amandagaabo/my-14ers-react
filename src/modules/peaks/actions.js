@@ -11,9 +11,9 @@ export const updateSort = sortBy => ({
 
 // MAP ACTIONS
 export const TOGGLE_INFO_WINDOW = 'TOGGLE_INFO_WINDOW';
-export const toggleInfoWindow = (peakID, lat, lng) => ({
+export const toggleInfoWindow = (peakId, lat, lng) => ({
   type: TOGGLE_INFO_WINDOW,
-  peakID,
+  peakId,
   lat,
   lng,
 });
@@ -108,9 +108,9 @@ export const removePeakRequest = () => ({
 });
 
 export const REMOVE_PEAK_SUCCESS = 'REMOVE_PEAK_SUCCESS';
-export const removePeakSuccess = peakID => ({
+export const removePeakSuccess = peakId => ({
   type: REMOVE_PEAK_SUCCESS,
-  peakID,
+  peakId,
 });
 
 export const REMOVE_PEAK_ERROR = 'REMOVE_PEAK_ERROR';
@@ -119,13 +119,13 @@ export const removePeakError = error => ({
   error,
 });
 
-export const removePeak = (token, peakID, removePeak = removePeakFromDB) => (dispatch) => {
+export const removePeak = (token, uuid, peakId, removePeak = removePeakFromDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(removePeakRequest());
   // remove peak from user's peaks in DB
-  return removePeak(token, peakID).then(() => {
+  return removePeak(token, uuid, peakId).then(() => {
     // dispatch the success action and pass in the result from the db search on success
-    dispatch(removePeakSuccess(peakID));
+    dispatch(removePeakSuccess(peakId));
   }).catch((err) => {
     // dispatch the error action if something goes wrong
     dispatch(removePeakError(err));

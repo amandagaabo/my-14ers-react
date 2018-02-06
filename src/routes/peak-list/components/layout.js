@@ -16,9 +16,10 @@ export default function Layout(props) {
     props.onSortSelect(sortBy);
   }
 
-  function onDeleteClick(itemID) {
+  function onDeleteClick(itemId) {
     const token = props.authToken;
-    props.onDeletePeak(token, itemID);
+    const { uuid } = props.currentUser;
+    props.onDeletePeak(token, uuid, itemId);
   }
 
   const { userPeaks } = props;
@@ -41,8 +42,6 @@ export default function Layout(props) {
               <p className="caption-details">{peak.notes}</p>
               <button
                 className="button remove-peak"
-                data-peak={peak.peakName}
-                data-date={peak.date}
                 onClick={() => onDeleteClick(peak.id)}
               > x
               </button>
@@ -85,15 +84,20 @@ Layout.propTypes = {
   userPeaks: PropTypes.array,
   authToken: PropTypes.string,
   loggedIn: PropTypes.bool,
+  currentUser: PropTypes.shape({
+    email: PropTypes.string,
+    uuid: PropTypes.string
+  }),
   sortBy: PropTypes.string,
   onDeletePeak: PropTypes.func,
-  onSortSelect: PropTypes.func,
+  onSortSelect: PropTypes.func
 };
 
 Layout.defaultProps = {
   userPeaks: [],
   authToken: null,
   loggedIn: false,
+  currentUser: null,
   sortBy: 'DATE_CLIMBED',
   onDeletePeak: () => {},
   onSortSelect: () => {},
