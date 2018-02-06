@@ -1,5 +1,6 @@
 import {
   UPDATE_SORT,
+  SET_EDIT_PEAK,
   TOGGLE_INFO_WINDOW,
   CLOSE_INFO_WINDOW,
   GET_USER_PEAKS_REQUEST,
@@ -27,6 +28,7 @@ const initialState = {
   error: null,
   userPeaks: [],
   sortBy: 'DATE_CLIMBED',
+  editPeak: null
 };
 
 export default function (state = initialState, action) {
@@ -35,6 +37,12 @@ export default function (state = initialState, action) {
     return {
       ...state,
       sortBy: action.sortBy,
+    };
+
+  case SET_EDIT_PEAK:
+    return {
+      ...state,
+      editPeak: action.editPeak,
     };
 
   case TOGGLE_INFO_WINDOW:

@@ -2,14 +2,21 @@ import { getUserPeaksFromDB, addPeakToDB, removePeakFromDB, updatePeakInDB } fro
 import peakData from './all-peak-data';
 
 const allPeaks = [...peakData];
-// LIST SORT ACTION
+// LIST SORT
 export const UPDATE_SORT = 'UPDATE_SORT';
 export const updateSort = sortBy => ({
   type: UPDATE_SORT,
   sortBy
 });
 
-// MAP ACTIONS
+// EDIT PEAK
+export const SET_EDIT_PEAK = 'SET_EDIT_PEAK';
+export const setEditPeak = editPeak => ({
+  type: SET_EDIT_PEAK,
+  editPeak
+});
+
+// MAP
 export const TOGGLE_INFO_WINDOW = 'TOGGLE_INFO_WINDOW';
 export const toggleInfoWindow = (peakId, lat, lng) => ({
   type: TOGGLE_INFO_WINDOW,

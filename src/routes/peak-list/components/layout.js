@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import { Icon } from 'react-fa';
 import './layout.css';
@@ -30,14 +30,20 @@ export default class Layout extends React.Component {
     });
   }
 
-  onEditClick(peakId) {
-    console.log('edit clicked with peakId', peakId);
+  onEditClick(peakId, peakName, dateClimbed, notes) {
+    const editPeak = {
+      peakId,
+      peakName,
+      dateClimbed,
+      notes
+    };
+    this.props.onSetEditPeak(editPeak);
   }
 
-  onDeleteClick(itemId) {
+  onDeleteClick(peakId) {
     const token = this.props.authToken;
     const { uuid } = this.props.currentUser;
-    this.props.onDeletePeak(token, uuid, itemId);
+    this.props.onDeletePeak(token, uuid, peakId);
   }
 
   render() {
@@ -73,11 +79,12 @@ export default class Layout extends React.Component {
                 <p className="caption-details">Date climbed: {peak.date}</p>
                 <br />
                 <p className="caption-details">{peak.notes}</p>
-                <button
+                <Link
+                  to="/edit"
                   className={`button edit-peak ${visibility}`}
-                  onClick={() => this.onEditClick(peak.uuid)}
+                  onClick={() => this.onEditClick(peak.uuid, peak.peakName, peak.date, peak.notes)}
                 > <Icon name="edit" />
-                </button>
+                </Link>
                 <button
                   className={`button remove-peak ${visibility}`}
                   onClick={() => this.onDeleteClick(peak.uuid)}
@@ -128,6 +135,7 @@ Layout.propTypes = {
     uuid: PropTypes.string
   }),
   sortBy: PropTypes.string,
+  onSetEditPeak: PropTypes.func,
   onDeletePeak: PropTypes.func,
   onSortSelect: PropTypes.func
 };
@@ -137,7 +145,5 @@ Layout.defaultProps = {
   authToken: null,
   loggedIn: false,
   currentUser: null,
-  sortBy: 'DATE_CLIMBED',
-  onDeletePeak: () => {},
-  onSortSelect: () => {},
+  sortBy: 'DATE_CLIMBED'
 };

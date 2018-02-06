@@ -83,7 +83,12 @@ export default class Input extends React.Component {
 
           <Col xs={12} >
             <Element
-              {...this.props.input}
+              name={this.props.input.name}
+              onBlur={this.props.input.onBlur}
+              onChange={this.props.input.onChange}
+              onDragStart={this.props.input.onDragStart}
+              onDrop={this.props.input.onDrop}
+              onFocus={this.props.input.onFocus}
               id={this.props.input.name}
               type={this.props.type}
               ref={input => (this.input = input)}
@@ -97,6 +102,7 @@ export default class Input extends React.Component {
     }
 
     return (
+
       <Col className="form-input" xs={12}>
         <Col xs={12} >
           <label htmlFor={this.props.input.name}>
@@ -108,10 +114,17 @@ export default class Input extends React.Component {
 
         <Col xs={12} >
           <Element
-            {...this.props.input}
+            name={this.props.input.name}
+            onBlur={this.props.input.onBlur}
+            onChange={this.props.input.onChange}
+            onDragStart={this.props.input.onDragStart}
+            onDrop={this.props.input.onDrop}
+            onFocus={this.props.input.onFocus}
             id={this.props.input.name}
             type={this.props.type}
             ref={input => (this.input = input)}
+            defaultValue={this.props.editValue}
+            disabled={this.props.disabled}
           />
         </Col>
       </Col>
@@ -131,8 +144,7 @@ Input.propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string,
   }),
-  element: PropTypes.string,
-  options: PropTypes.array,
+  options: PropTypes.array
 };
 
 Input.defaultProps = {
@@ -147,6 +159,5 @@ Input.defaultProps = {
   input: {
     name: '',
   },
-  element: 'input',
-  options: [],
+  options: []
 };

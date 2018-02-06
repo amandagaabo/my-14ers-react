@@ -55,12 +55,16 @@ export function updatePeakInDB(token, uuid, peakId, dateClimbed, notes) {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
-    body: {
+    body: JSON.stringify({
       dateClimbed,
       notes
+    })
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
     }
+    return res.json();
   }).then((peak) => {
-    console.log('peak updated, new peak', peak);
     return peak;
   });
 }
