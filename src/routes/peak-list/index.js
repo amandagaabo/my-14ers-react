@@ -13,13 +13,15 @@ export function PeakList(props) {
 export const mapStateToProps = state => ({
   userPeaks: getSortedPeaksForList(state),
   sortBy: state.app.peaks.sortBy,
-  loggedIn: state.app.auth.authToken !== null
+  loggedIn: state.app.auth.authToken !== null,
+  authToken: state.app.auth.authToken,
+  currentUser: state.app.auth.currentUser
 });
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    onDeletePeak: (token, peakID) => {
-      dispatch(removePeak(token, peakID));
+    onDeletePeak: (token, uuid, peakID) => {
+      dispatch(removePeak(token, uuid, peakID));
     },
     onSortSelect: (sortBy) => {
       dispatch(updateSort(sortBy));

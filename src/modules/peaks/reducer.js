@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
   case TOGGLE_INFO_WINDOW:
     return {
       ...state,
-      showInfoWindowID: action.peakID === state.showInfoWindowID ? null : action.peakID,
+      showInfoWindowID: action.peakID === state.showInfoWindowID ? null : action.peakId,
       mapCenter: { lat: action.lat, lng: action.lng },
     };
 
@@ -92,7 +92,7 @@ export default function (state = initialState, action) {
     return {
       ...state,
       loading: false,
-      userPeaks: state.userPeaks.filter(peak => peak.id !== action.peakID),
+      userPeaks: state.userPeaks.filter(peak => peak.uuid !== action.peakId),
     };
   case REMOVE_PEAK_ERROR:
     return {
