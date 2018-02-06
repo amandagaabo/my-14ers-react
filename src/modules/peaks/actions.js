@@ -83,7 +83,7 @@ export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = a
     userId,
     imgSrc: peakFromAllPeaks[0].attributes.imgSrc,
     range: peakFromAllPeaks[0].attributes.range,
-    rank: parseInt(peakFromAllPeaks[0].attributes.rank, 10),
+    rank: peakFromAllPeaks[0].attributes.rank,
     elevation: peakFromAllPeaks[0].attributes.elevation,
     latitude: parseFloat(peakFromAllPeaks[0].attributes.latitude, 10),
     longitude: parseFloat(peakFromAllPeaks[0].attributes.longitude, 10)
