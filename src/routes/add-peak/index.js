@@ -13,7 +13,7 @@ export function AddPeak(props) {
 
 export const mapStateToProps = state => ({
   allPeaks: state.app.peaks.allPeaks,
-  loggedIn: state.app.auth.authToken !== null,
+  loggedIn: state.app.auth.currentUser !== null,
   authToken: state.app.auth.authToken,
   currentUser: state.app.auth.currentUser
 });
