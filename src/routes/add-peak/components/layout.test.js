@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import Layout from './../layout';
+import Layout from './layout';
 
 describe('AddPeakForm <Layout />', () => {
   it('Renders without crashing', () => {

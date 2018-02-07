@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
@@ -10,6 +11,12 @@ export function LoginForm(props) {
   function onSubmit(values) {
     const { email, password } = values;
     return props.dispatch(login(email, password));
+  }
+
+  if (this.props.submitSucceeded) {
+    return (
+      <Redirect to="/dashboard" />
+    );
   }
 
   let errorMessage;

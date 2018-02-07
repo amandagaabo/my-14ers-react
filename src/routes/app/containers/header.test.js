@@ -6,7 +6,8 @@ import Header from './header';
 
 describe('<Header />', () => {
   it('Renders without crashing', () => {
-    shallow(<Header />);
+    const loggedIn = true;
+    shallow(<Header loggedIn={loggedIn} />);
   });
 
   it('Renders the menu navbar when logged in', () => {
