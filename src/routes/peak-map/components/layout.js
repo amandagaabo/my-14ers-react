@@ -11,7 +11,7 @@ export default function Layout(props) {
   }
 
   return (
-    <main role="main">
+    <main role="main" className="peak-map-container">
       <div className="container">
         <h1 className="page-header">Peak Map</h1>
 
