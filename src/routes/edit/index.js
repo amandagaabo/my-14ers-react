@@ -11,7 +11,7 @@ export function AddPeak(props) {
 }
 
 export const mapStateToProps = state => ({
-  loggedIn: state.app.auth.authToken !== null,
+  loggedIn: state.app.auth.currentUser !== null,
   authToken: state.app.auth.authToken,
   currentUser: state.app.auth.currentUser,
   editPeak: state.app.peaks.editPeak
