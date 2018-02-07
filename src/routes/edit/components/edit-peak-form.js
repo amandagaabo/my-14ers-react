@@ -1,18 +1,19 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
+import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { required, nonEmpty, validDate, maxChar250 } from '../../../utils/validators';
+import { validDate, maxChar250 } from '../../../utils/validators';
 
-export class AddPeakForm extends React.Component {
+export class EditPeakForm extends React.Component {
   onSubmit(values) {
     const token = this.props.authToken;
     const userId = this.props.currentUser.uuid;
-    const { peakName, dateClimbed } = values;
-    const notes = values.notes ? values.notes : '';
-    this.props.onAddPeak(token, userId, peakName, dateClimbed, notes);
+    const { peakId } = this.props.editPeak;
+    const { dateClimbed, notes } = values;
+    this.props.onUpdatePeak(token, userId, peakId, dateClimbed, notes);
   }
 
   render() {
@@ -36,11 +37,11 @@ export class AddPeakForm extends React.Component {
 
         <Field
           name="peakName"
-          type="select"
+          type="text"
           component={Input}
           label="Peak"
-          options={this.props.allPeaks}
-          validate={[required, nonEmpty]}
+          editValue={this.props.editPeak.peakName}
+          disabled={true}
         />
 
         <Field
@@ -48,13 +49,15 @@ export class AddPeakForm extends React.Component {
           type="date"
           component={Input}
           label="Date"
-          validate={[required, nonEmpty, validDate]}
+          editValue={dateFormat(this.props.editPeak.dateClimbed, 'yyyy-mm-dd')}
+          validate={[validDate]}
         />
 
         <Field
           name="notes"
           type="textarea"
           component={Input}
+          editValue={this.props.editPeak.notes}
           label="Notes"
           maxLength="250"
           warn={[maxChar250]}
@@ -63,46 +66,59 @@ export class AddPeakForm extends React.Component {
         <Col xs={12} className="form-button" >
           <button
             type="submit"
-            disabled={this.props.pristine || this.props.submitting}
+            disabled={this.props.submitting}
           >
-            Add
+            Save
           </button>
+        </Col>
+
+        <Col xs={12} className="form-button" >
+          <Link
+            to="/peak-list"
+          >
+            Cancel
+          </Link>
         </Col>
       </form>
     );
   }
 }
 
-AddPeakForm.propTypes = {
+EditPeakForm.propTypes = {
   pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   error: PropTypes.string,
-  allPeaks: PropTypes.array,
   authToken: PropTypes.string,
   currentUser: PropTypes.shape({
     email: PropTypes.string,
     uuid: PropTypes.string
   }),
+  editPeak: PropTypes.shape({
+    peakId: PropTypes.string,
+    peakName: PropTypes.string,
+    dateClimbed: PropTypes.string,
+    notes: PropTypes.string
+  }),
   handleSubmit: PropTypes.func,
-  onAddPeak: PropTypes.func,
-  submitSucceeded: PropTypes.bool,
+  onUpdatePeak: PropTypes.func,
+  submitSucceeded: PropTypes.bool
 };
 
-AddPeakForm.defaultProps = {
+EditPeakForm.defaultProps = {
   pristine: true,
   submitting: false,
   error: '',
-  allPeaks: [],
   authToken: null,
   currentUser: null,
-  submitSucceeded: false,
+  editPeak: null,
+  submitSucceeded: false
 };
 
 export default reduxForm({
-  form: 'add-peak',
+  form: 'edit-peak',
   onSubmitFail: (errors, dispatch) => {
     if (errors) {
       dispatch(focus('add-peak', Object.keys(errors)[0]));
     }
   },
-})(AddPeakForm);
+})(EditPeakForm);

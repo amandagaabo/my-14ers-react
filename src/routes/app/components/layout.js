@@ -8,6 +8,7 @@ import Login from '../../login';
 import Dashboard from '../../dashboard';
 import PeakList from '../../peak-list';
 import PeakMap from '../../peak-map';
+import Edit from '../../edit';
 
 export default function Layout(props) {
   return (
@@ -23,6 +24,7 @@ export default function Layout(props) {
           <Route exact path="/peak-list" component={PeakList} />
           <Route exact path="/peak-map" component={PeakMap} />
           <Route exact path="/logout" component={Home} />
+          <Route exact path="/edit" component={Edit} />
           {/*
           <Route component={NotFoundPage} /> */}
         </Switch>

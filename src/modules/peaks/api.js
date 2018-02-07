@@ -47,6 +47,28 @@ export function addPeakToDB(token, uuid, newPeak) {
   });
 }
 
+export function updatePeakInDB(token, uuid, peakId, dateClimbed, notes) {
+  return fetch(`${API_BASE_URL}/users/${uuid}/${peakId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      dateClimbed,
+      notes
+    })
+  }).then((res) => {
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  }).then((peak) => {
+    return peak;
+  });
+}
+
 export function removePeakFromDB(token, uuid, peakId) {
   return fetch(`${API_BASE_URL}/users/${uuid}/${peakId}`, {
     method: 'DELETE',

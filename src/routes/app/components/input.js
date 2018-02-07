@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Textarea from 'react-textarea-autosize';
 import { Col } from 'react-bootstrap';
 import './input.css';
 
 export default class Input extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.meta.active && this.props.meta.active) {
-      this.input.focus();
+      this.props.input.onFocus();
     }
   }
 
@@ -83,7 +84,12 @@ export default class Input extends React.Component {
 
           <Col xs={12} >
             <Element
-              {...this.props.input}
+              name={this.props.input.name}
+              onBlur={this.props.input.onBlur}
+              onChange={this.props.input.onChange}
+              onDragStart={this.props.input.onDragStart}
+              onDrop={this.props.input.onDrop}
+              onFocus={this.props.input.onFocus}
               id={this.props.input.name}
               type={this.props.type}
               ref={input => (this.input = input)}
@@ -96,6 +102,39 @@ export default class Input extends React.Component {
       );
     }
 
+    // use Textarea react component if element is textarea type
+    if (Element === 'textarea') {
+      return (
+        <Col className="form-input" xs={12}>
+          <Col xs={12} >
+            <label htmlFor={this.props.input.name}>
+              {this.props.label}
+              {error}
+              {warning}
+            </label>
+          </Col>
+
+          <Col xs={12} >
+            <Textarea
+              name={this.props.input.name}
+              onBlur={this.props.input.onBlur}
+              onChange={this.props.input.onChange}
+              onDragStart={this.props.input.onDragStart}
+              onDrop={this.props.input.onDrop}
+              onFocus={this.props.input.onFocus}
+              id={this.props.input.name}
+              type={this.props.type}
+              ref={input => (this.input = input)}
+              defaultValue={this.props.editValue}
+              disabled={this.props.disabled}
+              maxLength={this.props.maxLength}
+            />
+          </Col>
+        </Col>
+      );
+    }
+
+    // if standard input return input element
     return (
       <Col className="form-input" xs={12}>
         <Col xs={12} >
@@ -108,10 +147,17 @@ export default class Input extends React.Component {
 
         <Col xs={12} >
           <Element
-            {...this.props.input}
+            name={this.props.input.name}
+            onBlur={this.props.input.onBlur}
+            onChange={this.props.input.onChange}
+            onDragStart={this.props.input.onDragStart}
+            onDrop={this.props.input.onDrop}
+            onFocus={this.props.input.onFocus}
             id={this.props.input.name}
             type={this.props.type}
             ref={input => (this.input = input)}
+            defaultValue={this.props.editValue}
+            disabled={this.props.disabled}
           />
         </Col>
       </Col>
@@ -131,8 +177,7 @@ Input.propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string,
   }),
-  element: PropTypes.string,
-  options: PropTypes.array,
+  options: PropTypes.array
 };
 
 Input.defaultProps = {
@@ -147,6 +192,5 @@ Input.defaultProps = {
   input: {
     name: '',
   },
-  element: 'input',
-  options: [],
+  options: []
 };

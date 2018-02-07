@@ -1,44 +1,51 @@
-import { getUserPeaksFromDB, addPeakToDB, removePeakFromDB } from './api';
+import { getUserPeaksFromDB, addPeakToDB, removePeakFromDB, updatePeakInDB } from './api';
 import peakData from './all-peak-data';
 
 const allPeaks = [...peakData];
-// LIST SORT ACTION
+// LIST SORT
 export const UPDATE_SORT = 'UPDATE_SORT';
 export const updateSort = sortBy => ({
   type: UPDATE_SORT,
-  sortBy,
+  sortBy
 });
 
-// MAP ACTIONS
+// EDIT PEAK
+export const SET_EDIT_PEAK = 'SET_EDIT_PEAK';
+export const setEditPeak = editPeak => ({
+  type: SET_EDIT_PEAK,
+  editPeak
+});
+
+// MAP
 export const TOGGLE_INFO_WINDOW = 'TOGGLE_INFO_WINDOW';
 export const toggleInfoWindow = (peakId, lat, lng) => ({
   type: TOGGLE_INFO_WINDOW,
   peakId,
   lat,
-  lng,
+  lng
 });
 
 export const CLOSE_INFO_WINDOW = 'CLOSE_INFO_WINDOW';
 export const closeInfoWindow = () => ({
-  type: CLOSE_INFO_WINDOW,
+  type: CLOSE_INFO_WINDOW
 });
 
 // GET USER PEAKS
 export const GET_USER_PEAKS_REQUEST = 'GET_USER_PEAKS_REQUEST';
 export const getUserPeaksRequest = () => ({
-  type: GET_USER_PEAKS_REQUEST,
+  type: GET_USER_PEAKS_REQUEST
 });
 
 export const GET_USER_PEAKS_SUCCESS = 'GET_USER_PEAKS_SUCCESS';
 export const getUserPeaksSuccess = userPeaks => ({
   type: GET_USER_PEAKS_SUCCESS,
-  userPeaks,
+  userPeaks
 });
 
 export const GET_USER_PEAKS_ERROR = 'GET_USER_PEAKS_ERROR';
 export const getUserPeaksError = error => ({
   type: GET_USER_PEAKS_ERROR,
-  error,
+  error
 });
 
 export const getUserPeaks = (token, userId, getPeaks = getUserPeaksFromDB) => (dispatch) => {
@@ -57,19 +64,19 @@ export const getUserPeaks = (token, userId, getPeaks = getUserPeaksFromDB) => (d
 // ADD PEAK
 export const ADD_PEAK_REQUEST = 'ADD_PEAK_REQUEST';
 export const addPeakRequest = () => ({
-  type: ADD_PEAK_REQUEST,
+  type: ADD_PEAK_REQUEST
 });
 
 export const ADD_PEAK_SUCCESS = 'ADD_PEAK_SUCCESS';
 export const addPeakSuccess = peak => ({
   type: ADD_PEAK_SUCCESS,
-  peak,
+  peak
 });
 
 export const ADD_PEAK_ERROR = 'ADD_PEAK_ERROR';
 export const addPeakError = error => ({
   type: ADD_PEAK_ERROR,
-  error,
+  error
 });
 
 export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = addPeakToDB) => (dispatch) => {
@@ -83,7 +90,7 @@ export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = a
     userId,
     imgSrc: peakFromAllPeaks[0].attributes.imgSrc,
     range: peakFromAllPeaks[0].attributes.range,
-    rank: parseInt(peakFromAllPeaks[0].attributes.rank, 10),
+    rank: peakFromAllPeaks[0].attributes.rank,
     elevation: peakFromAllPeaks[0].attributes.elevation,
     latitude: parseFloat(peakFromAllPeaks[0].attributes.latitude, 10),
     longitude: parseFloat(peakFromAllPeaks[0].attributes.longitude, 10)
@@ -100,6 +107,38 @@ export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = a
     dispatch(addPeakError(err));
   });
 };
+
+// UPDATE PEAK
+export const UPDATE_PEAK_REQUEST = 'UPDATE_PEAK_REQUEST';
+export const updatePeakRequest = () => ({
+  type: UPDATE_PEAK_REQUEST
+});
+
+export const UPDATE_PEAK_SUCCESS = 'UPDATE_PEAK_SUCCESS';
+export const updatePeakSuccess = peak => ({
+  type: UPDATE_PEAK_SUCCESS,
+  peak
+});
+
+export const UPDATE_PEAK_ERROR = 'UPDATE_PEAK_ERROR';
+export const updatePeakError = error => ({
+  type: UPDATE_PEAK_ERROR,
+  error
+});
+
+export const updatePeak = (token, uuid, peakId, dateClimbed, notes, updatePeak = updatePeakInDB) => (dispatch) => {
+  // dispatch the request action to start the request
+  dispatch(updatePeakRequest());
+  // update peak in DB
+  return updatePeak(token, uuid, peakId, dateClimbed, notes).then((peak) => {
+    // dispatch the success action and pass in the peak from the DB update
+    dispatch(updatePeakSuccess(peak));
+  }).catch((err) => {
+    // dispatch the error action if something goes wrong
+    dispatch(updatePeakError(err));
+  });
+};
+
 
 // REMOVE PEAK
 export const REMOVE_PEAK_REQUEST = 'REMOVE_PEAK_REQUEST';
