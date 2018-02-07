@@ -20,7 +20,7 @@ export default function Layout(props) {
   }
 
   return (
-    <main role="main">
+    <main role="main" className="home">
       <Jumbotron />
 
       <div className="container">
