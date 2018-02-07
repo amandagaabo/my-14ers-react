@@ -18,8 +18,8 @@ export default function Layout(props) {
   }
 
   return (
-    <main role="main" className="container">
-      <Col xs={12} className="add-peak-container">
+    <main role="main" className="edit-peak-container">
+      <Col xs={12}>
         <h1 className="form-header">Edit Peak</h1>
         <EditPeakForm {...props} />
       </Col>
