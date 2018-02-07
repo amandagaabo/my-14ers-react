@@ -127,9 +127,8 @@ export default class Input extends React.Component {
               ref={input => (this.input = input)}
               defaultValue={this.props.editValue}
               disabled={this.props.disabled}
-              maxLength="250"
-            >
-            </Textarea>
+              maxLength={this.props.maxLength}
+            />
           </Col>
         </Col>
       );

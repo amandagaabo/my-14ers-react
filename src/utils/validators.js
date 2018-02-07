@@ -31,6 +31,7 @@ const maxLength = max => value => (
   value && value.length > max ? `Must be ${max} characters or less` : undefined
 );
 export const maxLength72 = maxLength(72);
+export const maxLength250 = maxLength(10);
 
 // password and password confrim must match
 export const matches = field => (value, allValues) => (
@@ -50,3 +51,10 @@ export const validDate = (value) => {
 
   return undefined;
 };
+
+// max textarea length
+const maxChar = max => value => (
+  value && value.length === max ? `Cannot be more than ${max} characters` : undefined
+);
+
+export const maxChar250 = maxChar(250);

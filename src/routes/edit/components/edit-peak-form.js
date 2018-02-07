@@ -5,7 +5,7 @@ import { Col } from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { validDate } from '../../../utils/validators';
+import { validDate, maxChar250 } from '../../../utils/validators';
 
 export class EditPeakForm extends React.Component {
   onSubmit(values) {
@@ -59,6 +59,8 @@ export class EditPeakForm extends React.Component {
           component={Input}
           editValue={this.props.editPeak.notes}
           label="Notes"
+          maxLength="250"
+          warn={[maxChar250]}
         />
 
         <Col xs={12} className="form-button" >

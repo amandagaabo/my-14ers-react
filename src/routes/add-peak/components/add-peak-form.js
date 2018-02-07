@@ -4,7 +4,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
-import { required, nonEmpty, validDate } from '../../../utils/validators';
+import { required, nonEmpty, validDate, maxChar250 } from '../../../utils/validators';
 
 export class AddPeakForm extends React.Component {
   onSubmit(values) {
@@ -56,6 +56,8 @@ export class AddPeakForm extends React.Component {
           type="textarea"
           component={Input}
           label="Notes"
+          maxLength="250"
+          warn={[maxChar250]}
         />
 
         <Col xs={12} className="form-button" >
