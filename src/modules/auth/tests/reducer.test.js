@@ -1,11 +1,8 @@
 import { expect } from 'chai';
 import reducer from './../reducer';
 import {
-  SET_AUTH_TOKEN,
   setAuthToken,
-  SET_CURRENT_USER,
   setCurrentUser,
-  SET_READY,
   setReady
 } from './../actions';
 
@@ -27,30 +24,21 @@ describe('Auth reducer', () => {
     expect(state).to.deep.equal(currentState);
   });
 
-  describe('setAuthToken', () => {
-    it('Should return the action and authToken', () => {
-      const authToken = '';
-      const action = setAuthToken(authToken);
-      expect(action.type).to.equal(SET_AUTH_TOKEN);
-      expect(action.authToken).to.equal(authToken);
-    });
+  it('should set authToken on setAuthToken', () => {
+    const authToken = 123;
+    const state = reducer(undefined, setAuthToken(authToken));
+    expect(state.authToken).to.equal(authToken);
   });
 
-  describe('setCurrentUser', () => {
-    it('Should return the action and currentUser', () => {
-      const currentUser = '';
-      const action = setCurrentUser(currentUser);
-      expect(action.type).to.equal(SET_CURRENT_USER);
-      expect(action.currentUser).to.equal(currentUser);
-    });
+  it('Should set currentUser on setCurrentUser', () => {
+    const currentUser = 456;
+    const state = reducer(undefined, setCurrentUser(currentUser));
+    expect(state.currentUser).to.equal(currentUser);
   });
 
-  describe('setReady', () => {
-    it('Should return the action and ready', () => {
-      const ready = true;
-      const action = setReady(ready);
-      expect(action.type).to.equal(SET_READY);
-      expect(action.ready).to.equal(ready);
-    });
+  it('Should set ready on setReady', () => {
+    const ready = true;
+    const state = reducer(undefined, setReady(ready));
+    expect(state.ready).to.equal(ready);
   });
 });
