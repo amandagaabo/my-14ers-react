@@ -29,6 +29,7 @@ export function LoginForm(props) {
   return (
     <form
       onSubmit={props.handleSubmit(values => onSubmit(values))}
+      className="login-form"
     >
 
       <Field
