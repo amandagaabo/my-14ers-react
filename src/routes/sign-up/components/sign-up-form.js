@@ -21,7 +21,7 @@ export function SignUpForm(props) {
       });
   }
 
-  if (this.props.submitSucceeded) {
+  if (props.submitSucceeded) {
     return (
       <Redirect to="/dashboard" />
     );
@@ -37,6 +37,7 @@ export function SignUpForm(props) {
   return (
     <form
       onSubmit={props.handleSubmit(values => onSubmit(values))}
+      className="sign-up-form"
     >
 
       <Field
@@ -82,7 +83,8 @@ SignUpForm.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.string,
   dispatch: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  submitSucceeded: PropTypes.bool
 };
 
 SignUpForm.defaultProps = {
