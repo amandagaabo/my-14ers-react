@@ -139,7 +139,6 @@ export const updatePeak = (token, userId, peakId, dateClimbed, notes, updatePeak
   });
 };
 
-
 // REMOVE PEAK
 export const REMOVE_PEAK_REQUEST = 'REMOVE_PEAK_REQUEST';
 export const removePeakRequest = () => ({
