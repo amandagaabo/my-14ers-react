@@ -13,7 +13,7 @@ export function LoginForm(props) {
     return props.dispatch(login(email, password));
   }
 
-  if (this.props.submitSucceeded) {
+  if (props.submitSucceeded) {
     return (
       <Redirect to="/dashboard" />
     );
@@ -69,7 +69,8 @@ LoginForm.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.string,
   dispatch: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  submitSucceeded: PropTypes.bool
 };
 
 LoginForm.defaultProps = {
