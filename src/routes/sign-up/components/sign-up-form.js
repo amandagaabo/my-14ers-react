@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
@@ -20,6 +21,12 @@ export function SignUpForm(props) {
       });
   }
 
+  if (props.submitSucceeded) {
+    return (
+      <Redirect to="/dashboard" />
+    );
+  }
+
   let errorMessage;
   if (props.error) {
     errorMessage = (
@@ -30,6 +37,7 @@ export function SignUpForm(props) {
   return (
     <form
       onSubmit={props.handleSubmit(values => onSubmit(values))}
+      className="sign-up-form"
     >
 
       <Field
@@ -75,7 +83,8 @@ SignUpForm.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.string,
   dispatch: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  submitSucceeded: PropTypes.bool
 };
 
 SignUpForm.defaultProps = {

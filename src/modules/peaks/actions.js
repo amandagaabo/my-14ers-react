@@ -126,11 +126,11 @@ export const updatePeakError = error => ({
   error
 });
 
-export const updatePeak = (token, uuid, peakId, dateClimbed, notes, updatePeak = updatePeakInDB) => (dispatch) => {
+export const updatePeak = (token, userId, peakId, dateClimbed, notes, updatePeak = updatePeakInDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(updatePeakRequest());
   // update peak in DB
-  return updatePeak(token, uuid, peakId, dateClimbed, notes).then((peak) => {
+  return updatePeak(token, userId, peakId, dateClimbed, notes).then((peak) => {
     // dispatch the success action and pass in the peak from the DB update
     dispatch(updatePeakSuccess(peak));
   }).catch((err) => {
@@ -138,7 +138,6 @@ export const updatePeak = (token, uuid, peakId, dateClimbed, notes, updatePeak =
     dispatch(updatePeakError(err));
   });
 };
-
 
 // REMOVE PEAK
 export const REMOVE_PEAK_REQUEST = 'REMOVE_PEAK_REQUEST';
@@ -158,11 +157,11 @@ export const removePeakError = error => ({
   error,
 });
 
-export const removePeak = (token, uuid, peakId, removePeak = removePeakFromDB) => (dispatch) => {
+export const removePeak = (token, userId, peakId, removePeak = removePeakFromDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(removePeakRequest());
   // remove peak from user's peaks in DB
-  return removePeak(token, uuid, peakId).then(() => {
+  return removePeak(token, userId, peakId).then(() => {
     // dispatch the success action and pass in the result from the db search on success
     dispatch(removePeakSuccess(peakId));
   }).catch((err) => {

@@ -21,6 +21,7 @@ export class AddPeakForm extends React.Component {
         <Redirect to="/peak-list" />
       );
     }
+
     let errorMessage;
     if (this.props.error) {
       errorMessage = (
@@ -31,6 +32,7 @@ export class AddPeakForm extends React.Component {
     return (
       <form
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+        className="add-peak-form"
       >
         {errorMessage}
 

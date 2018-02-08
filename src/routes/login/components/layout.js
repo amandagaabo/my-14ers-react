@@ -12,8 +12,8 @@ export default function Layout(props) {
   }
 
   return (
-    <main role="main" className="container">
-      <Col xs={12} className="sign-up-container">
+    <main role="main" className="login-container">
+      <Col xs={12}>
         <h1 className="form-header">Login</h1>
         <LoginForm {...props} />
       </Col>

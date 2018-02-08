@@ -107,7 +107,7 @@ export default class Layout extends React.Component {
     }
 
     return (
-      <main role="main">
+      <main role="main" className="peak-list-container">
         <div className="container">
           <h1 className="page-header">Peak List</h1>
 

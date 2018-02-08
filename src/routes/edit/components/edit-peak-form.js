@@ -7,85 +7,85 @@ import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
 import { validDate, maxChar250 } from '../../../utils/validators';
 
-export class EditPeakForm extends React.Component {
-  onSubmit(values) {
-    const token = this.props.authToken;
-    const userId = this.props.currentUser.uuid;
-    const { peakId } = this.props.editPeak;
+export function EditPeakForm(props) {
+  function onSubmit(values) {
+    const token = props.authToken;
+    const userId = props.currentUser.uuid;
+    const { peakId } = props.editPeak;
     const { dateClimbed, notes } = values;
-    this.props.onUpdatePeak(token, userId, peakId, dateClimbed, notes);
+    props.onUpdatePeak(token, userId, peakId, dateClimbed, notes);
   }
 
-  render() {
-    if (this.props.submitSucceeded) {
-      return (
-        <Redirect to="/peak-list" />
-      );
-    }
-    let errorMessage;
-    if (this.props.error) {
-      errorMessage = (
-        <div className="message message-error">{this.props.error}</div>
-      );
-    }
-
+  if (props.submitSucceeded) {
     return (
-      <form
-        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-      >
-        {errorMessage}
-
-        <Field
-          name="peakName"
-          type="text"
-          component={Input}
-          label="Peak"
-          editValue={this.props.editPeak.peakName}
-          disabled={true}
-        />
-
-        <Field
-          name="dateClimbed"
-          type="date"
-          component={Input}
-          label="Date"
-          editValue={dateFormat(this.props.editPeak.dateClimbed, 'yyyy-mm-dd')}
-          validate={[validDate]}
-        />
-
-        <Field
-          name="notes"
-          type="textarea"
-          component={Input}
-          editValue={this.props.editPeak.notes}
-          label="Notes"
-          maxLength="250"
-          warn={[maxChar250]}
-        />
-
-        <Col xs={12} className="form-button" >
-          <button
-            type="submit"
-            disabled={this.props.submitting}
-          >
-            Save
-          </button>
-        </Col>
-
-        <Col xs={12} className="form-button" >
-          <Link
-            to="/peak-list"
-          >
-            Cancel
-          </Link>
-        </Col>
-      </form>
+      <Redirect to="/peak-list" />
     );
   }
+
+  let errorMessage;
+  if (props.error) {
+    errorMessage = (
+      <div className="message message-error">{props.error}</div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={props.handleSubmit(values => onSubmit(values))}
+      className="edit-peak-form"
+    >
+      {errorMessage}
+
+      <Field
+        name="peakName"
+        type="text"
+        component={Input}
+        label="Peak"
+        editValue={props.editPeak.peakName}
+        disabled={true}
+      />
+
+      <Field
+        name="dateClimbed"
+        type="date"
+        component={Input}
+        label="Date"
+        editValue={dateFormat(props.editPeak.dateClimbed, 'yyyy-mm-dd')}
+        validate={[validDate]}
+      />
+
+      <Field
+        name="notes"
+        type="textarea"
+        component={Input}
+        editValue={props.editPeak.notes}
+        label="Notes"
+        maxLength="250"
+        warn={[maxChar250]}
+      />
+
+      <Col xs={12} className="form-button" >
+        <button
+          type="submit"
+          disabled={props.submitting}
+        >
+          Save
+        </button>
+      </Col>
+
+      <Col xs={12} className="form-button" >
+        <Link
+          to="/peak-list"
+          id="cancel-edit"
+        >
+          Cancel
+        </Link>
+      </Col>
+    </form>
+  );
 }
 
 EditPeakForm.propTypes = {
-  pristine: PropTypes.bool,
   submitting: PropTypes.bool,
   error: PropTypes.string,
   authToken: PropTypes.string,
@@ -105,7 +105,6 @@ EditPeakForm.propTypes = {
 };
 
 EditPeakForm.defaultProps = {
-  pristine: true,
   submitting: false,
   error: '',
   authToken: null,

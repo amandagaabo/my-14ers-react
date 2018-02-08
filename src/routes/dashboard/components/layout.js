@@ -22,7 +22,7 @@ export default function Layout(props) {
   const percent = Math.ceil((numberClimbed / totalPeaks) * 100);
 
   return (
-    <main role="main">
+    <main role="main" className="dashboard-container">
       <div className="container">
         <h1 className="page-header">Summary of Colorado 14ers Climbed</h1>
 

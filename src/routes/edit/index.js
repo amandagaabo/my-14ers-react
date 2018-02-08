@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import Layout from './components/layout';
 import { updatePeak } from './../../modules/peaks/actions';
 
-
-export function AddPeak(props) {
+export function EditPeak(props) {
   return (
     <Layout {...props} />
   );
@@ -25,4 +24,4 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPeak);
+export default connect(mapStateToProps, mapDispatchToProps)(EditPeak);
