@@ -18,8 +18,8 @@ export function getUserPeaksFromDB(token, userId) {
   });
 }
 
-export function addPeakToDB(token, uuid, newPeak) {
-  return fetch(`${API_BASE_URL}/users/${uuid}/peaks`, {
+export function addPeakToDB(token, userId, newPeak) {
+  return fetch(`${API_BASE_URL}/users/${userId}/peaks`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -47,8 +47,8 @@ export function addPeakToDB(token, uuid, newPeak) {
   });
 }
 
-export function updatePeakInDB(token, uuid, peakId, dateClimbed, notes) {
-  return fetch(`${API_BASE_URL}/users/${uuid}/${peakId}`, {
+export function updatePeakInDB(token, userId, peakId, dateClimbed, notes) {
+  return fetch(`${API_BASE_URL}/users/${userId}/${peakId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -69,8 +69,8 @@ export function updatePeakInDB(token, uuid, peakId, dateClimbed, notes) {
   });
 }
 
-export function removePeakFromDB(token, uuid, peakId) {
-  return fetch(`${API_BASE_URL}/users/${uuid}/${peakId}`, {
+export function removePeakFromDB(token, userId, peakId) {
+  return fetch(`${API_BASE_URL}/users/${userId}/${peakId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
