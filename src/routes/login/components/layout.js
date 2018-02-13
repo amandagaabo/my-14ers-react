@@ -7,10 +7,6 @@ import LoginForm from './login-form';
 import './layout.css';
 
 export default function Layout(props) {
-  function onFacebookLoginFailure(err) {
-    console.error('facebook login error', err);
-  }
-
   if (props.loggedIn) {
     return (
       <Redirect to="/dashboard" />
@@ -27,12 +23,19 @@ export default function Layout(props) {
       <Col xs={12}>
         <FacebookLogin
           appId="335446923615924"
+          version="2.12"
           fields="name,email"
           callback={props.onLoginWithFacebook}
-          onFailure={onFacebookLoginFailure}
           cssClass="facebook-btn"
           icon="fa-facebook"
         />
+      </Col>
+      <Col xs={12}>
+        <a
+          href="https://www.iubenda.com/privacy-policy/47759666/legal"
+          className="facebook-privacy-link"
+        >Privacy Policy
+        </a>
       </Col>
     </main>
   );
