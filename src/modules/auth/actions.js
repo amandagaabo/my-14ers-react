@@ -123,5 +123,5 @@ export const loginWithFacebook = facebookRes => (dispatch) => {
   })
     .then(res => res.json())
     .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
-    .catch(err => console.log('facebook auth api error', err));
+    .catch(err => console.log(err.message));
 };
