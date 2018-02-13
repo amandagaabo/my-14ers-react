@@ -17,7 +17,10 @@ export function SignUpForm(props) {
 
     return props.dispatch(registerUser(user))
       .then(() => {
-        props.dispatch(login(email, password));
+        return props.dispatch(login(email, password));
+      })
+      .then(() => {
+        props.history.push('/dashboard');
       });
   }
 
