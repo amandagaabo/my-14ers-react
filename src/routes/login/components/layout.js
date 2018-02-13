@@ -2,7 +2,9 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
 import LoginForm from './login-form';
+import './layout.css';
 
 export default function Layout(props) {
   if (props.loggedIn) {
@@ -17,12 +19,31 @@ export default function Layout(props) {
         <h1 className="form-header">Login</h1>
         <LoginForm {...props} />
       </Col>
+
+      <Col xs={12}>
+        <FacebookLogin
+          appId="335446923615924"
+          version="2.12"
+          fields="name,email"
+          callback={props.onLoginWithFacebook}
+          cssClass="facebook-btn"
+          icon="fa-facebook"
+        />
+      </Col>
+      <Col xs={12}>
+        <a
+          href="https://www.iubenda.com/privacy-policy/47759666/legal"
+          className="facebook-privacy-link"
+        >Privacy Policy
+        </a>
+      </Col>
     </main>
   );
 }
 
 Layout.propTypes = {
-  loggedIn: PropTypes.bool
+  loggedIn: PropTypes.bool,
+  onLoginWithFacebook: PropTypes.func
 };
 
 Layout.defaultProps = {
