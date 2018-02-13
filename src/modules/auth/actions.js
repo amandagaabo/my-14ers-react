@@ -112,3 +112,16 @@ export const registerUser = user => () => {
       return 'other error';
     });
 };
+
+export const loginWithFacebook = facebookRes => (dispatch) => {
+  return fetch(`${API_BASE_URL}/auth/facebook`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(facebookRes)
+  })
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .catch(err => console.log('facebook auth api error', err));
+};

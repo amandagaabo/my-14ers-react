@@ -7,14 +7,14 @@ import LoginForm from './login-form';
 import './layout.css';
 
 export default function Layout(props) {
+  function onFacebookLoginFailure(err) {
+    console.error('facebook login error', err);
+  }
+
   if (props.loggedIn) {
     return (
       <Redirect to="/dashboard" />
     );
-  }
-
-  function sendFacebookResToAPI(res) {
-    console.log('facebook response', res);
   }
 
   return (
@@ -27,9 +27,9 @@ export default function Layout(props) {
       <Col xs={12}>
         <FacebookLogin
           appId="335446923615924"
-          autoLoad={true}
           fields="name,email"
-          callback={sendFacebookResToAPI}
+          callback={props.onLoginWithFacebook}
+          onFailure={onFacebookLoginFailure}
           cssClass="facebook-btn"
           icon="fa-facebook"
         />
@@ -39,7 +39,8 @@ export default function Layout(props) {
 }
 
 Layout.propTypes = {
-  loggedIn: PropTypes.bool
+  loggedIn: PropTypes.bool,
+  onLoginWithFacebook: PropTypes.func
 };
 
 Layout.defaultProps = {
