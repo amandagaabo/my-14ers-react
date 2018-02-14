@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import { Home } from './index';
+import Home from './index';
 
 describe('<Home />', () => {
   it('Renders without crashing', () => {
