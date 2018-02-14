@@ -20,4 +20,15 @@
 
 .home-content {
   height: 500px;
+  padding: 0 300px;
+}
+
+.home-content h1 {
+  margin-bottom: 25px;
+}
+
+.home-icon {
+  height: 75px;
+  margin: 15px 0;
+  color: blue;
 }
