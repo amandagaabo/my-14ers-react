@@ -17,7 +17,7 @@ export default function Header(props) {
 
   if (loggedIn) {
     return (
-      <Navbar className="nav-loggedin">
+      <Navbar fixedTop className="nav-loggedin">
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">My 14ers</Link>
@@ -52,7 +52,7 @@ export default function Header(props) {
     );
   }
   return (
-    <Navbar className="nav-not-loggedin">
+    <Navbar fixedTop className="nav-not-loggedin">
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">My 14ers</Link>

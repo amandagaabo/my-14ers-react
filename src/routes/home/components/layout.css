@@ -1,17 +1,19 @@
+.home {
+  width: 100%;
+}
+
 .jumbotron {
-  margin-bottom: 20px;
-  height: 450px;
-  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1515009705/14ers/longs-peak-cover.jpg);
-  background-position: 0% 15%;
+  height: 800px;
+  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1518623123/14ers/cover/alpine-trail.jpg);
+  background-position: 0 125%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.home-page-button {
-  display: block;
-  margin-bottom: 15px;
-}
-
-.home-page-button button {
-  width: 125px;
+.jumbotron h1 {
+  position: relative;
+  text-align: left;
+  top: 450px;
+  color: white;
+  font-size: 75px;
 }
