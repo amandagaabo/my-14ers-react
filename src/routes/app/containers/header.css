@@ -4,7 +4,7 @@
   border: none;
 }
 
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav>li>a {
   color: black;
   margin: 10px;
   padding: 8px 12px;
@@ -14,7 +14,7 @@
   transition: all 300ms ease;
 }
 
-.navbar-default .navbar-nav > li > a:hover {
+.navbar-default .navbar-nav>li>a:hover {
   border: 2px solid black;
   color: black;
 }
@@ -25,9 +25,13 @@
   line-height: 30px;
 }
 
-.navbar-default .navbar-brand:hover {
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 2px;
   color: black;
 }
+
 
 .scrolled-nav {
   background-color: white;

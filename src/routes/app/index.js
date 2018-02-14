@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Layout from './components/layout';
 import { refreshAuthToken, setReady } from './../../modules/auth/actions';
 import { getUserPeaks } from './../../modules/peaks/actions';
-import './styles.css';
 
 export class App extends React.Component {
   componentDidMount() {

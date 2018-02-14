@@ -91,6 +91,7 @@ export default class Input extends React.Component {
               onDrop={this.props.input.onDrop}
               onFocus={this.props.input.onFocus}
               id={this.props.input.name}
+              className={this.props.meta.touched && this.props.meta.error ? 'error-field' : null}
               type={this.props.type}
               ref={input => (this.input = input)}
             >
@@ -123,6 +124,7 @@ export default class Input extends React.Component {
               onDrop={this.props.input.onDrop}
               onFocus={this.props.input.onFocus}
               id={this.props.input.name}
+              className={this.props.meta.touched && this.props.meta.error ? 'error-field' : null}
               type={this.props.type}
               ref={input => (this.input = input)}
               defaultValue={this.props.editValue}
@@ -154,6 +156,7 @@ export default class Input extends React.Component {
             onDrop={this.props.input.onDrop}
             onFocus={this.props.input.onFocus}
             id={this.props.input.name}
+            className={this.props.meta.touched && this.props.meta.error ? 'error-field' : null}
             type={this.props.type}
             ref={input => (this.input = input)}
             defaultValue={this.props.editValue}
