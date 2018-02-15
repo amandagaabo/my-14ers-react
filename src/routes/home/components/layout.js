@@ -10,6 +10,7 @@ export default function Layout() {
           <h1>Track your Colorado 14ers</h1>
         </div>
       </Jumbotron>
+
       <Col xs={12} className="home-content container">
         <h1>Your 14er checklist</h1>
         <Col className="home-info" sm={10} smOffset={1} lg={3} lgOffset={1}>
@@ -21,8 +22,8 @@ export default function Layout() {
           <h2>Hike a Colorado 14er</h2>
           <p>
             There are 58 mountains in Colorado with peaks that are at 14,000 ft or taller.
-            They are challenging hikes of varying lengths and difficulty levels. Choose one,
-            prepare for it and hike it!
+            There are rewarding hikes of varying lengths and difficulty levels to the tops
+            of these peaks. Choose one, prepare for it and hike it!
           </p>
         </Col>
 

@@ -30,15 +30,6 @@ export default function Layout(props) {
             icon="fa-facebook"
           />
         </Col>
-
-        <Col xs={12}>
-          <a
-            href="https://www.iubenda.com/privacy-policy/47759666/legal"
-            className="facebook-privacy-link"
-          >Privacy Policy
-          </a>
-        </Col>
-
       </Col>
     </main>
   );

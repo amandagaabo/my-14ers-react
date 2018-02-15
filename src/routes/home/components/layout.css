@@ -1,13 +1,10 @@
-.home {
-  width: 100%;
-}
-
 .jumbotron {
   height: 800px;
   background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1518711476/14ers/cover/home-img-compressed.jpg);
   background-position: 0 160%;
   background-size: cover;
   background-repeat: no-repeat;
+  clear: both;
 }
 
 .jumbotron h1 {
@@ -19,15 +16,15 @@
 }
 
 .home-content {
-  min-height: 500px;
+  clear: both;
+}
+
+.home-content h1 {
+  margin-bottom: 35px;
 }
 
 .home-info {
   margin-bottom: 20px;
-}
-
-.home-content h1 {
-  margin-bottom: 25px;
 }
 
 .home-icon {

@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from '../containers/header';
+import Header from './../containers/header';
+import Footer from './../components/footer';
 import Home from '../../home/';
-import AddPeak from '../../add-peak/';
-import SignUp from '../../sign-up';
-import Login from '../../login';
-import Dashboard from '../../dashboard';
-import PeakList from '../../peak-list';
-import PeakMap from '../../peak-map';
-import Edit from '../../edit';
+import AddPeak from './../../add-peak/';
+import SignUp from './../../sign-up';
+import Login from './../../login';
+import Dashboard from './../../dashboard';
+import PeakList from './../../peak-list';
+import PeakMap from './../../peak-map';
+import Edit from './../../edit';
 
 export default function Layout(props) {
   return (
@@ -28,6 +29,7 @@ export default function Layout(props) {
           {/*
           <Route component={NotFoundPage} /> */}
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
