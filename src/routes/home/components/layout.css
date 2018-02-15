@@ -4,8 +4,8 @@
 
 .jumbotron {
   height: 800px;
-  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1518623123/14ers/cover/alpine-trail.jpg);
-  background-position: 0 150%;
+  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1518711476/14ers/cover/home-img-compressed.jpg);
+  background-position: 0 160%;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -13,7 +13,7 @@
 .jumbotron h1 {
   position: relative;
   text-align: left;
-  top: 450px;
+  top: 420px;
   color: white;
   font-size: 75px;
 }
