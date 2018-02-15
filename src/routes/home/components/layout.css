@@ -19,8 +19,11 @@
 }
 
 .home-content {
-  height: 500px;
-  padding: 0 300px;
+  min-height: 500px;
+}
+
+.home-info {
+  margin-bottom: 20px;
 }
 
 .home-content h1 {
