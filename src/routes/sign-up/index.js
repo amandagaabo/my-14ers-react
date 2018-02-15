@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { loginWithFacebook } from './../../modules/auth/actions';
 import Layout from './components/layout';
 
 export function SignUp(props) {
@@ -12,4 +13,12 @@ export const mapStateToProps = state => ({
   loggedIn: state.app.auth.currentUser != null
 });
 
-export default connect(mapStateToProps)(SignUp);
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    onSignupWithFacebook: (facebookRes) => {
+      dispatch(loginWithFacebook(facebookRes));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import LoginForm from './login-form';
-import './layout.css';
 
 export default function Layout(props) {
   if (props.loggedIn) {

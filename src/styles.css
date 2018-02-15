@@ -4,6 +4,7 @@
 
 body {
   position: relative;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 0;
   text-align: center;
@@ -30,7 +31,39 @@ footer {
 
 .page-header {
   border: none;
-  margin: 15px 0;
+  margin: 30px 0;
+}
+
+/*login and sign up pages*/
+.login-container, .sign-up-container {
+  height: 100vh;
+  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1518711709/14ers/cover/login-signup-compressed-dark.jpg);
+  background-position: 0 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.form-container {
+  margin-top: 120px;
+  background-color: white;
+  padding: 15px 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,30,.5);
+}
+
+.divider {
+  color: grey;
+}
+
+.facebook-btn {
+  background-color: #3b5998;
+  color: white;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.fa-facebook {
+  padding-right: 10px;
 }
 
 form button[type="submit"], .facebook-btn {
