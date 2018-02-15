@@ -27,7 +27,7 @@ export default function Layout() {
             alt="checklist"
             className="home-icon"
           />
-          <p>Mark it as complted</p>
+          <p>Mark it as completed</p>
         </Col>
 
         <Col xs={12} md={4}>

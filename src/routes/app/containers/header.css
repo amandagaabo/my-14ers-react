@@ -1,7 +1,9 @@
 .navbar {
   margin: 0;
-  background: none;
   border: none;
+  background-color: white;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.15);
+  opacity: .95;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -30,10 +32,4 @@
   border: 2px solid black;
   border-radius: 2px;
   color: black;
-}
-
-
-.scrolled-nav {
-  background-color: white;
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.15);
 }
