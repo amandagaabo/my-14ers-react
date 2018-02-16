@@ -31,6 +31,7 @@ export function LoginForm(props) {
       onSubmit={props.handleSubmit(values => onSubmit(values))}
       className="login-form"
     >
+      {errorMessage}
 
       <Field
         component={Input}
@@ -49,8 +50,6 @@ export function LoginForm(props) {
         label="Password"
         validate={[required, nonEmpty]}
       />
-
-      {errorMessage}
 
       <Col xs={12} className="form-button" >
         <button

@@ -42,6 +42,7 @@ export function SignUpForm(props) {
       onSubmit={props.handleSubmit(values => onSubmit(values))}
       className="sign-up-form"
     >
+      {errorMessage}
 
       <Field
         component={Input}
@@ -66,8 +67,6 @@ export function SignUpForm(props) {
         label="Confirm Password"
         validate={[required, nonEmpty, matches('password')]}
       />
-
-      {errorMessage}
 
       <Col xs={12} className="form-button" >
         <button
