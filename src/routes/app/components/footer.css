@@ -1,5 +1,5 @@
 .copyright-icon {
-  padding-right: 15px;
+  padding-right: 5px;
 }
 
 .footer-text {
@@ -8,5 +8,9 @@
 }
 
 .facebook-privacy-link {
-  padding-left: 20px;
+  padding: 0 20px;
+}
+
+.footer-text a {
+  color: #1E4899;
 }

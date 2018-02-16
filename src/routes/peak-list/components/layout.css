@@ -3,9 +3,23 @@
 }
 
 .list-sort {
-  float: right;
-  padding-right: 15px;
-  margin-bottom: 15px;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.list-sort select {
+  width: 155px;
+  padding: 0 10px;
+  line-height: 1;
+  border: 0;
+  height: 34px;
+  background: url(https://res.cloudinary.com/amhprojects/image/upload/c_scale,w_16/v1518819853/14ers/down-arrow.png) no-repeat right white;
+  -webkit-appearance: none;
+  background-position-x: 131px;
+}
+
+select:focus {
+  outline: none;
 }
 
 .mountain-box {
@@ -69,14 +83,15 @@
 }
 
 .edit-peak {
+  font-size: .9em;
   color: white;
-  background-color: #1E4899;
+  background-color: black;
   padding: 4px 12px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .edit-peak:hover {
   text-decoration: none;
   color: white;
-  background-color: #4e69a2;
+  background-color: #404040;
 }

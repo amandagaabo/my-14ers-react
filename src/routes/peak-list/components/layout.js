@@ -102,9 +102,14 @@ export default class Layout extends React.Component {
         <div className="container">
           <div className="peak-list-container" >
 
-            <div className="list-sort">
+            <div className="list-sort container">
               <label htmlFor="sort-by">Sort by: </label>
-              <select id="sort-by" onChange={e => this.onSortChange(e)} value={this.props.sortBy}>
+
+              <select
+                id="sort-by"
+                onChange={e => this.onSortChange(e)}
+                value={this.props.sortBy}
+              >
                 <option value="DATE_CLIMBED">Date climbed</option>
                 <option value="PEAK_NAME">Peak name</option>
                 <option value="RANK">Peak rank</option>

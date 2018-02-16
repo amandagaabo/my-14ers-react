@@ -1,15 +1,24 @@
 .info-window-container {
   background-color: white;
   padding: 12px;
+  border: 1px solid white;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
 }
 
 .info-window-header, .info-window-text {
   margin: 0 auto;
+  text-align: left;
 }
 
 .info-window-header {
-  font-size: 140%;
+  font-size: 2em;
   margin-bottom: 5px;
+  color: #1E4899;
+}
+
+.info-window-text {
+  font-size: 1.5em;
 }
 
 .info-window-image {
@@ -22,5 +31,17 @@
 }
 
 .close-x {
+  font-size: 1.5em;
+  position: relative;
   float: right;
+  height: 25px;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  top: -8px;
+  right: -8px;
+}
+
+.close-x:hover {
+  border: 1px solid black;
 }
