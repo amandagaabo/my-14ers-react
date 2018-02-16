@@ -87,8 +87,16 @@ footer {
   height: 40px;
 }
 
+button:focus {
+  outline: none;
+}
+
 .form-input {
   padding-right: 0;
+}
+
+.form-input label {
+  color: #1E4899;
 }
 
 .message-error {
