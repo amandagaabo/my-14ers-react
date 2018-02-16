@@ -13,7 +13,7 @@
   height: 47px;
   padding: 8px 12px;
   letter-spacing: 0.05em;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   transition: all 300ms ease;
 }
 

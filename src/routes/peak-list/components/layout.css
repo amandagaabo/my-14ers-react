@@ -8,23 +8,65 @@
   margin-bottom: 15px;
 }
 
+.mountain-box {
+  margin-bottom: 20px;
+}
+
+.inner-box {
+  padding: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+  overflow: auto;
+}
+
 .mountain-photo {
   width: 100%;
+  border-bottom: 1px solid #1E4899;
 }
 
-.caption-header {
-  margin-bottom: 5px;
-  margin-top: 5px;
-  font-size: 20px;
+.caption-header, .caption-details {
+  border-bottom: 1px solid #1E4899;
 }
 
-.caption-details {
+.caption-header, .caption-details, .caption-notes {
+  margin: 0;
+  padding: 15px 10px;
+}
+
+.caption-header h2 {
+  font-size: 24px;
+  color: #1E4899;
+}
+
+.caption-header h2, .caption-details p, .caption-notes p {
   margin: 0;
 }
 
-.mountain-box {
-  position: relative;
-  margin-bottom: 20px;
+.caption-details {
+  background-color: #e8ecf4;
+}
+
+.caption-notes {
+  height: 84px;
+  overflow: scroll;
+}
+
+.detail-box {
+  padding: 0 5px;
+}
+
+.right-border {
+  border-right: 1px solid #696969;
+}
+
+.left-border {
+  border-left: 1px solid #696969;
+}
+
+.caption-description {
+  text-transform: uppercase;
+  font-size: .8em;
+  color: #1E4899;
 }
 
 .hover-options {
@@ -51,7 +93,6 @@
 
 .remove-peak {
   margin-left: 5px;
-  padding-bottom: 4px;
 }
 
 .edit-peak {
