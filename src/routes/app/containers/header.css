@@ -6,40 +6,37 @@
   opacity: .95;
 }
 
-/* navbar links, not logged in */
+/* navbar links */
 .navbar-default .navbar-nav>li>a {
-  color: black;
-  margin: 10px;
+  color: #1E4899;
+  margin-top: 17px;
+  height: 47px;
   padding: 8px 12px;
   letter-spacing: 0.05em;
-  border: 2px solid transparent;
-  border-radius: 2px;
+  border-bottom: 2px solid transparent;
   transition: all 300ms ease;
 }
 
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover {
-  border: 2px solid black;
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>li>a:hover {
+  border-bottom: 3px solid black;
   color: black;
   background-color: transparent;
 }
 
-.navbar-default .navbar-nav>li>a:hover {
-  border: 2px solid black;
-  color: black;
-  background-color: transparent;
+.navbar-default .navbar-nav>li {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 /* navbar brand */
-.navbar-default .navbar-brand {
-  font-size: 28px;
-  color: black;
-  line-height: 30px;
+.logo-img {
+  height: 50px;
 }
 
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:hover {
-  background-color: transparent;
-  color: black;
+.navbar-brand {
+  padding: 0;
+  margin-top: 5px;
 }

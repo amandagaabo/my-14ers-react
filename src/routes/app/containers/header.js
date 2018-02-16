@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
-import { Navbar, Nav, NavDropdown, MenuItem, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { setCurrentUser, setAuthToken } from './../../../modules/auth/actions';
 import { clearAuthToken } from './../../../utils/local-storage';
 import './header.css';
@@ -20,35 +20,37 @@ export default function Header(props) {
       <Navbar fixedTop className="nav-loggedin">
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/">My 14ers</Link>
+            <Link to="/">
+              <img
+                src="https://res.cloudinary.com/amhprojects/image/upload/v1518745648/14ers/logo.png"
+                alt="my14ers"
+                className="logo-img"
+              />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavDropdown eventKey={1} title="Menu" id="basic-nav-dropdown">
-              <LinkContainer to="/dashboard">
-                <MenuItem eventKey={1.1}>Dashboard</MenuItem>
-              </LinkContainer>
+            <LinkContainer to="/dashboard">
+              <NavItem eventKey={1.1}>Dashboard</NavItem>
+            </LinkContainer>
 
-              <LinkContainer to="/add-peak">
-                <MenuItem eventKey={1.2}>Add Peak</MenuItem>
-              </LinkContainer>
+            <LinkContainer to="/add-peak">
+              <NavItem eventKey={1.2}>Add Peak</NavItem>
+            </LinkContainer>
 
-              <LinkContainer to="/peak-list">
-                <MenuItem eventKey={1.3}>Peak List</MenuItem>
-              </LinkContainer>
+            <LinkContainer to="/peak-list">
+              <NavItem eventKey={1.3}>Peak List</NavItem>
+            </LinkContainer>
 
-              <LinkContainer to="/peak-map">
-                <MenuItem eventKey={1.4}>Peak Map</MenuItem>
-              </LinkContainer>
+            <LinkContainer to="/peak-map">
+              <NavItem eventKey={1.4}>Peak Map</NavItem>
+            </LinkContainer>
 
-              <MenuItem divider />
-
-              <LinkContainer to="/logout">
-                <MenuItem eventKey={1.5} onClick={logOut}>Logout</MenuItem>
-              </LinkContainer>
-            </NavDropdown>
+            <LinkContainer to="/logout">
+              <NavItem eventKey={1.5} onClick={logOut}>Logout</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -58,7 +60,13 @@ export default function Header(props) {
     <Navbar fixedTop className="nav-not-loggedin">
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">My 14ers</Link>
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/amhprojects/image/upload/v1518745648/14ers/logo.png"
+              alt="my14ers"
+              className="logo-img"
+            />
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

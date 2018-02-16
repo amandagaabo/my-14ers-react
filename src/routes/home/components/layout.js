@@ -15,7 +15,7 @@ export default function Layout() {
         <h1>Your 14er checklist</h1>
         <Col className="home-info" sm={10} smOffset={1} lg={3} lgOffset={1}>
           <img
-            src="https://res.cloudinary.com/amhprojects/image/upload/v1518643033/14ers/hiker-icon.png"
+            src="https://res.cloudinary.com/amhprojects/image/upload/v1518746408/14ers/hiker-blue.png"
             alt="hiker"
             className="home-icon"
           />
@@ -29,7 +29,7 @@ export default function Layout() {
 
         <Col className="home-info" sm={10} smOffset={1} lg={4} lgOffset={0}>
           <img
-            src="https://res.cloudinary.com/amhprojects/image/upload/v1518643137/14ers/checklist-icon.png"
+            src="https://res.cloudinary.com/amhprojects/image/upload/v1518746408/14ers/checklist-blue.png"
             alt="checklist"
             className="home-icon"
           />
@@ -43,7 +43,7 @@ export default function Layout() {
 
         <Col className="home-info" sm={10} smOffset={1} lg={3} lgOffset={0}>
           <img
-            src="https://res.cloudinary.com/amhprojects/image/upload/v1518642680/14ers/high-five-icon.svg"
+            src="https://res.cloudinary.com/amhprojects/image/upload/v1518746408/14ers/high-five-blue.png"
             alt="high-five"
             className="home-icon"
           />

@@ -37,8 +37,8 @@
   display: inline-block;
   margin: 0;
   padding: 1px;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   border: 1px solid white;
   border-radius: 2px;
   background-color: transparent;
@@ -51,7 +51,7 @@
 
 .remove-peak {
   margin-left: 5px;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
 }
 
 .edit-peak {
