@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import dateFormat from 'dateformat';
@@ -11,7 +11,7 @@ export function EditPeakForm(props) {
   function onSubmit(values) {
     const token = props.authToken;
     const userId = props.currentUser.uuid;
-    const { peakId } = props.editPeak;
+    const peakId = props.editPeak.uuid;
     const { dateClimbed, notes } = values;
     props.onUpdatePeak(token, userId, peakId, dateClimbed, notes);
   }
@@ -35,15 +35,6 @@ export function EditPeakForm(props) {
       className="edit-peak-form"
     >
       {errorMessage}
-
-      <Field
-        name="peakName"
-        type="text"
-        component={Input}
-        label="Peak"
-        editValue={props.editPeak.peakName}
-        disabled={true}
-      />
 
       <Field
         name="dateClimbed"
@@ -72,15 +63,6 @@ export function EditPeakForm(props) {
           Save
         </button>
       </Col>
-
-      <Col xs={12} className="form-button" >
-        <Link
-          to="/peak-list"
-          id="cancel-edit"
-        >
-          Cancel
-        </Link>
-      </Col>
     </form>
   );
 }
@@ -94,7 +76,7 @@ EditPeakForm.propTypes = {
     uuid: PropTypes.string
   }),
   editPeak: PropTypes.shape({
-    peakId: PropTypes.string,
+    uuid: PropTypes.string,
     peakName: PropTypes.string,
     dateClimbed: PropTypes.string,
     notes: PropTypes.string

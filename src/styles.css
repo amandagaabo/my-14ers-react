@@ -32,11 +32,6 @@ footer {
   opacity: .95;
 }
 
-.page-header {
-  border: none;
-  margin: 30px 0;
-}
-
 /*login and sign up pages*/
 .login-container, .sign-up-container {
   height: 100vh;
@@ -93,6 +88,10 @@ button:focus {
 
 .form-input {
   padding-right: 0;
+}
+
+.form-input input:hover {
+  cursor: pointer;
 }
 
 .form-input label {

@@ -1,0 +1,29 @@
+.delete-peak-btn {
+  background-color: red;
+  color: white;
+  height: 40px;
+  width: 95%;
+  margin-top: 20px;
+}
+
+.delete-peak-btn:hover {
+  background-color:#ff3232;
+}
+
+.peak-name-title {
+  margin: 15px auto;
+  color: #1E4899;
+}
+
+.peak-img {
+  width: 95%;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+.cancel-link {
+  display: inline-block;
+}
+
+.edit-peak-form, .delete-peak-btn, .cancel-link {
+  margin-bottom: 20px;
+}
