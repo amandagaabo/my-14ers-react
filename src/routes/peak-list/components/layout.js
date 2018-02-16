@@ -6,44 +6,20 @@ import { Icon } from 'react-fa';
 import './layout.css';
 
 export default class Layout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showOptionsId: null
-    };
-  }
-
   onSortChange(e) {
     const sortBy = e.target.value;
     this.props.onSortSelect(sortBy);
   }
 
-  onMouseEnter(peakId) {
-    this.setState({
-      showOptionsId: peakId
-    });
-  }
-
-  onMouseLeave() {
-    this.setState({
-      showOptionsId: null
-    });
-  }
-
-  onEditClick(peakId, peakName, dateClimbed, notes) {
+  onEditClick(peakId, peakName, dateClimbed, notes, imgSrc) {
     const editPeak = {
-      peakId,
+      uuid: peakId,
       peakName,
       dateClimbed,
-      notes
+      notes,
+      imgSrc
     };
     this.props.onSetEditPeak(editPeak);
-  }
-
-  onDeleteClick(peakId) {
-    const token = this.props.authToken;
-    const { uuid } = this.props.currentUser;
-    this.props.onDeletePeak(token, uuid, peakId);
   }
 
   render() {
@@ -62,15 +38,12 @@ export default class Layout extends React.Component {
       // generage JSX for each row
       peakPhotoList = userPeaks.map((row) => {
         const peaks = row.peaks.map((peak) => {
-          const visibility = peak.uuid === this.state.showOptionsId ? '' : 'hidden';
           return (
             <Col
               className="mountain-box"
               xs={12}
               md={4}
               key={peak.id}
-              onMouseEnter={() => this.onMouseEnter(peak.uuid)}
-              onMouseLeave={() => this.onMouseLeave(peak.uuid)}
             >
               <Col className="inner-box">
                 <img src={peak.imgSrc} alt={peak.peakName} className="mountain-photo" />
@@ -100,19 +73,16 @@ export default class Layout extends React.Component {
                   <p>{peak.notes}</p>
                 </Col>
 
-                <div className="hover-options">
+                <Col xs={12} className="caption-edit">
                   <Link
                     to="/edit"
-                    className={`button edit-peak ${visibility}`}
-                    onClick={() => this.onEditClick(peak.uuid, peak.peakName, peak.date, peak.notes)}
-                  > <Icon name="pencil" />
+                    className="edit-peak"
+                    onClick={() => this.onEditClick(
+                      peak.uuid, peak.peakName, peak.date, peak.notes, peak.imgSrc
+                    )}
+                  > <Icon name="pencil" /> edit
                   </Link>
-                  <button
-                    className={`button remove-peak ${visibility}`}
-                    onClick={() => this.onDeleteClick(peak.uuid)}
-                  > <Icon name="times" />
-                  </button>
-                </div>
+                </Col>
 
               </Col>
             </Col>
@@ -159,7 +129,6 @@ Layout.propTypes = {
   }),
   sortBy: PropTypes.string,
   onSetEditPeak: PropTypes.func,
-  onDeletePeak: PropTypes.func,
   onSortSelect: PropTypes.func
 };
 

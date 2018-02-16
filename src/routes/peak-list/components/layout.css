@@ -21,14 +21,13 @@
 
 .mountain-photo {
   width: 100%;
+}
+
+.mountain-photo, .caption-header, .caption-details {
   border-bottom: 1px solid #1E4899;
 }
 
-.caption-header, .caption-details {
-  border-bottom: 1px solid #1E4899;
-}
-
-.caption-header, .caption-details, .caption-notes {
+.caption-header, .caption-details, .caption-notes, .caption-edit {
   margin: 0;
   padding: 15px 10px;
 }
@@ -56,11 +55,11 @@
 }
 
 .right-border {
-  border-right: 1px solid #696969;
+  border-right: 1px solid #1E4899;
 }
 
 .left-border {
-  border-left: 1px solid #696969;
+  border-left: 1px solid #1E4899;
 }
 
 .caption-description {
@@ -69,33 +68,15 @@
   color: #1E4899;
 }
 
-.hover-options {
-  position: absolute;
-  right: 20px;
-  top: 5px;
-}
-
-.remove-peak, .edit-peak {
-  display: inline-block;
-  margin: 0;
-  padding: 1px;
-  height: 30px;
-  width: 30px;
-  border: 1px solid white;
-  border-radius: 2px;
-  background-color: transparent;
-}
-
-.remove-peak:hover, .edit-peak:hover {
-  background-color: white;
-  color: black;
-}
-
-.remove-peak {
-  margin-left: 5px;
-}
-
 .edit-peak {
-  background-color: transparent;
-  color: black;
+  color: white;
+  background-color: #1E4899;
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+.edit-peak:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #4e69a2;
 }

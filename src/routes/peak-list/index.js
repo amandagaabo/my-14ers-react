@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Layout from './components/layout';
-import { removePeak, updateSort, setEditPeak } from './../../modules/peaks/actions';
+import { updateSort, setEditPeak } from './../../modules/peaks/actions';
 import { getSortedPeaksForList } from './../../modules/peaks/selectors';
 
 export function PeakList(props) {
@@ -22,9 +22,6 @@ export const mapDispatchToProps = (dispatch) => {
   return {
     onSetEditPeak: (editPeak) => {
       dispatch(setEditPeak(editPeak));
-    },
-    onDeletePeak: (token, uuid, peakId) => {
-      dispatch(removePeak(token, uuid, peakId));
     },
     onSortSelect: (sortBy) => {
       dispatch(updateSort(sortBy));
