@@ -17,7 +17,7 @@ describe('<EditPeakForm />', () => {
     const editPeak = {};
     const wrapper = shallow(<EditPeakForm handleSubmit={handleSubmit} editPeak={editPeak} />);
     expect(wrapper.hasClass('edit-peak-form')).to.equal(true);
-    expect(wrapper.find(Field)).to.have.length(3);
+    expect(wrapper.find(Field)).to.have.length(2);
     expect(wrapper.contains('error')).to.equal(false);
   });
 
@@ -27,7 +27,7 @@ describe('<EditPeakForm />', () => {
     const editPeak = {};
     const wrapper = shallow(<EditPeakForm handleSubmit={handleSubmit} editPeak={editPeak} error={error} />);
     expect(wrapper.hasClass('edit-peak-form')).to.equal(true);
-    expect(wrapper.find(Field)).to.have.length(3);
+    expect(wrapper.find(Field)).to.have.length(2);
     expect(wrapper.contains(error)).to.equal(true);
   });
 

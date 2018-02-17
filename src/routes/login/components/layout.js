@@ -19,7 +19,7 @@ export default function Layout(props) {
         <LoginForm {...props} />
 
         <Col xs={12}>
-          <hr clasName="divider" />
+          <hr className="divider" />
           <FacebookLogin
             appId="335446923615924"
             version="2.12"

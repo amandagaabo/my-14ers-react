@@ -72,7 +72,7 @@
   width: 5em;
   line-height: 5em;
   font-size: 0.2em;
-  color: black;
+  color: #1E4899;
   display: block;
   text-align: center;
   white-space: nowrap;
@@ -869,4 +869,11 @@
 }
 .c100.black:hover > span {
   color: black;
+}
+
+.c100.blue .bar, .c100.blue .fill {
+  border-color: #1E4899 !important;
+}
+.c100.blue:hover > span {
+  color: #1E4899;
 }

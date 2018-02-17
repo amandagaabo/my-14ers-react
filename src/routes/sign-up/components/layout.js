@@ -16,7 +16,7 @@ export default function Layout(props) {
       <Col md={4} mdOffset={4} xs={10} xsOffset={1} className="form-container">
         <SignUpForm {...props} />
         <Col xs={12}>
-          <hr clasName="divider" />
+          <hr className="divider" />
           <FacebookLogin
             appId="335446923615924"
             version="2.12"

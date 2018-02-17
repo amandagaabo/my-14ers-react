@@ -23,11 +23,10 @@ export default function Layout(props) {
 
   return (
     <main role="main" className="dashboard-container">
-      <div className="container">
-        <h1 className="page-header">Summary of Colorado 14ers Climbed</h1>
+      <div className="container dashboard">
 
         <div className="circle-chart" xs={12} >
-          <div id="progress-circle" className={`c100 big black p${percent}`}>
+          <div id="progress-circle" className={`c100 big blue p${percent}`}>
             <span id="percent">{percent}%</span>
             <div className="slice">
               <div className="bar" />
@@ -42,13 +41,13 @@ export default function Layout(props) {
         </p>
 
         <h2 className="divider-header"> Plan your next hike</h2>
-        <p>A great resource for planning is
+        <p>A great resource for planning is 
           <a
             href="https://www.14ers.com/photos/photos_14ers1.php"
             target="_blank"
             rel="noopener noreferrer"
           >
-             14ers.com
+            14ers.com
           </a>
           , which has safety tips, route info, photos, weather forcasts and maps.
         </p>

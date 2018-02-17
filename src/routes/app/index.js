@@ -24,9 +24,9 @@ export class App extends React.Component {
       this.stopPeriodicRefresh();
     }
 
-    if (nextProps.loggedIn && this.props.loggedIn) {
-      const token = this.props.authToken;
-      const userId = this.props.currentUser.uuid;
+    if (nextProps.loggedIn && !this.props.loggedIn) {
+      const token = nextProps.authToken;
+      const userId = nextProps.currentUser.uuid;
       this.props.dispatch(getUserPeaks(token, userId));
     }
   }
