@@ -22,7 +22,7 @@ export default function Header(props) {
           <Navbar.Brand>
             <Link to="/">
               <img
-                src="https://res.cloudinary.com/amhprojects/image/upload/v1518745648/14ers/logo.png"
+                src="https://res.cloudinary.com/amhprojects/image/upload/v1518971749/14ers/logo-new.png"
                 alt="my14ers"
                 className="logo-img"
               />

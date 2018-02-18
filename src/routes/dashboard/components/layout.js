@@ -43,9 +43,9 @@ export default function Layout(props) {
 
         <Col className="number-climbed-summary" xs={12} md={6}>
           <Col className="card">
-            <p className="card-title">total climbed</p>
+            <p className="card-title">peaks climbed</p>
             <div className="number-climbed">
-              <p className="card-content"> {numberClimbed} / {totalPeaks} peaks</p>
+              <p className="card-content"> {numberClimbed} / {totalPeaks}</p>
             </div>
           </Col>
         </Col>
