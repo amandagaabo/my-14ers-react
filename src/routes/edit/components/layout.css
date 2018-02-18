@@ -4,6 +4,7 @@
   height: 40px;
   width: 95%;
   margin-top: 20px;
+  border-radius: 3px;
 }
 
 .delete-peak-btn:hover {

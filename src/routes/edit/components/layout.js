@@ -2,16 +2,30 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Redirect, Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
 import EditPeakForm from './edit-peak-form';
 import './layout.css';
+import './react-confirm-alert.css';
 
 export default function Layout(props) {
-  function onDeleteClick(peakUuid) {
+  function onDeleteConfirm() {
     const token = props.authToken;
     const { uuid } = props.currentUser;
+    const peakUuid = props.editPeak.uuid;
     props.onDeletePeak(token, uuid, peakUuid);
     props.history.push('/peak-list');
   }
+
+  function onDeleteClick() {
+    confirmAlert({
+      title: 'Confirm delete peak',
+      message: 'Are you sure to delete this peak?',
+      confirmLabel: 'Delete',
+      cancelLabel: 'Cancel',
+      onConfirm: () => onDeleteConfirm()
+    });
+  }
+
 
   if (!props.loggedIn) {
     return (
@@ -45,7 +59,7 @@ export default function Layout(props) {
           <button
             type="button"
             className="delete-peak-btn"
-            onClick={() => onDeleteClick(props.editPeak.uuid)}
+            onClick={() => onDeleteClick()}
           >
             Delete Peak
           </button>

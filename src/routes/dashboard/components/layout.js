@@ -52,14 +52,14 @@ export default function Layout(props) {
 
         <Col xs={12} md={8} mdOffset={2} className="planning-section">
           <h2> Plan your next hike</h2>
-          <p>Ready to hike a 14ers?  A great resource for planning is
+          <p>Ready to hike a 14er?  A great resource for planning is
             <a
               href="https://www.14ers.com/photos/photos_14ers1.php"
               target="_blank"
               rel="noopener noreferrer"
               className="fourteeners-link"
             >
-              14ers.com
+              www.14ers.com
             </a>
             , which has route info, photos, weather forcasts, safety tips and maps.
           </p>
