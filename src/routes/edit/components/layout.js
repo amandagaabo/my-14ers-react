@@ -43,35 +43,37 @@ export default function Layout(props) {
     <main role="main" className="edit-peak-container">
       <div className="edit-form-container container">
 
-        <Col xs={12} md={6} mdOffset={3}>
-          <img src={props.editPeak.imgSrc} alt="peak" className="peak-img" />
-        </Col>
+        <Col xs={12} md={6} mdOffset={3} className="add-edit-container">
+          <Col xs={12}>
+            <img src={props.editPeak.imgSrc} alt="peak" className="peak-img" />
+          </Col>
 
-        <Col xs={12} md={6} mdOffset={3}>
-          <h2 className="peak-name-title">{props.editPeak.peakName}</h2>
-        </Col>
+          <Col xs={12}>
+            <h2 className="peak-name-title">{props.editPeak.peakName}</h2>
+          </Col>
 
-        <Col xs={12} md={6} mdOffset={3}>
-          <EditPeakForm {...props} />
-        </Col>
+          <Col xs={12}>
+            <EditPeakForm {...props} />
+          </Col>
 
-        <Col xs={12} md={6} mdOffset={3}>
-          <button
-            type="button"
-            className="delete-peak-btn"
-            onClick={() => onDeleteClick()}
-          >
-            Delete Peak
-          </button>
-        </Col>
+          <Col xs={12}>
+            <button
+              type="button"
+              className="delete-peak-btn"
+              onClick={() => onDeleteClick()}
+            >
+              Delete Peak
+            </button>
+          </Col>
 
-        <Col xs={12} md={6} mdOffset={3}>
-          <Link
-            to="/peak-list"
-            className="cancel-link"
-          >
-            Cancel
-          </Link>
+          <Col xs={12}>
+            <Link
+              to="/peak-list"
+              className="cancel-link"
+            >
+              Cancel
+            </Link>
+          </Col>
         </Col>
       </div>
     </main>

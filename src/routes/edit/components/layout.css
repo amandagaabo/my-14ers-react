@@ -1,3 +1,7 @@
+.edit-form-container {
+  margin-top: 20px;
+}
+
 .delete-peak-btn {
   background-color: red;
   color: white;

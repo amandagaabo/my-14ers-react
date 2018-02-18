@@ -49,6 +49,14 @@ footer {
   box-shadow: 0 1px 3px rgba(0,0,30,.5);
 }
 
+.add-edit-container {
+  margin-bottom: 40px;
+  background-color: white;
+  padding: 15px 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,30,.5);
+}
+
 .divider {
   color: grey;
 }
