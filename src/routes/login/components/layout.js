@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
+import { FACEBOOK_APP_ID } from './../../../config';
 import LoginForm from './login-form';
 
 export default function Layout(props) {
@@ -21,7 +22,7 @@ export default function Layout(props) {
         <Col xs={12}>
           <hr className="divider" />
           <FacebookLogin
-            appId="335446923615924"
+            appId={FACEBOOK_APP_ID}
             version="2.12"
             fields="name,email"
             callback={props.onLoginWithFacebook}

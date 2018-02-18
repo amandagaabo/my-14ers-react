@@ -114,6 +114,7 @@ export const registerUser = user => () => {
 };
 
 export const loginWithFacebook = facebookRes => (dispatch) => {
+  console.log('login action, facebook Res:', JSON.stringify(facebookRes))
   return fetch(`${API_BASE_URL}/auth/facebook`, {
     method: 'POST',
     headers: {
