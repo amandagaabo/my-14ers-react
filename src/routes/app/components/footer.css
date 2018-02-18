@@ -11,6 +11,10 @@
   padding: 0 20px;
 }
 
+.terms-link, .icon-cred {
+  padding-right: 20px;
+}
+
 .footer-text a {
   color: #1E4899;
 }
