@@ -57,6 +57,7 @@ export default function Layout(props) {
               href="https://www.14ers.com/photos/photos_14ers1.php"
               target="_blank"
               rel="noopener noreferrer"
+              className="fourteeners-link"
             >
               14ers.com
             </a>

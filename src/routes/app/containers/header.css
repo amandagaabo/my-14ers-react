@@ -40,3 +40,23 @@
   padding: 0;
   margin-top: 5px;
 }
+
+/* Small Devices, collapsed menu */
+@media only screen and (max-width : 768px) {
+  .navbar {
+    opacity: 1;
+  }
+
+  .navbar-default .navbar-nav>li>a {
+    margin: 0;
+    padding: 5px 15px;
+    height: auto;
+  }
+
+  .navbar-default .navbar-nav>.active>a,
+  .navbar-default .navbar-nav>.active>a:focus {
+    border-bottom: none;
+    color: white;
+    background-color: #1E4899;
+  }
+}

@@ -17,7 +17,7 @@ export default function Header(props) {
 
   if (loggedIn) {
     return (
-      <Navbar fixedTop className="nav-loggedin">
+      <Navbar fixedTop collapseOnSelect className="nav-loggedin">
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">
@@ -33,23 +33,23 @@ export default function Header(props) {
         <Navbar.Collapse>
           <Nav pullRight>
             <LinkContainer to="/dashboard">
-              <NavItem eventKey={1.1}>Dashboard</NavItem>
+              <NavItem eventKey={1}>Dashboard</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/add-peak">
-              <NavItem eventKey={1.2}>Add Peak</NavItem>
+              <NavItem eventKey={2}>Add Peak</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/peak-list">
-              <NavItem eventKey={1.3}>Peak List</NavItem>
+              <NavItem eventKey={3}>Peak List</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/peak-map">
-              <NavItem eventKey={1.4}>Peak Map</NavItem>
+              <NavItem eventKey={4}>Peak Map</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/logout">
-              <NavItem eventKey={1.5} onClick={logOut}>Logout</NavItem>
+              <NavItem eventKey={5} onClick={logOut}>Logout</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
@@ -57,7 +57,7 @@ export default function Header(props) {
     );
   }
   return (
-    <Navbar fixedTop className="nav-not-loggedin">
+    <Navbar fixedTop collapseOnSelect className="nav-not-loggedin">
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
