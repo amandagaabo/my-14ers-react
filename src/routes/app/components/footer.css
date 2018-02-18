@@ -1,0 +1,20 @@
+.copyright-icon {
+  padding-right: 5px;
+}
+
+.footer-text {
+  margin: 15px auto;
+  font-size: .7em;
+}
+
+.facebook-privacy-link {
+  padding: 0 20px;
+}
+
+.terms-link, .icon-cred {
+  padding-right: 20px;
+}
+
+.footer-text a {
+  color: #1E4899;
+}

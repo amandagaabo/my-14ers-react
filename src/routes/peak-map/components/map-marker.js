@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
 import dateFormat from 'dateformat';
+import { Icon } from 'react-fa';
 import { Marker } from 'react-google-maps';
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox';
 import './map-marker.css';
@@ -48,10 +49,12 @@ export default function MapMarker(props) {
   // define conntent for info windows
   const infoBoxContent = (
     <div className="info-window-container">
-      <button className="close-x" onClick={onCloseClick}>x</button>
+      <button className="close-x" onClick={onCloseClick}>
+        <Icon name="times" />
+      </button>
       <h1 className="info-window-header">{peak.peakName}</h1>
       <p className="info-window-text">
-        <span className="info-window-key">Elevation:</span> {formatedElevation}
+        <span className="info-window-key">Elevation:</span> {formatedElevation} ft
       </p>
       <p className="info-window-text">
         <span className="info-window-key">Rank:</span> {peak.rank}
@@ -68,6 +71,7 @@ export default function MapMarker(props) {
         lng: parseFloat(props.peak.longitude),
       }}
       onClick={() => onMarkerClick(props.peak.id, props.peak.latitude, props.peak.longitude)}
+      icon="https://res.cloudinary.com/amhprojects/image/upload/c_scale,w_35/v1518816595/14ers/map-marker.png"
     >
       {props.peak.id === props.showInfoWindowID &&
       <InfoBox

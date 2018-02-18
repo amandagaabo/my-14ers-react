@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import LoginForm from './login-form';
-import './layout.css';
 
 export default function Layout(props) {
   if (props.loggedIn) {
@@ -15,27 +14,21 @@ export default function Layout(props) {
 
   return (
     <main role="main" className="login-container">
-      <Col xs={12}>
-        <h1 className="form-header">Login</h1>
-        <LoginForm {...props} />
-      </Col>
+      <Col md={4} mdOffset={4} xs={10} xsOffset={1} className="form-container">
 
-      <Col xs={12}>
-        <FacebookLogin
-          appId="335446923615924"
-          version="2.12"
-          fields="name,email"
-          callback={props.onLoginWithFacebook}
-          cssClass="facebook-btn"
-          icon="fa-facebook"
-        />
-      </Col>
-      <Col xs={12}>
-        <a
-          href="https://www.iubenda.com/privacy-policy/47759666/legal"
-          className="facebook-privacy-link"
-        >Privacy Policy
-        </a>
+        <LoginForm {...props} />
+
+        <Col xs={12}>
+          <hr className="divider" />
+          <FacebookLogin
+            appId="335446923615924"
+            version="2.12"
+            fields="name,email"
+            callback={props.onLoginWithFacebook}
+            cssClass="facebook-btn"
+            icon="fa-facebook"
+          />
+        </Col>
       </Col>
     </main>
   );

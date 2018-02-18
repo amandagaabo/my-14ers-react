@@ -1,17 +1,45 @@
 .jumbotron {
-  margin-bottom: 20px;
-  height: 450px;
-  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1515009705/14ers/longs-peak-cover.jpg);
-  background-position: 0% 15%;
+  height: 800px;
+  background-image: url(https://res.cloudinary.com/amhprojects/image/upload/v1518711476/14ers/cover/home-img-compressed.jpg);
+  background-position: 0 160%;
   background-size: cover;
   background-repeat: no-repeat;
+  clear: both;
 }
 
-.home-page-button {
-  display: block;
-  margin-bottom: 15px;
+.jumbotron h1 {
+  position: relative;
+  text-align: left;
+  top: 420px;
+  color: white;
+  font-size: 75px;
 }
 
-.home-page-button button {
-  width: 125px;
+.home-content {
+  clear: both;
+}
+
+.home-content h1 {
+  margin-bottom: 35px;
+}
+
+.home-info {
+  margin-bottom: 20px;
+}
+
+.home-icon {
+  height: 75px;
+  margin: 15px 0;
+}
+
+/* small screen */
+@media only screen and (max-width : 600px) {
+  .jumbotron {
+    height: 500px;
+  }
+  .jumbotron h1 {
+    font-size: 3em;
+    top: 250px;
+    text-align: center;
+  }
 }

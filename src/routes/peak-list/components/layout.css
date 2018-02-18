@@ -3,58 +3,95 @@
 }
 
 .list-sort {
-  float: right;
-  padding-right: 15px;
-  margin-bottom: 15px;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.list-sort select {
+  width: 155px;
+  padding: 0 10px;
+  line-height: 1;
+  border: 0;
+  height: 34px;
+  background: url(https://res.cloudinary.com/amhprojects/image/upload/c_scale,w_16/v1518819853/14ers/down-arrow.png) no-repeat right white;
+  -webkit-appearance: none;
+  background-position-x: 131px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.mountain-box {
+  margin-bottom: 20px;
+}
+
+.inner-box {
+  padding: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+  overflow: auto;
 }
 
 .mountain-photo {
   width: 100%;
 }
 
-.caption-header {
-  margin-bottom: 5px;
-  margin-top: 5px;
-  font-size: 20px;
+.mountain-photo, .caption-header, .caption-details {
+  border-bottom: 1px solid #1E4899;
+}
+
+.caption-header, .caption-details, .caption-notes, .caption-edit {
+  margin: 0;
+  padding: 15px 10px;
+}
+
+.caption-header h2 {
+  font-size: 24px;
+  color: #1E4899;
+}
+
+.caption-header h2, .caption-details p, .caption-notes p {
+  margin: 0;
 }
 
 .caption-details {
-  margin: 0;
+  background-color: #e8ecf4;
 }
 
-.mountain-box {
-  position: relative;
-  margin-bottom: 20px;
+.caption-notes {
+  height: 95px;
+  overflow: scroll;
 }
 
-.hover-options {
-  position: absolute;
-  right: 20px;
-  top: 5px;
+.detail-box {
+  padding: 0 5px;
 }
 
-.remove-peak, .edit-peak {
-  display: inline-block;
-  margin: 0;
-  padding: 1px;
-  height: 25px;
-  width: 25px;
-  border: 1px solid white;
-  border-radius: 2px;
-  background-color: transparent;
+.right-border {
+  border-right: 1px solid #1E4899;
 }
 
-.remove-peak:hover, .edit-peak:hover {
-  background-color: white;
-  color: black;
+.left-border {
+  border-left: 1px solid #1E4899;
 }
 
-.remove-peak {
-  margin-left: 5px;
-  padding-bottom: 2px;
+.caption-description {
+  text-transform: uppercase;
+  font-size: .8em;
+  color: #1E4899;
 }
 
 .edit-peak {
-  background-color: transparent;
-  color: black;
+  font-size: .9em;
+  color: white;
+  background-color: black;
+  padding: 4px 12px;
+  border-radius: 3px;
+}
+
+.edit-peak:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #404040;
 }

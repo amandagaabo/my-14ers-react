@@ -1,6 +1,5 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import { Redirect } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
@@ -10,13 +9,10 @@ import { required, nonEmpty, email } from '../../../utils/validators';
 export function LoginForm(props) {
   function onSubmit(values) {
     const { email, password } = values;
-    return props.dispatch(login(email, password));
-  }
-
-  if (props.submitSucceeded) {
-    return (
-      <Redirect to="/dashboard" />
-    );
+    return props.dispatch(login(email, password))
+      .then(() => {
+        window.location.href = '/dashboard';
+      });
   }
 
   let errorMessage;
@@ -31,6 +27,7 @@ export function LoginForm(props) {
       onSubmit={props.handleSubmit(values => onSubmit(values))}
       className="login-form"
     >
+      {errorMessage}
 
       <Field
         component={Input}
@@ -49,8 +46,6 @@ export function LoginForm(props) {
         label="Password"
         validate={[required, nonEmpty]}
       />
-
-      {errorMessage}
 
       <Col xs={12} className="form-button" >
         <button

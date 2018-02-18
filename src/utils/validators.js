@@ -42,11 +42,15 @@ export const matches = field => (value, allValues) => (
 
 // date is today or earlier for add peak form
 export const validDate = (value) => {
-  const today = moment(new Date()).toISOString();
-  const minusHundredYears = moment(today).subtract(100, 'years');
+  if (value) {
+    const today = moment(new Date()).toISOString();
+    const minusHundredYears = moment(today).subtract(100, 'years');
 
-  if (!moment(value).isBetween(minusHundredYears, today, null, '[]')) {
-    return 'Date must be today or earlier.';
+    if (!moment(value).isBetween(minusHundredYears, today, null, '[]')) {
+      return 'Date must be today or earlier.';
+    }
+
+    return undefined;
   }
 
   return undefined;

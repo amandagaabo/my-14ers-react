@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Map from './map';
+import './layout.css';
 
 export default function Layout(props) {
   if (!props.loggedIn) {
@@ -13,14 +14,11 @@ export default function Layout(props) {
   return (
     <main role="main" className="peak-map-container">
       <div className="container">
-        <h1 className="page-header">Peak Map</h1>
-
         <div className="map-container">
           <div className="google-map" id="map">
             <Map {...props} />
           </div>
         </div>
-
       </div>
     </main>
   );

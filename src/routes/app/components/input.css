@@ -1,8 +1,8 @@
 /* desktop css */
 @media screen and (min-width: 600px) {
-  form, .form-header {
+  form {
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
   }
 }
 
