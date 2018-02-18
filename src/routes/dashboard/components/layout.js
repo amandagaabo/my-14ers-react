@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
 import _ from 'lodash';
 import './circle.css';
 import './layout.css';
@@ -25,32 +26,43 @@ export default function Layout(props) {
     <main role="main" className="dashboard-container">
       <div className="container dashboard">
 
-        <div className="circle-chart" xs={12} >
-          <div id="progress-circle" className={`c100 big blue p${percent}`}>
-            <span id="percent">{percent}%</span>
-            <div className="slice">
-              <div className="bar" />
-              <div className="fill" />
+        <Col className="circle-chart" xs={12} md={6}>
+          <Col className="card">
+            <p className="card-title">percent complete</p>
+            <div className="center-helper">
+              <div className={`progress-circle c100 big blue p${percent}`}>
+                <span id="percent">{percent}%</span>
+                <div className="slice">
+                  <div className="bar" />
+                  <div className="fill" />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Col>
 
-        <p className="number-climbed-summary">
-          <span id="number-climbed">{numberClimbed}</span> out
-          of <span id="number-total">{totalPeaks}</span> peaks
-        </p>
+        <Col className="number-climbed-summary" xs={12} md={6}>
+          <Col className="card">
+            <p className="card-title">total climbed</p>
+            <div className="number-climbed">
+              <p className="card-content"> {numberClimbed} / {totalPeaks} peaks</p>
+            </div>
+          </Col>
+        </Col>
 
-        <h2 className="divider-header"> Plan your next hike</h2>
-        <p>A great resource for planning is 
-          <a
-            href="https://www.14ers.com/photos/photos_14ers1.php"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            14ers.com
-          </a>
-          , which has safety tips, route info, photos, weather forcasts and maps.
-        </p>
+        <Col xs={12} md={8} mdOffset={2} className="planning-section">
+          <h2> Plan your next hike</h2>
+          <p>Ready to hike a 14ers?  A great resource for planning is
+            <a
+              href="https://www.14ers.com/photos/photos_14ers1.php"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              14ers.com
+            </a>
+            , which has route info, photos, weather forcasts, safety tips and maps.
+          </p>
+        </Col>
       </div>
     </main>
   );

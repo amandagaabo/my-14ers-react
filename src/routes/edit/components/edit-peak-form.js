@@ -58,7 +58,7 @@ export function EditPeakForm(props) {
       <Col xs={12} className="form-button" >
         <button
           type="submit"
-          disabled={props.submitting}
+          disabled={props.pristine || props.submitting}
         >
           Save
         </button>
@@ -69,6 +69,7 @@ export function EditPeakForm(props) {
 
 EditPeakForm.propTypes = {
   submitting: PropTypes.bool,
+  pristine: PropTypes.bool,
   error: PropTypes.string,
   authToken: PropTypes.string,
   currentUser: PropTypes.shape({
@@ -88,6 +89,7 @@ EditPeakForm.propTypes = {
 
 EditPeakForm.defaultProps = {
   submitting: false,
+  pristine: true,
   error: '',
   authToken: null,
   currentUser: null,
