@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reset } from 'redux-form';
 import Layout from './components/layout';
 import { addPeak } from './../../modules/peaks/actions';
-
 
 export function AddPeak(props) {
   return (
@@ -22,7 +20,6 @@ export const mapDispatchToProps = (dispatch) => {
   return {
     onAddPeak: (token, userId, peakName, dateClimbed, notes) => {
       dispatch(addPeak(token, userId, peakName, dateClimbed, notes));
-      dispatch(reset('add-peak'));
     },
   };
 };

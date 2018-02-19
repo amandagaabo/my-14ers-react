@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -12,16 +11,12 @@ export class AddPeakForm extends React.Component {
     const userId = this.props.currentUser.uuid;
     const { peakName, dateClimbed } = values;
     const notes = values.notes ? values.notes : '';
+
     this.props.onAddPeak(token, userId, peakName, dateClimbed, notes);
+    window.location.href = '/peak-list';
   }
 
   render() {
-    if (this.props.submitSucceeded) {
-      return (
-        <Redirect to="/peak-list" />
-      );
-    }
-
     let errorMessage;
     if (this.props.error) {
       errorMessage = (
