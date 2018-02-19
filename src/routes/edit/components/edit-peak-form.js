@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import dateFormat from 'dateformat';
