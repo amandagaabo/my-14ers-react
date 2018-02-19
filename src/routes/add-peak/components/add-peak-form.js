@@ -3,6 +3,7 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
+import { addPeak } from './../../../modules/peaks/actions';
 import { required, nonEmpty, validDate, maxChar250 } from '../../../utils/validators';
 
 export class AddPeakForm extends React.Component {
@@ -12,8 +13,10 @@ export class AddPeakForm extends React.Component {
     const { peakName, dateClimbed } = values;
     const notes = values.notes ? values.notes : '';
 
-    this.props.onAddPeak(token, userId, peakName, dateClimbed, notes);
-    window.location.href = '/peak-list';
+    return this.props.dispatch(addPeak(token, userId, peakName, dateClimbed, notes))
+      .then(() => {
+        window.location.href = '/peak-list';
+      });
   }
 
   render() {
@@ -81,8 +84,7 @@ AddPeakForm.propTypes = {
     uuid: PropTypes.string
   }),
   handleSubmit: PropTypes.func,
-  onAddPeak: PropTypes.func,
-  submitSucceeded: PropTypes.bool,
+  dispatch: PropTypes.func
 };
 
 AddPeakForm.defaultProps = {
@@ -91,8 +93,7 @@ AddPeakForm.defaultProps = {
   error: '',
   allPeaks: [],
   authToken: null,
-  currentUser: null,
-  submitSucceeded: false,
+  currentUser: null
 };
 
 export default reduxForm({

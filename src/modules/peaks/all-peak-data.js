@@ -282,7 +282,7 @@ const peakData = [{
 	"type": "peak",
 	"id": 21,
 	"attributes": {
-    "imgSrc": "http://res.cloudinary.com/amhprojects/image/upload/v1514516753/14ers/mt_princeton.jpg",
+    "imgSrc": "https://res.cloudinary.com/amhprojects/image/upload/v1514516753/14ers/mt_princeton.jpg",
 		"peak_name": "Mt. Princeton",
 		"range": "Sawatch Range",
 		"rank": "20",

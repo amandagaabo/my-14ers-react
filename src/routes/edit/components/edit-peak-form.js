@@ -5,6 +5,8 @@ import { Col } from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
+import { updatePeak } from './../../../modules/peaks/actions';
+
 import { validDate, maxChar250 } from '../../../utils/validators';
 
 export function EditPeakForm(props) {
@@ -13,13 +15,11 @@ export function EditPeakForm(props) {
     const userId = props.currentUser.uuid;
     const peakId = props.editPeak.uuid;
     const { dateClimbed, notes } = values;
-    props.onUpdatePeak(token, userId, peakId, dateClimbed, notes);
-  }
 
-  if (props.submitSucceeded) {
-    return (
-      <Redirect to="/peak-list" />
-    );
+    return props.dispatch(updatePeak(token, userId, peakId, dateClimbed, notes))
+      .then(() => {
+        window.location.href = '/peak-list';
+      });
   }
 
   let errorMessage;
@@ -83,8 +83,7 @@ EditPeakForm.propTypes = {
     notes: PropTypes.string
   }),
   handleSubmit: PropTypes.func,
-  onUpdatePeak: PropTypes.func,
-  submitSucceeded: PropTypes.bool
+  dispatch: PropTypes.func
 };
 
 EditPeakForm.defaultProps = {
@@ -93,8 +92,7 @@ EditPeakForm.defaultProps = {
   error: '',
   authToken: null,
   currentUser: null,
-  editPeak: null,
-  submitSucceeded: false
+  editPeak: null
 };
 
 export default reduxForm({

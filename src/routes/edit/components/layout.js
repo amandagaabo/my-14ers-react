@@ -4,16 +4,20 @@ import PropTypes from 'prop-types';
 import { Redirect, Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import EditPeakForm from './edit-peak-form';
+import { removePeak } from './../../../modules/peaks/actions';
 import './layout.css';
 import './react-confirm-alert.css';
 
 export default function Layout(props) {
   function onDeleteConfirm() {
     const token = props.authToken;
-    const { uuid } = props.currentUser;
-    const peakUuid = props.editPeak.uuid;
-    props.onDeletePeak(token, uuid, peakUuid);
-    props.history.push('/peak-list');
+    const userId = props.currentUser.uuid;
+    const peakId = props.editPeak.uuid;
+
+    return props.dispatch(removePeak(token, userId, peakId))
+      .then(() => {
+        window.location.href = '/peak-list';
+      });
   }
 
   function onDeleteClick() {
@@ -94,7 +98,7 @@ Layout.propTypes = {
     notes: PropTypes.string,
     imgSrc: PropTypes.string
   }),
-  onDeletePeak: PropTypes.func
+  dispatch: PropTypes.func
 };
 
 Layout.defaultProps = {
