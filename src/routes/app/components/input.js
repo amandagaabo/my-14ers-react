@@ -179,8 +179,16 @@ Input.propTypes = {
   type: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onDrop: PropTypes.func
   }),
-  options: PropTypes.array
+  options: PropTypes.array,
+  editValue: PropTypes.string,
+  disabled: PropTypes.bool,
+  maxLength: PropTypes.string
 };
 
 Input.defaultProps = {
@@ -195,5 +203,8 @@ Input.defaultProps = {
   input: {
     name: '',
   },
-  options: []
+  options: [],
+  editValue: '',
+  disabled: false,
+  maxLength: '250'
 };

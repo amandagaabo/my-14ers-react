@@ -9,8 +9,8 @@ export default function Layout() {
       <Col xs={12} className="container">
         <h1>Not Found</h1>
         <p>
-          The page you are looking for is not found. Check your url or start
-          from the <Link to="/" className="home-link">home</Link> page.
+          The page you are looking for is not here. Check your url or return
+          to the <Link to="/" className="home-link">home</Link> page.
         </p>
       </Col>
     </main>

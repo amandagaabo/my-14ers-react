@@ -14,6 +14,7 @@ export function SignUpForm(props) {
       password
     };
 
+    // register, auto login then redirect to /dashboard
     return props.dispatch(registerUser(user))
       .then(() => {
         return props.dispatch(login(email, password));
@@ -78,8 +79,7 @@ SignUpForm.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.string,
   dispatch: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  submitSucceeded: PropTypes.bool
+  handleSubmit: PropTypes.func
 };
 
 SignUpForm.defaultProps = {

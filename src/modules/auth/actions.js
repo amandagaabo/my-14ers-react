@@ -10,6 +10,7 @@ export const setAuthToken = authToken => ({
   authToken
 });
 
+// Stores currentUser uuid and email
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const setCurrentUser = currentUser => ({
   type: SET_CURRENT_USER,
@@ -32,6 +33,7 @@ const storeAuthInfo = (authToken, dispatch) => {
   saveAuthToken(authToken);
 };
 
+// standard login form login and post-sign up login
 export const login = (email, password) => (dispatch) => {
   return (
     fetch(`${API_BASE_URL}/login`, {
