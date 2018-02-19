@@ -14,6 +14,7 @@ export default function Layout(props) {
     const userId = props.currentUser.uuid;
     const peakId = props.editPeak.uuid;
 
+    // dispatch action then redirect to /peak-list
     return props.dispatch(removePeak(token, userId, peakId))
       .then(() => {
         window.location.href = '/peak-list';

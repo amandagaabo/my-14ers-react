@@ -9,6 +9,8 @@ import { required, nonEmpty, email } from '../../../utils/validators';
 export function LoginForm(props) {
   function onSubmit(values) {
     const { email, password } = values;
+
+    // dispatch action then redirect to /dashboard
     return props.dispatch(login(email, password))
       .then(() => {
         window.location.href = '/dashboard';
@@ -64,8 +66,7 @@ LoginForm.propTypes = {
   submitting: PropTypes.bool,
   error: PropTypes.string,
   dispatch: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  submitSucceeded: PropTypes.bool
+  handleSubmit: PropTypes.func
 };
 
 LoginForm.defaultProps = {

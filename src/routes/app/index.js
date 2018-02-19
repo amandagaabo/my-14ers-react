@@ -9,6 +9,7 @@ export class App extends React.Component {
   componentDidMount() {
     if (this.props.hasAuthToken) {
       // Try to get a fresh auth token if we had an existing one in localStorage
+      // refreshAuthToken sets ready to true after token is refreshed then page can load
       this.props.dispatch(refreshAuthToken());
     } else {
       this.props.dispatch(setReady(true));
@@ -25,6 +26,7 @@ export class App extends React.Component {
     }
 
     if (nextProps.loggedIn && !this.props.loggedIn) {
+      // get user peaks after logging in
       const token = nextProps.authToken;
       const userId = nextProps.currentUser.uuid;
       this.props.dispatch(getUserPeaks(token, userId));
@@ -57,7 +59,7 @@ export class App extends React.Component {
       );
     }
     return (
-      <div></div>
+      <div />
     );
   }
 }

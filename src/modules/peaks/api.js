@@ -14,6 +14,7 @@ export function getUserPeaksFromDB(token, userId) {
     }
     return res.json();
   }).then((userPeaks) => {
+    // array of user peaks is returned
     return userPeaks;
   });
 }
@@ -43,6 +44,7 @@ export function addPeakToDB(token, userId, newPeak) {
     }
     return res.json();
   }).then((peak) => {
+    // new peak object is returned after successful add
     return peak;
   });
 }
@@ -65,6 +67,7 @@ export function updatePeakInDB(token, userId, peakId, dateClimbed, notes) {
     }
     return res.json();
   }).then((peak) => {
+    // updated peak is returned after successful update
     return peak;
   });
 }
@@ -81,6 +84,7 @@ export function removePeakFromDB(token, userId, peakId) {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
+    // removed peak uuid is returned after successful delete
     return peakId;
   });
 }

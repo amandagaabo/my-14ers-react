@@ -15,6 +15,7 @@ export function EditPeakForm(props) {
     const peakId = props.editPeak.uuid;
     const { dateClimbed, notes } = values;
 
+    // dispatch action then redirect to /peak-list on success
     return props.dispatch(updatePeak(token, userId, peakId, dateClimbed, notes))
       .then(() => {
         window.location.href = '/peak-list';
