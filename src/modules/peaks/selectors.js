@@ -59,7 +59,8 @@ export const getSortedPeaksForList = createSelector(
       temparray = userPeaks.slice(i, i + n);
 
       temparray.forEach((peak) => {
-        const formatedDate = dateFormat(peak.dateClimbed, 'mmm d, yyyy');
+        const slashDate = peak.dateClimbed.replace(/-/g, '/');
+        const formatedDate = dateFormat(slashDate, 'mmm d, yyyy');
         const formattedElevation = numeral(peak.elevation).format('0,0');
         const rowNum = Math.ceil((i + 1) / n);
         const index = peaksForList.findIndex(i => i.row === rowNum);

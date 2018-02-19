@@ -126,12 +126,7 @@ export default class Layout extends React.Component {
 
 Layout.propTypes = {
   userPeaks: PropTypes.array,
-  authToken: PropTypes.string,
   loggedIn: PropTypes.bool,
-  currentUser: PropTypes.shape({
-    email: PropTypes.string,
-    uuid: PropTypes.string
-  }),
   sortBy: PropTypes.string,
   onSetEditPeak: PropTypes.func,
   onSortSelect: PropTypes.func
@@ -139,8 +134,6 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
   userPeaks: [],
-  authToken: null,
   loggedIn: false,
-  currentUser: null,
   sortBy: 'DATE_CLIMBED'
 };
