@@ -1,11 +1,12 @@
 # My 14ers React App
 
 ## Description
-A React app that allows users to track which Colorado 14ers they have hiked.  User can view a sortable list of
-the peaks they have completed, edit the peak data, view the peaks on a google map and see a dashboard summary
-of their progress.
+A React app that allows users to track which Colorado 14ers they have hiked.  The user can add all
+of the peaks they have hiked, view a sortable list of their peaks, edit the peak data, view the peaks
+on a Google map and see a dashboard summary of their progress.
 
-I originally created My 14ers as a frontend only jQuery app.  This app is a new version that uses React and connects to a backend that uses Node, Express and PostgreSQL.
+I originally created My 14ers as a frontend only jQuery app.  This app is a new version that uses a React
+client and connects to a backend that was created with Node, Express and PostgreSQL.
 
 
 ## User
@@ -34,7 +35,7 @@ All peaks can be viewed on the peak list page.  The user can sort by date climbe
 ![Alt text](/screenshots/peak-list.png?raw=true "Peak List Screenshot")
 
 
-By clicking edit, the user is taken to an edit peak form where they can update their notes or date hiked.
+By clicking edit, the user is taken to an edit peak form where they can change the date or update their notes.
 ![Alt text](/screenshots/edit.png?raw=true "Edit Peak Screenshot")
 
 
@@ -53,11 +54,11 @@ The dashboard page allows the user to see their overall stats - how many of the 
 * React & Redux
 * React Bootstrap
 * React Google Maps
-* Node.js & Express
+* Node & Express
 * PostgreSQL & Objection
-* Passport & bcrypt.js
+* Passport & bcrypt
 * Mocha, Chai & Enzyme
-* Sinon.JS
+* Sinon
 * Lodash
 * dateFormat
-* Numeral.js
+* Numeral
