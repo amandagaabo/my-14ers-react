@@ -15,6 +15,7 @@
   height: 34px;
   background: url(https://res.cloudinary.com/amhprojects/image/upload/c_scale,w_16/v1518819853/14ers/down-arrow.png) no-repeat right white;
   -webkit-appearance: none;
+  -moz-appearance: none;
   background-position-x: 131px;
 }
 
@@ -60,8 +61,8 @@ select:focus {
 }
 
 .caption-notes {
-  height: 95px;
-  overflow: scroll;
+  height: 100px;
+  overflow-y: scroll;
 }
 
 .detail-box {

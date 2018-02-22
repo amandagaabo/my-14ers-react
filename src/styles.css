@@ -105,6 +105,10 @@ button:focus {
   cursor: pointer;
 }
 
+.form-input select {
+  -moz-appearance: none;
+}
+
 .form-input label {
   color: #1E4899;
 }
