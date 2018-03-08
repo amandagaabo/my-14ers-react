@@ -17,6 +17,13 @@ export default function Layout(props) {
   return (
     <main role="main" className="login-container">
       <Col md={4} mdOffset={4} xs={10} xsOffset={1} className="form-container">
+        <Col xs={12}>
+          <ClipLoader
+            color="#1E4899"
+            loading={props.loading}
+            margin="0"
+          />
+        </Col>
 
         <LoginForm {...props} />
 
@@ -29,13 +36,6 @@ export default function Layout(props) {
             callback={props.onLoginWithFacebook}
             cssClass="facebook-btn"
             icon="fa-facebook"
-          />
-        </Col>
-
-        <Col xs={12} className="loader">
-          <ClipLoader
-            color="#1E4899"
-            loading={props.loading}
           />
         </Col>
       </Col>
