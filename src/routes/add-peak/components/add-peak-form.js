@@ -102,7 +102,8 @@ AddPeakForm.defaultProps = {
   error: '',
   allPeaks: [],
   authToken: null,
-  currentUser: null
+  currentUser: null,
+  loading: false
 };
 
 export default reduxForm({

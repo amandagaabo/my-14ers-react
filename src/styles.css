@@ -32,6 +32,10 @@ footer {
   opacity: .95;
 }
 
+.loader {
+  margin: 15px 0 5px 0;
+}
+
 /*login and sign up pages*/
 .login-container, .sign-up-container {
   height: 100vh;
