@@ -101,7 +101,7 @@ export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = a
 
   // run both at the same time but wait for all to finish
   return Promise.all([
-    Promise.delay(1000),
+    Promise.delay(500),
     addPeak(token, userId, newPeak)
   ]).then((result) => {
     // dispatch the success action and pass in the result from the db search on success
@@ -136,7 +136,7 @@ export const updatePeak = (token, userId, peakId, dateClimbed, notes, updatePeak
 
   // run both at the same time but wait for all to finish
   return Promise.all([
-    Promise.delay(1000),
+    Promise.delay(500),
     // update peak in DB
     updatePeak(token, userId, peakId, dateClimbed, notes)
   ]).then((result) => {
@@ -172,7 +172,7 @@ export const removePeak = (token, userId, peakId, removePeak = removePeakFromDB)
 
   // run both at the same time but wait for all to finish
   return Promise.all([
-    Promise.delay(1000),
+    Promise.delay(500),
     // remove peak from user's peaks in DB
     removePeak(token, userId, peakId)
   ]).then(() => {

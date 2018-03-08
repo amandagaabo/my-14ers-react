@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import Promise from 'bluebird';
 import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../../config';
 import normalizeResponseErrors from './../../utils/errors';
@@ -42,37 +43,40 @@ const storeAuthInfo = (authToken, dispatch) => {
 // standard login form login and post-sign up login
 export const login = (email, password) => (dispatch) => {
   dispatch(setLoading(true));
-  return (
-    fetch(`${API_BASE_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
+  // delay for UX
+  return Promise.delay(500).then(() => {
+    return (
+      fetch(`${API_BASE_URL}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
       })
-    })
-    // Reject any requests which don't return a 200 status, creating
-    // errors which follow a consistent format
-      .then(res => normalizeResponseErrors(res))
-      .then(res => res.json())
-      .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
-      .then(() => dispatch(setLoading(false)))
-      .catch((err) => {
-        dispatch(setLoading(false));
-        const { code } = err;
-        if (code === 401) {
-          // Could not authenticate, so return SubmissionError for ReduxForm
-          return Promise.reject(
-            new SubmissionError({
-              _error: 'Incorrect email or password'
-            })
-          );
-        }
-        return 'Other error';
-      })
-  );
+      // Reject any requests which don't return a 200 status, creating
+      // errors which follow a consistent format
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+        .then(() => dispatch(setLoading(false)))
+        .catch((err) => {
+          dispatch(setLoading(false));
+          const { code } = err;
+          if (code === 401) {
+            // Could not authenticate, so return SubmissionError for ReduxForm
+            return Promise.reject(
+              new SubmissionError({
+                _error: 'Incorrect email or password'
+              })
+            );
+          }
+          return 'Other error';
+        })
+    );
+  });
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
@@ -101,35 +105,39 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 
 export const registerUser = user => (dispatch) => {
   dispatch(setLoading(true));
-  return fetch(`${API_BASE_URL}/sign-up`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  })
-    .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    .then(() => dispatch(setLoading(false)))
-    .catch((err) => {
-      dispatch(setLoading(false));
+  // delay for UX
+  return Promise.delay(500).then(() => {
+    return fetch(`${API_BASE_URL}/sign-up`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json())
+      .then(() => dispatch(setLoading(false)))
+      .catch((err) => {
+        dispatch(setLoading(false));
 
-      const { reason, message, location } = err;
+        const { reason, message, location } = err;
 
-      if (reason === 'ValidationError') {
-        // convert ValidationErrors into SubmissionErrors for Redux Form
-        return Promise.reject(
-          new SubmissionError({
-            [location]: message
-          })
-        );
-      }
-      return 'other error';
-    });
+        if (reason === 'ValidationError') {
+          // convert ValidationErrors into SubmissionErrors for Redux Form
+          return Promise.reject(
+            new SubmissionError({
+              [location]: message
+            })
+          );
+        }
+        return 'other error';
+      });
+  });
 };
 
 export const loginWithFacebook = facebookRes => (dispatch) => {
   dispatch(setLoading(true));
+
   return fetch(`${API_BASE_URL}/auth/facebook`, {
     method: 'POST',
     headers: {
