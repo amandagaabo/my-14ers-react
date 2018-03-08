@@ -21,7 +21,6 @@ export default function Layout(props) {
           <ClipLoader
             color="#1E4899"
             loading={props.loading}
-            margin="0"
           />
         </Col>
 

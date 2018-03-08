@@ -99,7 +99,8 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     });
 };
 
-export const registerUser = user => () => {
+export const registerUser = user => (dispatch) => {
+  dispatch(setLoading(true));
   return fetch(`${API_BASE_URL}/sign-up`, {
     method: 'POST',
     headers: {
@@ -109,7 +110,10 @@ export const registerUser = user => () => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
+    .then(() => dispatch(setLoading(false)))
     .catch((err) => {
+      dispatch(setLoading(false));
+
       const { reason, message, location } = err;
 
       if (reason === 'ValidationError') {

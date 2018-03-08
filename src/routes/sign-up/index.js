@@ -10,7 +10,8 @@ export function SignUp(props) {
 }
 
 export const mapStateToProps = state => ({
-  loggedIn: state.app.auth.currentUser != null
+  loggedIn: state.app.auth.currentUser != null,
+  loading: state.app.auth.loading
 });
 
 export const mapDispatchToProps = (dispatch) => {
