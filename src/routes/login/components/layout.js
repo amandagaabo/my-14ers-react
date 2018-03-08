@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
+import { ClipLoader } from 'react-spinners';
 import { FACEBOOK_APP_ID } from './../../../config';
 import LoginForm from './login-form';
 
@@ -30,6 +31,13 @@ export default function Layout(props) {
             icon="fa-facebook"
           />
         </Col>
+
+        <Col xs={12} className="loader">
+          <ClipLoader
+            color="#1E4899"
+            loading={props.loading}
+          />
+        </Col>
       </Col>
     </main>
   );
@@ -37,9 +45,11 @@ export default function Layout(props) {
 
 Layout.propTypes = {
   loggedIn: PropTypes.bool,
+  loading: PropTypes.bool,
   onLoginWithFacebook: PropTypes.func
 };
 
 Layout.defaultProps = {
-  loggedIn: false
+  loggedIn: false,
+  loading: false
 };

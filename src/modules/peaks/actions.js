@@ -98,15 +98,17 @@ export const addPeak = (token, userId, peakName, dateClimbed, notes, addPeak = a
 
   // dispatch the request action to start the request
   dispatch(addPeakRequest());
-  return Promise.delay(1000).then(() => {
-    // add new peak to user's peaks in DB
-    return addPeak(token, userId, newPeak).then((peak) => {
-      // dispatch the success action and pass in the result from the db search on success
-      dispatch(addPeakSuccess(peak));
-    }).catch((err) => {
-      // dispatch the error action if something goes wrong
-      dispatch(addPeakError(err));
-    });
+
+  // run both at the same time but wait for all to finish
+  return Promise.all([
+    Promise.delay(1000),
+    addPeak(token, userId, newPeak)
+  ]).then((result) => {
+    // dispatch the success action and pass in the result from the db search on success
+    dispatch(addPeakSuccess(result[1]));
+  }).catch((err) => {
+    // dispatch the error action if something goes wrong
+    dispatch(addPeakError(err));
   });
 };
 
@@ -131,15 +133,18 @@ export const updatePeakError = error => ({
 export const updatePeak = (token, userId, peakId, dateClimbed, notes, updatePeak = updatePeakInDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(updatePeakRequest());
-  return Promise.delay(1000).then(() => {
+
+  // run both at the same time but wait for all to finish
+  return Promise.all([
+    Promise.delay(1000),
     // update peak in DB
-    return updatePeak(token, userId, peakId, dateClimbed, notes).then((peak) => {
-      // dispatch the success action and pass in the peak from the DB update
-      dispatch(updatePeakSuccess(peak));
-    }).catch((err) => {
-      // dispatch the error action if something goes wrong
-      dispatch(updatePeakError(err));
-    });
+    updatePeak(token, userId, peakId, dateClimbed, notes)
+  ]).then((result) => {
+    // dispatch the success action and pass in the peak from the DB update
+    dispatch(updatePeakSuccess(result[1]));
+  }).catch((err) => {
+    // dispatch the error action if something goes wrong
+    dispatch(updatePeakError(err));
   });
 };
 
@@ -164,14 +169,17 @@ export const removePeakError = error => ({
 export const removePeak = (token, userId, peakId, removePeak = removePeakFromDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(removePeakRequest());
-  return Promise.delay(1000).then(() => {
+
+  // run both at the same time but wait for all to finish
+  return Promise.all([
+    Promise.delay(1000),
     // remove peak from user's peaks in DB
-    return removePeak(token, userId, peakId).then(() => {
-      // dispatch the success action and pass in the result from the db search on success
-      dispatch(removePeakSuccess(peakId));
-    }).catch((err) => {
-      // dispatch the error action if something goes wrong
-      dispatch(removePeakError(err));
-    });
+    removePeak(token, userId, peakId)
+  ]).then(() => {
+    // dispatch the success action and pass in the result from the db search on success
+    dispatch(removePeakSuccess(peakId));
+  }).catch((err) => {
+    // dispatch the error action if something goes wrong
+    dispatch(removePeakError(err));
   });
 };

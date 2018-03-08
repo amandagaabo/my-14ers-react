@@ -23,6 +23,12 @@ export const setReady = ready => ({
   ready
 });
 
+export const SET_LOADING = 'SET_LOADING';
+export const setLoading = loading => ({
+  type: SET_LOADING,
+  loading
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
@@ -35,6 +41,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 
 // standard login form login and post-sign up login
 export const login = (email, password) => (dispatch) => {
+  dispatch(setLoading(true));
   return (
     fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
@@ -51,7 +58,9 @@ export const login = (email, password) => (dispatch) => {
       .then(res => normalizeResponseErrors(res))
       .then(res => res.json())
       .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+      .then(() => dispatch(setLoading(false)))
       .catch((err) => {
+        dispatch(setLoading(false));
         const { code } = err;
         if (code === 401) {
           // Could not authenticate, so return SubmissionError for ReduxForm
@@ -116,6 +125,7 @@ export const registerUser = user => () => {
 };
 
 export const loginWithFacebook = facebookRes => (dispatch) => {
+  dispatch(setLoading(true));
   return fetch(`${API_BASE_URL}/auth/facebook`, {
     method: 'POST',
     headers: {
@@ -125,5 +135,6 @@ export const loginWithFacebook = facebookRes => (dispatch) => {
   })
     .then(res => res.json())
     .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
-    .catch(err => console.log(err.message));
+    .then(() => dispatch(setLoading(false)))
+    .catch(() => dispatch(setLoading(false)));
 };
