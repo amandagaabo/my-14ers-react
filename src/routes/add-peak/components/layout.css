@@ -1,3 +1,7 @@
 .add-form-container {
   margin-top: 20px;
 }
+
+.loader {
+  margin: 10px auto;
+}

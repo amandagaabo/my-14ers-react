@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { ClipLoader } from 'react-spinners';
 import Input from '../../app/components/input';
 import { addPeak } from './../../../modules/peaks/actions';
 import { required, nonEmpty, validDate, maxChar250 } from '../../../utils/validators';
@@ -68,6 +69,13 @@ export class AddPeakForm extends React.Component {
             Add
           </button>
         </Col>
+
+        <Col xs={12} className="loader">
+          <ClipLoader
+            color="#1E4899"
+            loading={this.props.loading}
+          />
+        </Col>
       </form>
     );
   }
@@ -83,6 +91,7 @@ AddPeakForm.propTypes = {
     email: PropTypes.string,
     uuid: PropTypes.string
   }),
+  loading: PropTypes.bool,
   handleSubmit: PropTypes.func,
   dispatch: PropTypes.func
 };
