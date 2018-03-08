@@ -1,7 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Col } from 'react-bootstrap';
-import { ClipLoader } from 'react-spinners';
 import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
 import Input from '../../app/components/input';
@@ -64,13 +63,6 @@ export function EditPeakForm(props) {
           Save
         </button>
       </Col>
-
-      <Col xs={12} className="loader">
-        <ClipLoader
-          color="#1E4899"
-          loading={props.loading}
-        />
-      </Col>
     </form>
   );
 }
@@ -90,7 +82,6 @@ EditPeakForm.propTypes = {
     dateClimbed: PropTypes.string,
     notes: PropTypes.string
   }),
-  loading: PropTypes.bool,
   handleSubmit: PropTypes.func,
   dispatch: PropTypes.func
 };
@@ -101,8 +92,7 @@ EditPeakForm.defaultProps = {
   error: '',
   authToken: null,
   currentUser: null,
-  editPeak: null,
-  loading: false
+  editPeak: null
 };
 
 export default reduxForm({

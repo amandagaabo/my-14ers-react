@@ -164,12 +164,14 @@ export const removePeakError = error => ({
 export const removePeak = (token, userId, peakId, removePeak = removePeakFromDB) => (dispatch) => {
   // dispatch the request action to start the request
   dispatch(removePeakRequest());
-  // remove peak from user's peaks in DB
-  return removePeak(token, userId, peakId).then(() => {
-    // dispatch the success action and pass in the result from the db search on success
-    dispatch(removePeakSuccess(peakId));
-  }).catch((err) => {
-    // dispatch the error action if something goes wrong
-    dispatch(removePeakError(err));
+  return Promise.delay(1000).then(() => {
+    // remove peak from user's peaks in DB
+    return removePeak(token, userId, peakId).then(() => {
+      // dispatch the success action and pass in the result from the db search on success
+      dispatch(removePeakSuccess(peakId));
+    }).catch((err) => {
+      // dispatch the error action if something goes wrong
+      dispatch(removePeakError(err));
+    });
   });
 };
