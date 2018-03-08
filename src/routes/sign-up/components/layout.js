@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
+import { ClipLoader } from 'react-spinners';
 import SignUpForm from './sign-up-form';
 import { FACEBOOK_APP_ID } from './../../../config';
 
@@ -15,7 +16,15 @@ export default function Layout(props) {
   return (
     <main role="main" className="sign-up-container">
       <Col md={4} mdOffset={4} xs={10} xsOffset={1} className="form-container">
+        <Col xs={12}>
+          <ClipLoader
+            color="#1E4899"
+            loading={props.loading}
+          />
+        </Col>
+
         <SignUpForm {...props} />
+
         <Col xs={12}>
           <hr className="divider" />
           <FacebookLogin
@@ -35,9 +44,11 @@ export default function Layout(props) {
 
 Layout.propTypes = {
   loggedIn: PropTypes.bool,
+  loading: PropTypes.bool,
   onSignupWithFacebook: PropTypes.func
 };
 
 Layout.defaultProps = {
-  loggedIn: false
+  loggedIn: false,
+  loading: false
 };

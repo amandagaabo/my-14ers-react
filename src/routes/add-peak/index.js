@@ -12,7 +12,8 @@ export const mapStateToProps = state => ({
   allPeaks: state.app.peaks.allPeaks,
   loggedIn: state.app.auth.currentUser !== null,
   authToken: state.app.auth.authToken,
-  currentUser: state.app.auth.currentUser
+  currentUser: state.app.auth.currentUser,
+  loading: state.app.peaks.loading
 });
 
 export default connect(mapStateToProps)(AddPeak);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Redirect, Link } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 import { confirmAlert } from 'react-confirm-alert';
 import EditPeakForm from './edit-peak-form';
 import { removePeak } from './../../../modules/peaks/actions';
@@ -71,6 +72,13 @@ export default function Layout(props) {
             </button>
           </Col>
 
+          <Col xs={12} className="loader">
+            <ClipLoader
+              color="#1E4899"
+              loading={props.loading}
+            />
+          </Col>
+
           <Col xs={12}>
             <Link
               to="/peak-list"
@@ -99,6 +107,7 @@ Layout.propTypes = {
     notes: PropTypes.string,
     imgSrc: PropTypes.string
   }),
+  loading: PropTypes.bool,
   dispatch: PropTypes.func
 };
 
@@ -106,5 +115,6 @@ Layout.defaultProps = {
   loggedIn: false,
   authToken: null,
   currentUser: null,
-  editPeak: null
+  editPeak: null,
+  loading: false
 };

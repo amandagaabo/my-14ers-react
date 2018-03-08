@@ -3,13 +3,15 @@ import reducer from './../reducer';
 import {
   setAuthToken,
   setCurrentUser,
-  setReady
+  setReady,
+  setLoading
 } from './../actions';
 
 const initialState = {
   authToken: null,
   currentUser: null,
-  ready: false
+  ready: false,
+  loading: false
 };
 
 describe('Auth reducer', () => {
@@ -40,5 +42,11 @@ describe('Auth reducer', () => {
     const ready = true;
     const state = reducer(undefined, setReady(ready));
     expect(state.ready).to.equal(ready);
+  });
+
+  it('Should set loading to true on setLoading', () => {
+    const loading = true;
+    const state = reducer(undefined, setLoading(loading));
+    expect(state.loading).to.equal(loading);
   });
 });
