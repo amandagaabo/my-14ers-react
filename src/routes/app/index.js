@@ -2,17 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Layout from './components/layout';
-import { refreshAuthToken, setReady } from './../../modules/auth/actions';
+import { refreshAuthToken } from './../../modules/auth/actions';
 import { getUserPeaks } from './../../modules/peaks/actions';
 
 export class App extends React.Component {
   componentDidMount() {
     if (this.props.hasAuthToken) {
       // Try to get a fresh auth token if we had an existing one in localStorage
-      // refreshAuthToken sets ready to true after token is refreshed then page can load
       this.props.dispatch(refreshAuthToken());
-    } else {
-      this.props.dispatch(setReady(true));
     }
   }
 
@@ -53,13 +50,8 @@ export class App extends React.Component {
   }
 
   render() {
-    if (this.props.ready) {
-      return (
-        <Layout {...this.props} />
-      );
-    }
     return (
-      <div />
+      <Layout {...this.props} />
     );
   }
 }
@@ -68,7 +60,6 @@ export class App extends React.Component {
 App.propTypes = {
   loggedIn: PropTypes.bool,
   hasAuthToken: PropTypes.bool,
-  ready: PropTypes.bool,
   authToken: PropTypes.string,
   currentUser: PropTypes.shape({
     email: PropTypes.string,
@@ -80,7 +71,6 @@ App.propTypes = {
 App.defaultProps = {
   loggedIn: false,
   hasAuthToken: false,
-  ready: false,
   authToken: null,
   currentUser: null
 };
@@ -88,7 +78,6 @@ App.defaultProps = {
 export const mapStateToProps = state => ({
   loggedIn: state.app.auth.currentUser !== null,
   hasAuthToken: state.app.auth.authToken !== null,
-  ready: state.app.auth.ready,
   authToken: state.app.auth.authToken,
   currentUser: state.app.auth.currentUser
 });

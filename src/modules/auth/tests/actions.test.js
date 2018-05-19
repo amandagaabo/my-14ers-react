@@ -3,9 +3,7 @@ import {
   SET_AUTH_TOKEN,
   setAuthToken,
   SET_CURRENT_USER,
-  setCurrentUser,
-  SET_READY,
-  setReady
+  setCurrentUser
 } from './../actions';
 
 describe('Auth action', () => {
@@ -24,15 +22,6 @@ describe('Auth action', () => {
       const action = setCurrentUser(currentUser);
       expect(action.type).to.equal(SET_CURRENT_USER);
       expect(action.currentUser).to.equal(currentUser);
-    });
-  });
-
-  describe('setReady', () => {
-    it('Should return the action and ready', () => {
-      const ready = true;
-      const action = setReady(ready);
-      expect(action.type).to.equal(SET_READY);
-      expect(action.ready).to.equal(ready);
     });
   });
 });
