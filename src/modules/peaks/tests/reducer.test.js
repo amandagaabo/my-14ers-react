@@ -16,7 +16,8 @@ import {
   updatePeakError,
   removePeakRequest,
   removePeakSuccess,
-  removePeakError
+  removePeakError,
+  clearUserPeaks
 } from './../actions';
 import peakData from './../all-peak-data';
 
@@ -237,6 +238,13 @@ describe('Peak reducer', () => {
       const state = reducer(startState, removePeakError(error));
       expect(state.error).to.equal(error);
       expect(state.loading).to.equal(false);
+    });
+  });
+
+  describe('clearUserPeaks', () => {
+    it('should clear user peaks in state', () => {
+      const state = reducer(initialState, clearUserPeaks());
+      expect(state.userPeaks.length).to.equal(0);
     });
   });
 });

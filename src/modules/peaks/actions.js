@@ -183,3 +183,8 @@ export const removePeak = (token, userId, peakId, removePeak = removePeakFromDB)
     dispatch(removePeakError(err));
   });
 };
+
+export const CLEAR_USER_PEAKS = 'CLEAR_USER_PEAKS';
+export const clearUserPeaks = () => ({
+  type: CLEAR_USER_PEAKS
+});

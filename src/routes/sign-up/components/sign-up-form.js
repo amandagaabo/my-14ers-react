@@ -20,7 +20,7 @@ export function SignUpForm(props) {
         return props.dispatch(login(email, password));
       })
       .then(() => {
-        window.location.href = '/dashboard';
+        props.history.push('/dashboard');
       });
   }
 
@@ -65,7 +65,7 @@ export function SignUpForm(props) {
       <Col xs={12} className="form-button" >
         <button
           type="submit"
-          disabled={props.pristine || props.submitting}
+          disabled={props.pristine || props.invalid || props.submitting}
         >
           Sign Up
         </button>

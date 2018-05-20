@@ -35,7 +35,9 @@ import {
   removePeakSuccess,
   REMOVE_PEAK_ERROR,
   removePeakError,
-  removePeak
+  removePeak,
+  clearUserPeaks,
+  CLEAR_USER_PEAKS
 } from './../actions';
 
 const middlewares = [thunk];
@@ -273,6 +275,13 @@ describe('action', () => {
         .then(() => {
           expect(store.getActions()).to.deep.equal(expectedActions);
         });
+    });
+  });
+
+  describe('clearUserPeaks', () => {
+    it('should return the action', () => {
+      const action = clearUserPeaks();
+      expect(action.type).to.equal(CLEAR_USER_PEAKS);
     });
   });
 });

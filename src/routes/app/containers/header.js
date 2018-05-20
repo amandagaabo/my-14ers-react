@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { setCurrentUser, setAuthToken } from './../../../modules/auth/actions';
+import { clearUserPeaks} from './../../../modules/peaks/actions';
 import { clearAuthToken } from './../../../utils/local-storage';
 import './header.css';
 
@@ -12,10 +13,10 @@ export default function Header(props) {
     props.dispatch(setCurrentUser(null));
     props.dispatch(setAuthToken(null));
     clearAuthToken();
+    props.dispatch(clearUserPeaks());
   }
-  const { loggedIn } = props;
 
-  if (loggedIn) {
+  if (props.loggedIn) {
     return (
       <Navbar fixedTop collapseOnSelect className="nav-loggedin">
         <Navbar.Header>

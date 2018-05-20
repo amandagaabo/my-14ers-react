@@ -15,18 +15,16 @@ export class App extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn && !this.props.loggedIn) {
-      // When we are logged in, refresh the auth token periodically
-      this.startPeriodicRefresh();
-    } else if (!nextProps.loggedIn && this.props.loggedIn) {
-      // Stop refreshing when we log out
-      this.stopPeriodicRefresh();
-    }
-
-    if (nextProps.loggedIn && !this.props.loggedIn) {
       // get user peaks after logging in
       const token = nextProps.authToken;
       const userId = nextProps.currentUser.uuid;
       this.props.dispatch(getUserPeaks(token, userId));
+
+      // and start refreshing the auth token periodically
+      this.startPeriodicRefresh();
+    } else if (!nextProps.loggedIn && this.props.loggedIn) {
+      // stop refreshing when user logs out
+      this.stopPeriodicRefresh();
     }
   }
 
@@ -79,7 +77,8 @@ export const mapStateToProps = state => ({
   loggedIn: state.app.auth.currentUser !== null,
   hasAuthToken: state.app.auth.authToken !== null,
   authToken: state.app.auth.authToken,
-  currentUser: state.app.auth.currentUser
+  currentUser: state.app.auth.currentUser,
+  userPeaks: state.app.peaks.userPeaks
 });
 
 export default connect(mapStateToProps)(App);
