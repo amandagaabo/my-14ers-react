@@ -15,11 +15,11 @@ export function EditPeakForm(props) {
     const peakId = props.editPeak.uuid;
     const { dateClimbed, notes } = values;
 
-    // dispatch action then redirect to /peak-list on success
+    // dispatch action then redirect to /peak-list
     return props.dispatch(updatePeak(token, userId, peakId, dateClimbed, notes))
-      .then(() => {
-        window.location.href = '/peak-list';
-      });
+    .then(() => {
+      props.history.push('/peak-list');
+    });
   }
 
   let errorMessage;
@@ -58,7 +58,7 @@ export function EditPeakForm(props) {
       <Col xs={12} className="form-button" >
         <button
           type="submit"
-          disabled={props.pristine || props.submitting}
+          disabled={props.pristine || props.invalid || props.submitting}
         >
           Save
         </button>

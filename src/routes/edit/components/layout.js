@@ -18,7 +18,7 @@ export default function Layout(props) {
     // dispatch action then redirect to /peak-list
     return props.dispatch(removePeak(token, userId, peakId))
       .then(() => {
-        window.location.href = '/peak-list';
+        props.history.push('/peak-list');
       });
   }
 
