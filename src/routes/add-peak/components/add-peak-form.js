@@ -14,10 +14,11 @@ export class AddPeakForm extends React.Component {
     const { peakName, dateClimbed } = values;
     const notes = values.notes ? values.notes : '';
 
+    // dispatch action then redirect to /peak-list
     return this.props.dispatch(addPeak(token, userId, peakName, dateClimbed, notes))
-      .then(() => {
-        window.location.href = '/peak-list';
-      });
+    .then(() => {
+      this.props.history.push('/peak-list');
+    });
   }
 
   render() {
@@ -64,10 +65,10 @@ export class AddPeakForm extends React.Component {
         <Col xs={12} className="form-button" >
           <button
             type="submit"
-            disabled={this.props.pristine || this.props.submitting}
+            disabled={this.props.pristine || this.props.invalid || this.props.submitting}
           >
             Add
-          </button>
+        </button>
         </Col>
 
         <Col xs={12} className="loader">

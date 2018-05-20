@@ -12,9 +12,9 @@ export function LoginForm(props) {
 
     // dispatch action then redirect to /dashboard
     return props.dispatch(login(email, password))
-      .then(() => {
-        window.location.href = '/dashboard';
-      });
+    .then(() => {
+      props.history.push('/dashboard');
+    });
   }
 
   let errorMessage;
@@ -52,7 +52,7 @@ export function LoginForm(props) {
       <Col xs={12} className="form-button" >
         <button
           type="submit"
-          disabled={props.pristine || props.submitting}
+          disabled={props.pristine || props.invalid || props.submitting}
         >
           Login
         </button>

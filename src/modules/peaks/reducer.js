@@ -15,6 +15,7 @@ import {
   REMOVE_PEAK_REQUEST,
   REMOVE_PEAK_SUCCESS,
   REMOVE_PEAK_ERROR,
+  CLEAR_USER_PEAKS
 } from './actions';
 import peakData from './all-peak-data';
 
@@ -131,6 +132,12 @@ export default function (state = initialState, action) {
       ...state,
       loading: false,
       error: action.error,
+    };
+
+  case CLEAR_USER_PEAKS:
+    return {
+      ...state,
+      userPeaks: []
     };
 
   default:

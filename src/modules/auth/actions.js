@@ -18,12 +18,6 @@ export const setCurrentUser = currentUser => ({
   currentUser
 });
 
-export const SET_READY = 'SET_READY';
-export const setReady = ready => ({
-  type: SET_READY,
-  ready
-});
-
 export const SET_LOADING = 'SET_LOADING';
 export const setLoading = loading => ({
   type: SET_LOADING,
@@ -36,7 +30,6 @@ const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(setCurrentUser(decodedToken.user));
-  dispatch(setReady(true));
   saveAuthToken(authToken);
 };
 

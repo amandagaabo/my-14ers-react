@@ -11,15 +11,8 @@ describe('<App />', () => {
     shallow(<App dispatch={dispatch} />);
   });
 
-  it('Renders the layout when ready', () => {
-    const ready = true;
-    const wrapper = shallow(<App dispatch={dispatch} ready={ready} />);
+  it('Renders the layout', () => {
+    const wrapper = shallow(<App dispatch={dispatch} />);
     expect(wrapper.find('Layout')).to.have.length(1);
-  });
-
-  it('Does not render the layout when not ready', () => {
-    const ready = false;
-    const wrapper = shallow(<App dispatch={dispatch} ready={ready} />);
-    expect(wrapper.find('Layout')).to.have.length(0);
   });
 });
