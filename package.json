@@ -2,6 +2,9 @@
   "name": "my-14ers-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.9.2"
+  },
   "dependencies": {
     "bluebird": "^3.5.1",
     "chai": "^4.1.2",
