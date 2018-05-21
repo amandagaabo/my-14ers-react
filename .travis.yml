@@ -10,8 +10,8 @@ env:
   - CI=true
 
 before_install:
-  - npm install npm@latest
-  
+  - npm install npm@latest -g
+
 before_deploy:
   - npm install netlify-cli -g
   - npm run build
