@@ -1,5 +1,12 @@
 # My 14ers React App
 
+## Usage
+npm install
+npm run build
+npm start
+
+Run api locally.
+
 ## Description
 A React app that allows users to track which Colorado 14ers they have hiked.  The user can add all
 of the peaks they have hiked, view a sortable list of their peaks, edit the peak data, view the peaks
